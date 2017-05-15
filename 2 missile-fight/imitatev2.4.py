@@ -233,7 +233,7 @@ class Game(object):
     def __init__(self):
         self.player1 = Player(0)
         self.player2 = PlayerAi(1)
-        self.train_times = 200000
+        self.train_times = 100000
         self.model = 1
         if load:
             self.player1.load_policy()
@@ -263,6 +263,7 @@ class Game(object):
         self.rect_zuo = (0, 400, self.text_surface_zuo.get_width(), self.text_surface_zuo.get_height())
         self.rect_you = ((640 - self.text_surface_you.get_width()), 400, self.text_surface_you.
                          get_width(), self.text_surface_you.get_height())
+        self.player_color = [(255, 0, 0), (0, 0, 255)]
         for index1, val1 in enumerate((self.tar_range, self.missi_range)):
             for i in range(3):
                 val1.append((110 + index1 * 320, 10 + i * 120, 100, 100))
@@ -360,6 +361,8 @@ class Game(object):
         self.action_flag = 0
         self.human_1 = []
         self.human_2 = []
+        self.damages = [0, 0]
+        self.game_state = 'start_1'
 
     def paint(self):
         for event in pygame.event.get():
@@ -381,7 +384,6 @@ class Game(object):
                 if pygame.Rect(rec).collidepoint(self.pos):
                     pygame.time.delay(self.time_stop)
                     self.state_reset()
-                    self.game_state = 'start_1'
             pygame.display.update()
             return 1
         elif self.game_state == 'start_1':
@@ -396,13 +398,13 @@ class Game(object):
                     self.ai = False
                     self.state_reset()
                     return 1
-
+                action2 = None
                 state = self.temp_state
                 self.player2.feed_state(state)
                 if self.ai:
                     action2 = self.player2.select_action(2)
                 else:
-                    action2s = self.temp_state.get_actions(1, False)
+                    action2s = self.temp_state.get_actions(1, True)
                     if action2s:
                         if self.action_flag == 0:
                             for inde, vav in enumerate(self.missi_range):
@@ -440,57 +442,6 @@ class Game(object):
                             action2 = np.array([self.human_1[0], self.human_2[0]])
                             self.human_1 = []
                             self.human_2 = []
-                    # action2 = None
-                    # state.actions = []
-                    # actions2 = state.get_actions(1, False)
-                    # if actions2:
-                    #     while action2 is None:
-                    #         event = pygame.event.wait()
-                    #         while event.type != MOUSEBUTTONDOWN:
-                    #             event = pygame.event.wait()
-                    #             pygame.time.delay(400)
-                    #         missi = 4
-                    #         while missi > 3:
-                    #             pos1 = event.pos
-                    #             for inde,vav in enumerate(self.missi_range):
-                    #                 if pygame.Rect(vav).collidepoint(pos1):
-                    #                     missi = inde+1
-                    #                     break
-                    #             # missi = input('选择导弹 从1-3\n')
-                    #             # if missi:
-                    #             #     missi = int(missi)
-                    #             # else:
-                    #             #     missi = 4
-                    #         pygame.time.delay(400)
-                    #
-                    #         event = pygame.event.wait()
-                    #         while event.type != MOUSEBUTTONDOWN:
-                    #             event = pygame.event.wait()
-                    #             pygame.time.delay(400)
-                    #         tar = 6
-                    #         while tar > 5 or not tar:
-                    #             pos1 = event.pos
-                    #             for inde, vav in enumerate(self.tar_range):
-                    #                 if pygame.Rect(vav).collidepoint(pos1):
-                    #                     tar = inde + 1
-                    #                     break
-                    #             # tar = input('选择目标 从1-5\n')
-                    #             # if tar:
-                    #             #     tar = int(tar)
-                    #             # else:
-                    #             #     tar = 6
-                    #         result = []
-                    #         for va in (tar, missi):
-                    #             tem = [0 for i in range(5)]
-                    #             tem[va-1] = 1
-                    #             result.append(tem)
-                    #         action2 = np.array(result)
-                    #         for action in actions2:
-                    #             if action.all() == action2.all():
-                    #                 break
-                    #         else:
-                    #             action2 = None
-                    #             print('输入错误，重新输入！')
                     else:
                         action2 = None
                 pygame.time.delay(self.time_stop)
@@ -547,7 +498,37 @@ class Game(object):
                 if debug:
                     print("本轮结束,现在的伤害是%s\n" % self.damages)
                 self.temp_state = state
+                if self.temp_state.is_end() and not self.ai:
+                    self.game_state = 'end'
             self.draw()
+            return 1
+        elif self.game_state == 'end':
+            self.screen.fill((255, 255, 255))  # 设置背景为白色
+            self.screen.blit(self.background, (0, 0))
+            if self.damages[0] > self.damages[1]:
+                text_surface = self.font.render(u"哇，你赢了！！", True, (255, 0, 0))
+            else:
+                text_surface = self.font.render(u"呵呵，电脑都打不过！", True, (167, 255, 255))
+            w = text_surface.get_width()
+            h = text_surface.get_height()
+            rec = ((640 - w) / 2, (480 - h) / 2, w, h)
+            self.screen.blit(text_surface, (rec[0], rec[1]))
+            self.screen.blit(text_surface, (rec[0], rec[1]))
+            self.screen.blit(self.text_surface_zuo, (self.rect_zuo[0], self.rect_zuo[1]))
+            self.screen.blit(self.text_surface_you, (self.rect_you[0], self.rect_you[1]))
+            if self.pos is not None:
+                if pygame.Rect(self.rect_you).collidepoint(self.pos):
+                    pygame.time.delay(self.time_stop)
+                    self.ai = True
+                    self.state_reset()
+                    return 1
+                elif pygame.Rect(self.rect_zuo).collidepoint(self.pos):
+                    pygame.time.delay(self.time_stop)
+                    self.ai = False
+                    self.state_reset()
+                    return 1
+            pygame.time.delay(self.time_stop)
+            pygame.display.update()
             return 1
 
     def draw(self):
@@ -563,15 +544,16 @@ class Game(object):
             for index1, val2 in enumerate(val1[:store_numbers]):
                 pygame.draw.circle(self.screen, (0, 0, 255), (160 + index0 * 320, 60 + index1 * 120), banjing, 1)
                 if val2:
-                    color1 = (255, 0, 0)
+                    color1 = self.player_color[index0]
+                    tem = (85, 102, 0)
                     if len(self.human_2):
                         mi = self.human_2[1]
                         if index1 == mi and index0 == 1:
-                            color1 = (0, 255, 255)
+                            color1 = tem
                     if len(self.human_1):
                         mi = self.human_1[1]
                         if index1 == mi and index0 == 0:
-                            color1 = (0, 255, 255)
+                            color1 = tem
                     for i in range(val2):
                         degree = math.pi * 2 * i / val2 + self.interest * 2 * math.pi / 360
                         # interest += 1
@@ -585,7 +567,8 @@ class Game(object):
                     continue
             if val1[store_numbers]:
                 self.screen.blit(self.weixing, (index0 * (640 - self.weixing.get_width()), 70))
-            pygame.draw.rect(self.screen, (255, 0, 0), (index0 * 540, 240, 100, 100))
+            pygame.draw.rect(self.screen, self.player_color[index0], (index0 * 540, 240, 100, 100))
+        # pygame.time.delay(90)
         pygame.display.update()
 
     def ai_fight(self):
