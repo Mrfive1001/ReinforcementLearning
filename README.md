@@ -1,2 +1,2 @@
 # Reinforcement-Learning
-强化学习过程中的例子
+简单强化学习
