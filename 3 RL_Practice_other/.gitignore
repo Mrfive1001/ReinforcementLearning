@@ -1,0 +1,5 @@
+.idea
+temp.py
+*.pyc
+chapter01/optimal_policy*
+latex
