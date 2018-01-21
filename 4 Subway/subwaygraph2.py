@@ -519,8 +519,9 @@ class subway_gym:
 
     def step(self, action):
         ver = self.graph.getVertex(self.state)
-        next_state = ver.getConnections()[action]
+        next_state = list(ver.getConnections())[action]
         reward = -ver.connectedTo[next_state]
+        next_state = next_state.id
         if next_state == self.end:
             is_done = True
         else:
@@ -529,22 +530,43 @@ class subway_gym:
         return self.state, reward, is_done, None
 
 
+class RL:
+    def __init__(self):
+        self.my_env = subway_gym()
+        self.allstate = self.my_env.graph.vertList
+        self.exploreRate = 0.01
+        for key in self.allstate.keys():
+            ac_len = len(self.allstate[key].getConnections())
+            self.allstate[key] = [self.allstate[key], np.zeros(ac_len)]
+        self.traj = []
+
+    def choose_action(self, state):
+        ver, q = self.allstate[state]
+        if np.random.binomial(1, self.exploreRate):
+            return np.random.randint(len(q))
+        else:
+            return np.argmax(q)
+
+    def store(self, info):
+        self.traj = info
+
+    def learn(self):
+        observation, action, reward, observation_next = self.traj
+        self.allstate[observation][1][action] = reward + np.max(self.allstate[observation_next][1])
+
+
 if __name__ == "__main__":
 
-    g = Graph()
-
-    vel = 10  # 地铁的速度 m/s
-
-    for x in subway_dict:
-        g.addEdge(x[0], x[1], (float)(x[2]) / vel)  # 由距离得到时间
-        g.addEdge(x[1], x[0], (float)(x[2]) / vel)  # 双向都有
-
-    for x in transfer_dict:
-        g.addEdge(x[0], x[1], (float)(x[2]))  # 换站给的直接就是时间
-
-        # print(g.getVertices())
-        # print(len(g.getVertices()))
-        # for v in g:
-        #     for w in v.getConnections():
-        #         print("( %s , %s )" % (v.getId(), w.getId()))
-        #         pass
+    env = subway_gym()
+    algor = RL()
+    for i in range(10):
+        observation = env.reset()
+        while True:
+            action = algor.choose_action(observation)
+            observation_next, reward, is_done, info = env.step(action)
+            algor.store((observation, action, reward, observation_next))
+            if is_done:
+                break
+            algor.learn()
+            observation = observation_next
+        print(i)
