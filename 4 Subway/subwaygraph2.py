@@ -490,7 +490,7 @@ class Graph:
             nv = self.addVertex(f)
         if t not in self.vertList:
             nv = self.addVertex(t)
-        self.vertList[f].addNeighbor(t, cost)
+        self.vertList[f].addNeighbor(self.vertList[t], cost)
 
     def getVertices(self):
         return self.vertList.keys()
@@ -521,8 +521,8 @@ class subway_gym:
         ver = self.graph.getVertex(self.state)
         next_state = list(ver.getConnections())[action]
         reward = -ver.connectedTo[next_state]
+        next_state = next_state.id
         if next_state == self.end:
-            reward = 1000
             is_done = True
         else:
             is_done = False
@@ -535,50 +535,43 @@ class RL:
         self.my_env = subway_gym()
         self.allstate = self.my_env.graph.vertList
         self.exploreRate = 0.01
-        self.gamma = 0.9
         for key in self.allstate.keys():
             ac_len = len(self.allstate[key].getConnections())
-            self.allstate[key] = [self.allstate[key], 0]
+            self.allstate[key] = [self.allstate[key], np.zeros(ac_len)]
         self.traj = []
 
     def choose_action(self, state):
+        ver, q = self.allstate[state]
         if np.random.binomial(1, self.exploreRate):
-            return np.random.randint(len(self.allstate[state][0].getConnections()))
+            return np.random.randint(len(q))
         else:
-            nextall = self.allstate[state][0].connectedTo
-            action = 0
-            for i in range(1,len(nextall.keys())):
-                s1 = list(nextall.keys())[i]
-                s2 = list(nextall.keys())[action]
-                t1 = -nextall[s1]+ self.gamma*self.allstate[s1][1]
-                t2 = -nextall[s2]+ self.gamma*self.allstate[s2][1]
-                if t1 > t2:
-                    action = i
-            return action
+            return np.argmax(q)
 
     def store(self, info):
         self.traj = info
 
     def learn(self):
         observation, action, reward, observation_next = self.traj
-        temp = self.allstate[observation][1]
-        self.allstate[observation][1] = reward + self.gamma*self.allstate[observation_next][1]
-        return abs(temp-self.allstate[observation][1])
+        self.allstate[observation][1][action] = reward + np.max(self.allstate[observation_next][1])
 
 
 if __name__ == "__main__":
 
-    env = subway_gym()
+    start = '7-化工'
+    end = '10-知春路'
+    env = subway_gym(start, end)
     algor = RL()
-    for i in range(100):
+    for i in range(1000):
         observation = env.reset()
-        loss = 0
         while True:
             action = algor.choose_action(observation)
+            if i == 999:
+                print(observation)
             observation_next, reward, is_done, info = env.step(action)
             algor.store((observation, action, reward, observation_next))
-            loss += algor.learn()
             if is_done:
+                if i == 999:
+                    print(observation_next)
                 break
+            algor.learn()
             observation = observation_next
-        print("第%d轮，损失是%f"%(i+1,loss))
