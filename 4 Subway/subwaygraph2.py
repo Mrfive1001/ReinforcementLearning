@@ -500,7 +500,7 @@ class Graph:
 
 
 class subway_gym:
-    def __init__(self, start_key='1-苹果园', end_key='鼓楼大街'):
+    def __init__(self, start_key='9-北京西站', end_key='10-知春路'):
         g = Graph()
         vel = 10  # 地铁的速度 m/s
         for x in subway_dict:
@@ -557,16 +557,21 @@ class RL:
 
 if __name__ == "__main__":
 
-    env = subway_gym()
+    start = '7-化工'
+    end = '10-知春路'
+    env = subway_gym(start, end)
     algor = RL()
-    for i in range(10):
+    for i in range(1000):
         observation = env.reset()
         while True:
             action = algor.choose_action(observation)
+            if i == 999:
+                print(observation)
             observation_next, reward, is_done, info = env.step(action)
             algor.store((observation, action, reward, observation_next))
             if is_done:
+                if i == 999:
+                    print(observation_next)
                 break
             algor.learn()
             observation = observation_next
-        print(i)
