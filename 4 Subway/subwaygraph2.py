@@ -439,8 +439,9 @@ transfer_dict = [
     ["14E-望京", "15-望京", 80],  # 时间，s
     ["15-望京", "14E-望京", 80]  # 时间，s
 ]
+# 定义了换乘的时间和站与站的距离
 
-
+# 定义了点包含本身地铁站和连接的地铁站
 class Vertex:
     def __init__(self, key):
         self.id = key
@@ -461,7 +462,7 @@ class Vertex:
     def getWeight(self, nbr):
         return self.connectedTo[nbr]
 
-
+# 构建了地铁图，包含所有的地铁点
 class Graph:
     def __init__(self):
         self.vertList = {}
@@ -509,9 +510,9 @@ if __name__ == "__main__":
     for x in transfer_dict:
         g.addEdge(x[0], x[1], (float)(x[2]))  # 换站给的直接就是时间
 
-    print(g.getVertices())
-
-    for v in g:
-        for w in v.getConnections():
-            print("( %s , %s )" % (v.getId(), w.getId()))
-            pass
+    # print(g.getVertices())
+    # print(len(g.getVertices()))
+    # for v in g:
+    #     for w in v.getConnections():
+    #         print("( %s , %s )" % (v.getId(), w.getId()))
+    #         pass
