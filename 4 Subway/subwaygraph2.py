@@ -1,5 +1,5 @@
 import numpy as np
-
+import time
 subway_dict = [
     ["1-苹果园", "1-古城", 2606],
     ["1-古城", "1-八角游乐园", 1921],
@@ -557,10 +557,11 @@ class RL:
 
 if __name__ == "__main__":
 
-    start = '7-化工'
-    end = '10-知春路'
+    start = 'BT-土桥'
+    end = 'CP-沙河高教园'
     env = subway_gym(start, end)
     algor = RL()
+    init = time.time()
     for i in range(1000):
         observation = env.reset()
         while True:
@@ -575,3 +576,4 @@ if __name__ == "__main__":
                 break
             algor.learn()
             observation = observation_next
+    print('算法用时%fs'%(time.time()-init))
