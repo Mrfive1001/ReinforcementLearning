@@ -1,10 +1,10 @@
 import Missile
 
-A = Missile.MissileAI(first=True)
-B = Missile.MissileAI(first=False)
+env = Missile.MissileAI()
 
-print(A.reset())
-print(B.reset())
-s = A.step([1,3])
-B.share(s[0])
-print(B.step([2,4]))
+env.reset()
+print(env.step([1,3,2,1]))
+print(env.step([1,3,2,1]))
+print(env.step([1,3,2,1]))
+print(env.step([1,3,2,1]))
+print(env.step([1,3,2,1]))
