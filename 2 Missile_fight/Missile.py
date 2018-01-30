@@ -1,7 +1,9 @@
 import time
 import numpy as np
 import requests
-np.random.seed(2)
+
+# np.random.seed(2)
+
 
 class MissileAI:
     def __init__(self):
@@ -11,8 +13,8 @@ class MissileAI:
         self.state_dim = len(self.state)  # 状态的维度是10
         self.action_dim = 2  # 动作的维度是2
         self.hit = np.array([[[0.9, 0.7], [0.75, 0.5], [0, 0], [0, 0], [0, 0]],
-                             [[0.8, 0.8], [0.7, 0.7], [0.7, 0.6], [0.7, 0], [0.7, 60]],
-                             [[0.7, 0.9], [0.65, 0.8], [0.6, 0.75], [0, 0], [0.55, 100]]])
+                             [[0.8, 0.8], [0.7, 0.7], [0.7, 0.6], [0.7, 0.8], [1, 60]],
+                             [[0.7, 0.9], [0.65, 0.8], [0.6, 0.75], [0.7, 0.7], [1, 100]]])
         # hit[i,j]第i个导弹命中j个地方的概率[命中率，损毁率]
         self.jump = int(self.state_dim / 2)  # 先后手区别的位数
         self.moon_help = 1.2
@@ -37,7 +39,7 @@ class MissileAI:
             if state[missile] > 0:  # 如果有弹
                 state[missile] -= 1  # 减少弹
                 if ran1 < hit_rate * moon_add:  # 命中
-                    if store != 4 or store != 9:  # 命中非基地
+                    if store != 4 and store != 9:  # 命中非基地
                         if ran2 < damage_rate * moon_add:  # 损伤了
                             state[store] = 0
                     else:
@@ -56,3 +58,6 @@ class MissileAI:
 
     def render(self):
         pass
+
+    def rand_action(self):
+        return [np.random.randint(3), np.random.randint(5)]
