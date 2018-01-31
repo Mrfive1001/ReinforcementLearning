@@ -2,6 +2,7 @@ import time
 import numpy as np
 import requests
 
+
 # np.random.seed(2)
 
 
@@ -46,7 +47,7 @@ class MissileAI:
                         state[store] -= damage_rate
             reward = 0
         self.state = np.array([min(x, y) for x, y in zip(state1, state2)])
-        if sum(self.state[:3]) + sum(self.state[self.jump:8]) == 0:
+        if sum(self.state[:3]) + sum(self.state[self.jump:8]) == 0:  # 判断是否结束
             done = True
         else:
             done = False
@@ -59,5 +60,29 @@ class MissileAI:
     def render(self):
         pass
 
-    def rand_action(self):
-        return [np.random.randint(3), np.random.randint(5)]
+    def robot_action(self, mode='rand_fool', first=True):
+        if mode == 'rand_fool':  # 随机选动作，随机发炮
+            return [np.random.randint(3), np.random.randint(5)]
+        elif mode == 'base_fool':  # 随机选择动作，瞄准基地
+            return [np.random.randint(3), 4]
+        if first:
+            mystate = self.state[:self.jump].copy()
+            yourstate = self.state[self.jump:].copy()
+        else:
+            yourstate = self.state[:self.jump].copy()
+            mystate = self.state[self.jump:].copy()  # 找出我方和敌方的不同状态
+        if mode == 'rand_smart':  # 选择有弹的动作，随机打击对面非空仓库和基地
+            missile = np.array([i for i in range(3) if mystate[i] != 0])
+            if len(missile) == 0:
+                return [0, 0]
+            missile = np.random.choice(missile)
+            store = [i for i in range(4) if yourstate[i] != 0]
+            store.append(4)
+            store = np.random.choice(store)
+            return [missile, store]
+        elif mode == 'base_smart':  # 选择有弹的动作，打击对面基地
+            missile = np.array([i for i in range(3) if mystate[i] != 0])
+            if len(missile) == 0:
+                return [0, 0]
+            missile = np.random.choice(missile)
+            return [missile, 4]
