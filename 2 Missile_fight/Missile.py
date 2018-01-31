@@ -51,7 +51,7 @@ class MissileAI:
             done = True
         else:
             done = False
-        return self.state, [reward1, reward2], done, None
+        return self.state, np.array([reward1, reward2]), done, None
 
     def reset(self):
         self.state = self.init_state
@@ -61,6 +61,10 @@ class MissileAI:
         pass
 
     def robot_action(self, mode='rand_fool', first=True):
+        # rand_fool
+        # base_fool
+        # rand_smart
+        # base_smart
         if mode == 'rand_fool':  # 随机选动作，随机发炮
             return [np.random.randint(3), np.random.randint(5)]
         elif mode == 'base_fool':  # 随机选择动作，瞄准基地
