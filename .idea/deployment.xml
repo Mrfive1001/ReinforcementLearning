@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="d632-server" createEmptyFolders="true" exclude=".svn;.cvs;.hg">
+  <component name="PublishConfigData" serverName="d632-server" createEmptyFolders="true" exclude=".svn;.cvs;.hg">
     <serverData>
       <paths name="d632-server">
         <serverdata>
@@ -10,6 +10,5 @@
         </serverdata>
       </paths>
     </serverData>
-    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

@@ -140,41 +140,42 @@ class DQN:
         return action
 
     def learn(self):
-        if self.learn_step_counter % self.replace_target_iter == 0:
-            self.sess.run(self.replace_target_op)
-            # print('\ntarget_params_replaced\n')
+        if self.train:
+            if self.learn_step_counter % self.replace_target_iter == 0:
+                self.sess.run(self.replace_target_op)
+                # print('\ntarget_params_replaced\n')
 
-        sample_index = np.random.choice(self.memory_size, size=self.batch_size)
-        batch_memory = self.memory[sample_index, :]
+            sample_index = np.random.choice(self.memory_size, size=self.batch_size)
+            batch_memory = self.memory[sample_index, :]
 
-        batch_state = batch_memory[:, :self.n_features]
-        batch_action = batch_memory[:, self.n_features].astype(int)
-        batch_reward = batch_memory[:, self.n_features + 1]
-        batch_state_next = batch_memory[:, -self.n_features:]
+            batch_state = batch_memory[:, :self.n_features]
+            batch_action = batch_memory[:, self.n_features].astype(int)
+            batch_reward = batch_memory[:, self.n_features + 1]
+            batch_state_next = batch_memory[:, -self.n_features:]
 
-        if self.double == False:
-            q_next = self.sess.run(self.q_next, feed_dict={self.s_: batch_state_next}) # next observation
-            q_eval = self.sess.run(self.q_eval, {self.s: batch_state})
+            if self.double == False:
+                q_next = self.sess.run(self.q_next, feed_dict={self.s_: batch_state_next}) # next observation
+                q_eval = self.sess.run(self.q_eval, {self.s: batch_state})
 
-            q_target = q_eval.copy()
+                q_target = q_eval.copy()
 
-            batch_index = np.arange(self.batch_size, dtype=np.int32)
-            q_target[batch_index, batch_action] = batch_reward + self.gamma * np.max(q_next, axis=1)
-        else:
-            # double DQN
-            q_target = self.sess.run(self.q_eval, feed_dict={self.s: batch_state})
-            q_next1 = self.sess.run(self.q_eval, feed_dict={self.s: batch_state_next})
-            q_next2 = self.sess.run(self.q_next, feed_dict={self.s_: batch_state_next})
-            batch_action_withMaxQ = np.argmax(q_next1, axis=1)
-            batch_index = np.arange(self.batch_size, dtype=np.int32)
-            q_next_Max = q_next2[batch_index, batch_action_withMaxQ]
-            q_target[batch_index, batch_action] = batch_reward + self.gamma * q_next_Max
-        _, self.cost = self.sess.run([self._train_op, self.loss],
-                                     feed_dict={self.s: batch_state,
-                                                self.q_target: q_target})
-        self.cost_his.append(self.cost)
-        if self.train == True:
-            self.epsilon = max(self.epsilon - (self.epsilon_init - self.epsilon_end) / self.e_liner_times, self.epsilon_end)
+                batch_index = np.arange(self.batch_size, dtype=np.int32)
+                q_target[batch_index, batch_action] = batch_reward + self.gamma * np.max(q_next, axis=1)
+            else:
+                # double DQN
+                q_target = self.sess.run(self.q_eval, feed_dict={self.s: batch_state})
+                q_next1 = self.sess.run(self.q_eval, feed_dict={self.s: batch_state_next})
+                q_next2 = self.sess.run(self.q_next, feed_dict={self.s_: batch_state_next})
+                batch_action_withMaxQ = np.argmax(q_next1, axis=1)
+                batch_index = np.arange(self.batch_size, dtype=np.int32)
+                q_next_Max = q_next2[batch_index, batch_action_withMaxQ]
+                q_target[batch_index, batch_action] = batch_reward + self.gamma * q_next_Max
+            _, self.cost = self.sess.run([self._train_op, self.loss],
+                                         feed_dict={self.s: batch_state,
+                                                    self.q_target: q_target})
+            self.cost_his.append(self.cost)
+            self.epsilon = max(self.epsilon - (self.epsilon_init - self.epsilon_end) / self.e_liner_times,
+                               self.epsilon_end)
+            self.learn_step_counter += 1
         else:
             self.epsilon = 0
-        self.learn_step_counter += 1
