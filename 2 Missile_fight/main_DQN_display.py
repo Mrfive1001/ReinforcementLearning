@@ -12,7 +12,7 @@ RL = D3QN.DQN(env.action_dim, env.state_dim,
               e_greedy_end=0.05, e_liner_times=20000, units=50,
               train=False, replace_target_iter=50, gamma=0.95)
 step = 0
-episodes = 100
+episodes = 2000
 win_rate = []
 win = 0
 for episode in range(episodes):

@@ -13,14 +13,14 @@ RL = D3QN.DQN(env.action_dim, env.state_dim,
               e_greedy_end=0.05, e_liner_times=20000,units = 50,
               train=True,replace_target_iter = 50,gamma = 0.95)
 step = 0
-episodes = 100
+episodes = 100000
 win_rate = []
 win = 0
 for episode in range(episodes):
     ep_reward = np.array([0, 0])
     state_now = env.reset()
     while True:
-        a1 = env.robot_action(mode='base_smart', first=True)
+        a1 = env.robot_action(mode='rand_smart', first=True)
         a2 = RL.choose_action(state_now)
         state_next, reward, done, info = env.step(np.array([a1, a2]))
         step += 1
@@ -38,10 +38,10 @@ for episode in range(episodes):
         win_rate.append(win / 100)
         win = 0
 RL.model_save()
-plt.plot(win_rate)
-plt.xlabel('Episode')
-plt.ylabel('Win_rate')
-plt.savefig('Result.png')
-plt.show()
+# plt.plot(win_rate)
+# plt.xlabel('Episode')
+# plt.ylabel('Win_rate')
+# plt.savefig('Result.png')
+# plt.show()
 
 # print('Episode:', episode + 1, 'epsilon: %.3f' % RL.epsilon, 'Reward：%.f,%.f' % (reward[0], reward[1]))

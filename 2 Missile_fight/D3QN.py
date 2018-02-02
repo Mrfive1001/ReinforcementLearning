@@ -7,7 +7,7 @@ Add API by MrFive
 
 Include DQN DuelingDQN DoubleDQN
 
-双层网络
+双层网络\三层
 """
 
 import numpy as np

@@ -13,7 +13,7 @@ import requests
 
 class MissileAI:
     def __init__(self):
-        near, mid, long, moon, blood = 6, 4, 3, 1, 0
+        near, mid, long, moon, blood = 8, 5, 3, 1, 0
         self.init_state = np.array([near, mid, long, moon, blood] * 2)  # 双方仓库导弹数目、卫星个数，血量
         self.state = self.reset()
         self.state_dim = len(self.state)  # 状态的维度是10
@@ -71,8 +71,8 @@ class MissileAI:
     def reset(self):
         # 初始化状态
         self.state = self.init_state
-        self.state[4] += 0.5 * np.random.rand(1)
-        self.state[9] += 0.5 * np.random.rand(1) # 加一点初始值
+        self.state[4] = self.state[4] + np.random.rand(1)
+        self.state[9] = self.state[9] + np.random.rand(1)  # 加一点初始值
         return self.state
 
     def render(self):
