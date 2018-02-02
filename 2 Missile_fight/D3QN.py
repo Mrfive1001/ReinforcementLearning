@@ -183,7 +183,7 @@ class DQN:
                                self.epsilon_end)
             self.learn_step_counter += 1
         else:
-            self.epsilon = 0
+            self.epsilon = 0.01
 
     def model_save(self):
         self.actor_saver.save(self.sess, self.model_path)
