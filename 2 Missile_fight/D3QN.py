@@ -12,6 +12,8 @@ Include DQN DuelingDQN DoubleDQN
 
 import numpy as np
 import tensorflow as tf
+import sys
+import os
 
 np.random.seed(1)
 tf.set_random_seed(1)
@@ -26,8 +28,6 @@ class DQN:
             replace_target_iter=200,  # 更新目标网络代数
             memory_size=500,  # 记忆池数量
             batch_size=32,  # 每次更新数目
-            output_graph=False,
-            sess=None,
             dueling=False,  # 使用Dueling
             double=False,
             gamma=0.9,
@@ -54,21 +54,22 @@ class DQN:
 
         self.units = units
         self.train = train
-
+        self.model_path = sys.path[0]+'/DqnSave'
+        if not os.path.exists(self.model_path):
+            os.mkdir(self.model_path)
+        self.model_path = self.model_path+'/data.chkp'
         self.learn_step_counter = 0
         self.memory = np.zeros((self.memory_size, n_features * 2 + 2))
         self._build_net()
         t_params = tf.get_collection('target_net_params')
         e_params = tf.get_collection('eval_net_params')
         self.replace_target_op = [tf.assign(t, e) for t, e in zip(t_params, e_params)]
-
-        if sess is None:
-            self.sess = tf.Session()
+        self.actor_saver = tf.train.Saver()
+        self.sess = tf.Session()
+        if self.train:
             self.sess.run(tf.global_variables_initializer())
         else:
-            self.sess = sess
-        if output_graph:
-            tf.summary.FileWriter("logs/", self.sess.graph)
+            self.actor_saver.restore(self.sess, self.model_path)
         self.cost_his = []
 
     def _build_net(self):
@@ -183,3 +184,6 @@ class DQN:
             self.learn_step_counter += 1
         else:
             self.epsilon = 0
+
+    def model_save(self):
+        self.actor_saver.save(self.sess, self.model_path)
