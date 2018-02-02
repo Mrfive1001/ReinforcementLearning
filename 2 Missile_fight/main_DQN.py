@@ -9,11 +9,11 @@ import matplotlib.pyplot as plt
 env = Missile.MissileAI()
 RL = D3QN.DQN(env.action_dim, env.state_dim,
               memory_size=1000, batch_size=64,
-              learning_rate=0.0001, dueling=True, double=True,
-              e_greedy_end=0.1, e_liner_times=3000,units = 100,
-              train=True,replace_target_iter = 10,gamma = 0.95)
+              learning_rate=0.001, dueling=True, double=True,
+              e_greedy_end=0.05, e_liner_times=9000,units = 100,
+              train=True,replace_target_iter = 50,gamma = 0.95)
 step = 0
-episodes = 10000
+episodes = 50000
 win_rate = []
 win = 0
 for episode in range(episodes):
@@ -40,6 +40,7 @@ for episode in range(episodes):
 plt.plot(win_rate)
 plt.xlabel('Episode')
 plt.ylabel('Win_rate')
+plt.savefig('Result.png')
 plt.show()
-# plt.savefig('Result.png')
+
 # print('Episode:', episode + 1, 'epsilon: %.3f' % RL.epsilon, 'Reward：%.f,%.f' % (reward[0], reward[1]))
