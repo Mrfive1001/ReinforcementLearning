@@ -10,10 +10,10 @@ env = Missile.MissileAI()
 RL = D3QN.DQN(env.action_dim, env.state_dim,
               memory_size=1000, batch_size=64,
               learning_rate=0.001, dueling=True, double=True,
-              e_greedy_end=0.05, e_liner_times=9000,units = 100,
+              e_greedy_end=0.01, e_liner_times=20000,units = 200,
               train=True,replace_target_iter = 50,gamma = 0.95)
 step = 0
-episodes = 50000
+episodes = 100000
 win_rate = []
 win = 0
 for episode in range(episodes):
