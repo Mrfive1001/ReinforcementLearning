@@ -1,5 +1,5 @@
 """
-Asynchronous Advantage Actor Critic (A3C) with continuous
+Asynchronous Advantage Actor Critic (A3C) with Discrete
 action space, Reinforcement Learning by MoFan.
 Add API by MrFive
 """
@@ -18,7 +18,7 @@ tf.set_random_seed(2)
 
 class Para:
     def __init__(self,
-                 env,  # 环境参数包括state_dim,action_dim,abound,step,reset
+                 env,  # 环境参数包括state_dim,action_dim,step,reset
                  units_a=30,  # 双层网络，第一层的大小
                  units_c=100,  # 双层网络，critic第一层的大小
                  MAX_GLOBAL_EP=2000,  # 全局需要跑多少轮数
@@ -41,7 +41,7 @@ class Para:
         self.ENTROPY_BETA = ENTROPY_BETA
         self.LR_A = LR_A  # learning rate for actor
         self.LR_C = LR_C  # learning rate for critic
-        self.modelpath = sys.path[0] + '/my_net/data.chkp'
+        self.modelpath = sys.path[0] + '/A3CSave/data.chkp'
         self.env = env
         self.N_S = env.state_dim  # 状态的维度
         self.N_A = env.action_dim  # 动作的个数
@@ -76,7 +76,7 @@ class A3C:
         COORD.join(worker_threads)
 
     def choose_action(self, state):
-        return self.GLOBAL_AC.choose_action(state)
+        return self.workers[0].AC.choose_action(state)
 
 
 class ACNet(object):
