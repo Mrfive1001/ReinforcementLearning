@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 env = Missile.MissileAI()
 RL = D3QN.DQN(env.action_dim, env.state_dim,
-              memory_size=1000, batch_size=64,
+              memory_size=1000, batch_size=64, load=False,
               learning_rate=0.001, dueling=True, double=True,
               e_greedy_end=0.1, e_liner_times=20000, units=50,
               train=True, replace_target_iter=50, gamma=0.95)

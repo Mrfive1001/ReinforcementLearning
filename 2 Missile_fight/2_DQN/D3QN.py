@@ -35,7 +35,7 @@ class DQN:
             e_liner_times=1000,  # 探索值经历多少次学习变成e_end
             units=50,
             train=True,  # 训练的时候有探索
-            id = 'A'
+            load = False
 
     ):
         self.n_actions = n_actions
@@ -52,7 +52,7 @@ class DQN:
 
         self.dueling = dueling  # decide to use dueling DQN or not
         self.double = double
-
+        self.load = load
         self.units = units
         self.train = train
         self.model_path = os.path.join(sys.path[0],'DqnSave')
@@ -70,7 +70,7 @@ class DQN:
             self.replace_target_op = [tf.assign(t, e) for t, e in zip(t_params, e_params)]
             self.sess = tf.Session(graph=self.graph)
             self.actor_saver = tf.train.Saver()
-            if self.train:
+            if not self.load:
                 self.sess.run(tf.global_variables_initializer())
             else:
                 self.actor_saver.restore(self.sess, self.model_path)
