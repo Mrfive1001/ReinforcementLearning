@@ -10,7 +10,7 @@ RL = D3QN.DQN(env.action_dim, env.state_dim,
               e_greedy_end=0.05, e_liner_times=20000, units=50,
               train=False, replace_target_iter=50, gamma=0.95)
 step = 0
-episodes = 1000
+episodes = 100000
 win_rate = []
 win_memory = []
 win = 0
@@ -40,8 +40,9 @@ for episode in range(1, episodes):
         print("Big Episode: %d" % (episode // 100), "Win rate:%.2f" % (win / 100), 'Epsilon:%.2f' % (RL.epsilon))
         win_rate.append(win / 100)
         win = 0
-print('Total Episode : %d' % episodes, 'Average Rate : %.2f' % np.average(win_memory))
+print('Total Episodes : %d ,' % episodes, 'Average Rate : %.2f' % np.average(win_memory))
 plt.plot(win_rate)
+plt.ylim([0, 1])
 plt.xlabel('Episode')
 plt.ylabel('Win_rate')
 plt.savefig('Test_Result.png')
