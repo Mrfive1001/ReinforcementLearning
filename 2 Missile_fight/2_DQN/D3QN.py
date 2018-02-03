@@ -35,8 +35,8 @@ class DQN:
             e_liner_times=1000,  # 探索值经历多少次学习变成e_end
             units=50,
             train=True,  # 训练的时候有探索
-            load = False
-
+            load=False,
+            id='A'
     ):
         self.n_actions = n_actions
         self.n_features = n_features
@@ -49,16 +49,17 @@ class DQN:
         self.epsilon_init = 1  # 初始的探索值
         self.epsilon = self.epsilon_init
         self.epsilon_end = e_greedy_end
+        self.id = id
 
         self.dueling = dueling  # decide to use dueling DQN or not
         self.double = double
         self.load = load
         self.units = units
         self.train = train
-        self.model_path = os.path.join(sys.path[0],'DqnSave')
-        if not os.path.exists(self.model_path):
-            os.mkdir(self.model_path)
-        self.model_path = os.path.join(self.model_path,'data.chkp')
+        self.model_path0 = os.path.join(sys.path[0], 'DqnSave')
+        if not os.path.exists(self.model_path0):
+            os.mkdir(self.model_path0)
+        self.model_path = os.path.join(self.model_path0, self.id + 'data.chkp')
         self.learn_step_counter = 0
         self.memory = np.zeros((self.memory_size, n_features * 2 + 2))
 
@@ -166,7 +167,7 @@ class DQN:
                     missile = action // 5
                     target = action % 5
                     if mystate[missile] == 0 or (target < 4 and yourstate[target] == 0):
-                        actions_value[0, action] = actions_value.min()-1
+                        actions_value[0, action] = actions_value.min() - 1
                         continue
                     else:
                         return action
@@ -213,5 +214,7 @@ class DQN:
         else:
             self.epsilon = 0
 
-    def model_save(self):
-        self.actor_saver.save(self.sess, self.model_path)
+    def model_save(self, id = None):
+        if id == None:
+            id = self.id
+        self.actor_saver.save(self.sess, os.path.join(self.model_path0, id + 'data.chkp'))
