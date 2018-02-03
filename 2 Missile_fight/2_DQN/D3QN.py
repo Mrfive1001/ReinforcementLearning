@@ -33,8 +33,8 @@ class DQN:
             gamma=0.9,
             e_greedy_end=0.1,  # 最后的探索值 e_greedy
             e_liner_times=1000,  # 探索值经历多少次学习变成e_end
-            units = 50,
-            train = True  # 训练的时候有探索
+            units=50,
+            train=True  # 训练的时候有探索
 
     ):
         self.n_actions = n_actions
@@ -54,10 +54,10 @@ class DQN:
 
         self.units = units
         self.train = train
-        self.model_path = sys.path[0]+'/DqnSave'
+        self.model_path = os.path.join(sys.path[0],'DqnSave')
         if not os.path.exists(self.model_path):
             os.mkdir(self.model_path)
-        self.model_path = self.model_path+'/data.chkp'
+        self.model_path = os.path.join(self.model_path,'data.chkp')
         self.learn_step_counter = 0
         self.memory = np.zeros((self.memory_size, n_features * 2 + 2))
         self._build_net()
@@ -135,13 +135,36 @@ class DQN:
         self.memory[index, :] = transition
         self.memory_counter += 1
 
-    def choose_action(self, observation):
+    def choose_action(self, observation, first=False):
+        state = observation.copy()
         observation = observation[np.newaxis, :]
-        if np.random.uniform() > self.epsilon:  # choosing action
+        if self.train:
+            if np.random.uniform() > self.epsilon:  # choosing action
+                actions_value = self.sess.run(self.q_eval, feed_dict={self.s: observation})
+                action = np.argmax(actions_value)
+            else:
+                action = np.random.randint(0, self.n_actions)
+        else:
+            if first:
+                mystate = state[:5]
+                yourstate = state[5:]
+            else:
+                yourstate = state[:5]
+                mystate = state[5:]  # 找出我方和敌方的不同状态
             actions_value = self.sess.run(self.q_eval, feed_dict={self.s: observation})
             action = np.argmax(actions_value)
-        else:
-            action = np.random.randint(0, self.n_actions)
+            if sum(mystate[:3]) == 0:
+                return action
+            else:
+                while True:
+                    action = np.argmax(actions_value)
+                    missile = action // 5
+                    target = action % 5
+                    if mystate[missile] == 0 or (target < 4 and yourstate[target] == 0):
+                        actions_value[0, action] = actions_value.min()
+                        continue
+                    else:
+                        return action
         return action
 
     def learn(self):
@@ -159,7 +182,7 @@ class DQN:
             batch_state_next = batch_memory[:, -self.n_features:]
 
             if self.double == False:
-                q_next = self.sess.run(self.q_next, feed_dict={self.s_: batch_state_next}) # next observation
+                q_next = self.sess.run(self.q_next, feed_dict={self.s_: batch_state_next})  # next observation
                 q_eval = self.sess.run(self.q_eval, {self.s: batch_state})
 
                 q_target = q_eval.copy()
@@ -183,7 +206,7 @@ class DQN:
                                self.epsilon_end)
             self.learn_step_counter += 1
         else:
-            self.epsilon = 0.05
+            self.epsilon = 0
 
     def model_save(self):
         self.actor_saver.save(self.sess, self.model_path)

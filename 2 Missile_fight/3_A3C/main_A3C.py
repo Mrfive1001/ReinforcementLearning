@@ -1,8 +1,6 @@
 import Missile
 import numpy as np
-import matplotlib
 import A3C_Discrete as A3C
-import matplotlib
 import matplotlib.pyplot as plt
 
 env = Missile.MissileAI()
