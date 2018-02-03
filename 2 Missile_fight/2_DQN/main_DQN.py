@@ -2,7 +2,6 @@ import Missile
 import numpy as np
 import D3QN
 
-# matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 env = Missile.MissileAI()
@@ -20,7 +19,7 @@ for episode in range(1, episodes):
     state_now = env.reset()
     while True:
         a1 = env.robot_action(mode='rand_smart', first=True)
-        a2 = RL.choose_action(state_now)
+        a2 = RL.choose_action(state_now, first=False)
         state_next, reward, done, info = env.step(np.array([a1, a2]))
         step += 1
         RL.store_transition(state_now, a2, reward[1], state_next)
