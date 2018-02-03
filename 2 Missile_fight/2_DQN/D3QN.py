@@ -166,7 +166,7 @@ class DQN:
                     missile = action // 5
                     target = action % 5
                     if mystate[missile] == 0 or (target < 4 and yourstate[target] == 0):
-                        actions_value[0, action] = actions_value.min()
+                        actions_value[0, action] = actions_value.min()-1
                         continue
                     else:
                         return action

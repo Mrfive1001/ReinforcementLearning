@@ -59,8 +59,8 @@ class MissileAI:
         self.state = np.array([min(x, y) for x, y in zip(state1, state2)])
         if sum(self.state[:3]) + sum(self.state[self.jump:8]) == 0:  # 判断是否结束
             done = True
-            damage1 = self.state[4]
-            damage2 = self.state[9]
+            damage1 = self.state[4] + np.random.rand(1)
+            damage2 = self.state[9] + np.random.rand(1)
             reward = abs(int((damage1-damage2)/10))
             if damage1 > damage2:
                 info['winner'] = 0
@@ -77,8 +77,6 @@ class MissileAI:
     def reset(self):
         # 初始化状态
         self.state = self.init_state
-        self.state[4] = self.state[4] + np.random.rand(1)
-        self.state[9] = self.state[9] + np.random.rand(1)  # 加一点初始值
         return self.state
 
     def render(self):
