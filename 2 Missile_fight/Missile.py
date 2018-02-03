@@ -41,7 +41,7 @@ class MissileAI:
         ran = [np.random.rand() for _ in range(4)]  # 选择四个概率来转轮盘
         state1 = self.state.copy()  # 为了先后手备份
         state2 = self.state.copy()
-        reward1, reward2 = 0, 0  # 设置reward
+        reward1, reward2 = -1, -1  # 设置reward
         for missile, store, hit_rate, damage_rate, moon_add, state, reward, ran1, ran2 in zip(
                 [a1, a2], [t1, t2], [hit_rate1, hit_rate2], [damage_rate1, damage_rate2]
                 , [moon_add1, moon_add2], [state1, state2], [reward1, reward2], ran[:2], ran[2:]):
@@ -54,19 +54,25 @@ class MissileAI:
                     else:
                         state[store] -= damage_rate
             else:
-                reward = 0
+                reward -= 0
+        info = {}
         self.state = np.array([min(x, y) for x, y in zip(state1, state2)])
         if sum(self.state[:3]) + sum(self.state[self.jump:8]) == 0:  # 判断是否结束
             done = True
-            if self.state[4] > self.state[9]:
-                reward1 += 20
+            damage1 = self.state[4]
+            damage2 = self.state[9]
+            reward = abs(int((damage1-damage2)/10))
+            if damage1 > damage2:
+                info['winner'] = 0
+                reward1 += reward
                 reward2 -= 0
-            elif self.state[4] < self.state[9]:
+            else:
+                info['winner'] = 1
                 reward1 -= 0
-                reward2 += 20
+                reward2 += reward
         else:
             done = False
-        return self.state, np.array([reward1, reward2]), done, None
+        return self.state, np.array([reward1, reward2]), done, info
 
     def reset(self):
         # 初始化状态

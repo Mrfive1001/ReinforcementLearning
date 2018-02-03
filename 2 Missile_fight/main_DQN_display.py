@@ -12,10 +12,10 @@ RL = D3QN.DQN(env.action_dim, env.state_dim,
               e_greedy_end=0.05, e_liner_times=20000, units=50,
               train=False, replace_target_iter=50, gamma=0.95)
 step = 0
-episodes = 2000
+episodes = 20000
 win_rate = []
 win = 0
-for episode in range(episodes):
+for episode in range(1, episodes):
     ep_reward = np.array([0, 0])
     state_now = env.reset()
     while True:
@@ -27,7 +27,7 @@ for episode in range(episodes):
         ep_reward += reward
         state_now = state_next
         if done:
-            if ep_reward[0] < ep_reward[1]:
+            if info['winner'] == 1:
                 win += 1
             break
         if step % 20 == 0:

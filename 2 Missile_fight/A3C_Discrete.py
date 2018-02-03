@@ -200,7 +200,7 @@ class Worker(object):
                     print(
                         self.name,
                         "Ep:", self.para.GLOBAL_EP,
-                        "| Ep_r: %.4f" % self.para.GLOBAL_RUNNING_R[-1],
+                        "| Ep_r: %.1f" % self.para.GLOBAL_RUNNING_R[-1],
                     )
                     self.para.GLOBAL_EP += 1
                     break

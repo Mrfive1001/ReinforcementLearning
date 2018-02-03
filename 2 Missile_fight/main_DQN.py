@@ -10,13 +10,13 @@ env = Missile.MissileAI()
 RL = D3QN.DQN(env.action_dim, env.state_dim,
               memory_size=1000, batch_size=64,
               learning_rate=0.001, dueling=True, double=True,
-              e_greedy_end=0.05, e_liner_times=20000,units = 50,
-              train=True,replace_target_iter = 50,gamma = 0.95)
+              e_greedy_end=0.07, e_liner_times=20000, units=50,
+              train=True, replace_target_iter=50, gamma=0.95)
 step = 0
 episodes = 100000
 win_rate = []
 win = 0
-for episode in range(episodes):
+for episode in range(1, episodes):
     ep_reward = np.array([0, 0])
     state_now = env.reset()
     while True:
@@ -28,20 +28,18 @@ for episode in range(episodes):
         ep_reward += reward
         state_now = state_next
         if done:
-            if ep_reward[0] < ep_reward[1]:
+            if info['winner'] == 1:
                 win += 1
             break
         if step % 20 == 0:
             RL.learn()
     if episode % 100 == 0:
-        print("Big Episode: %d" % (episode // 100), "Win rate:%.2f" % (win / 100),'Epsilon:%.2f'%(RL.epsilon))
+        print("Big Episode: %d" % (episode // 100), "Win rate:%.2f" % (win / 100), 'Epsilon:%.2f' % (RL.epsilon))
         win_rate.append(win / 100)
         win = 0
 RL.model_save()
-# plt.plot(win_rate)
-# plt.xlabel('Episode')
-# plt.ylabel('Win_rate')
-# plt.savefig('Result.png')
-# plt.show()
-
-# print('Episode:', episode + 1, 'epsilon: %.3f' % RL.epsilon, 'Reward：%.f,%.f' % (reward[0], reward[1]))
+plt.plot(win_rate)
+plt.xlabel('Episode')
+plt.ylabel('Win_rate')
+plt.savefig('Result.png')
+plt.show()

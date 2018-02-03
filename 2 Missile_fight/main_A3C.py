@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 env = Missile.MissileAI()
 para = A3C.Para(env,
                 units_a=100,
-                units_c=100,
+                units_c=300,
                 MAX_GLOBAL_EP=10000,
                 UPDATE_GLOBAL_ITER=20,
                 gamma=0.95,
