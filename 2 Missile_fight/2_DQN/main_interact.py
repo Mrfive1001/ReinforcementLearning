@@ -127,18 +127,26 @@ class Game(object):
                         self.action_flag = 0
                         action1 = self.action_record1[0] * 5 + self.action_record1[1]
                         action2 = self.AI.choose_action(state_now, first=False)  # AI选择动作a2 整型
+                        self.action_record2 = [action2 // 5, action2 % 5]
                         print('玩家1选择了导弹%d,选择目标是%d' % ((self.action_record1[0], self.action_record1[1])))
                         print('玩家2选择了导弹%d,选择目标是%d' % ((self.action_record2[0], self.action_record2[1])))
-                        self.action_record1 = [action1 // 5, action1 % 5]
-                        self.action_record2 = [action2 // 5, action2 % 5]
+                        # self.action_record1 = [action1 // 5, action1 % 5]
+                        self.action_record1 = [None, None]
                         state_next, reward, done, info = env.step(np.array([action1, action2]))
+                    else: # 点击地方错误
+                        pygame.time.delay(self.time_stop)
+                        self.draw()
+                        return 1
                 pygame.time.delay(self.time_stop) # 小小的延迟
                 self.state = state_next
                 if done:
-                    self.game_state = 'end'
                     print('玩家1收到伤害%.2f，玩家2受到伤害%.2f,因此赢者是玩家%d' %
                           (self.state[4], self.state[9], info['winner'] + 1))
                     self.winner = info['winner']
+                    if not self.ai_mode:
+                        self.game_state = 'end'
+                    else:
+                        self.state_reset()
             self.draw()  # 鼠标没点击就正常显示
             return 1
         elif self.game_state == 'end':
@@ -185,15 +193,12 @@ class Game(object):
                     color1 = self.player_color[index0]
                     tem = (85, 102, 0)
                     if self.ai_mode == False:
-                        if self.action_record:
+                        if self.action_record1[0]:
                             mi = self.action_record1[0]
-                            if index1 == mi and index0 == 1:
-                                color1 = tem
-                        if self.action_record1:
-                            mi = self.action_record1[0]
-                            tar = self.action_record1[1]
                             if index1 == mi and index0 == 0:
                                 color1 = tem
+                        if self.action_record1[1]:
+                            tar = self.action_record1[1]
                             if index1 == tar and index0 == 1:
                                 color1 = tem
                     for i in range(val2):  # 画出有多少导弹
