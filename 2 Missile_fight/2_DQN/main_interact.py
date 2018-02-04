@@ -12,8 +12,6 @@ RL_B = D3QN.DQN(env.action_dim, env.state_dim, load=True,
                 train=False)
 
 
-def take_action(state):
-    return 1
 
 
 class Game(object):
@@ -43,6 +41,9 @@ class Game(object):
         self.game_state = 'start'
         self.winner = None
         self.state = None
+        self.action_record1 = [0, 0]
+        self.action_record2 = [0, 0]
+        self.action_flag = 0
 
         for index1, val1 in enumerate((self.tar_range, self.missi_range)):
             for i in range(3):
@@ -54,6 +55,9 @@ class Game(object):
     def state_reset(self):
         self.winner = None
         self.game_state = 'start_1'
+        self.action_record1 = [0, 0]
+        self.action_record2 = [0, 0]
+        self.action_flag = 0
         self.state = self.env.reset()
 
     def paint(self):
@@ -98,48 +102,43 @@ class Game(object):
                     print('玩家1选择了导弹%d,选择目标是%d' % ((self.action_record1[0], self.action_record1[1])))
                     print('玩家2选择了导弹%d,选择目标是%d' % ((self.action_record2[0], self.action_record2[1])))
                     state_next, reward, done, info = env.step(np.array([action1, action2]))
-                # if self.action_flag == 0:
-                #     for inde, vav in enumerate(self.missi_range):
-                #         if pygame.Rect(vav).collidepoint(self.pos):
-                #             pygame.time.delay(self.time_stop)
-                #             tem = [0 for i in range(5)]
-                #             tem[inde] = 1
-                #             print('你选择了导弹%d' % (inde + 1))
-                #             self.human_2 = (tem, inde)
-                #             self.action_flag += 1
-                #     self.draw()
-                #     return 1
-                # elif self.action_flag == 1:
-                #     for inde, vav in enumerate(self.tar_range):
-                #         if pygame.Rect(vav).collidepoint(self.pos):
-                #             pygame.time.delay(self.time_stop)
-                #             tem = [0 for i in range(5)]
-                #             tem[inde] = 1
-                #             print('你选择了目标%d' % (inde + 1))
-                #             self.human_1 = (tem, inde)
-                #             action2 = np.array([self.human_1[0], self.human_2[0]])
-                #             for action in action2s:
-                #                 if (action == action2).all():
-                #                     self.action_flag += 1
-                #                     self.draw()
-                #                     return 1
-                #             print('选择错误，请重新选择')
-                #             self.action_flag = 0
-                #             self.human_1 = []
-                #             self.human_2 = []
-                #             self.draw()
-                #             return 1
-                # elif self.action_flag == 2:
-                #     self.action_flag = 0
-                #     action2 = np.array([self.human_1[0], self.human_2[0]])
-                #     self.human_1 = []
-                #     self.human_2 = []
+                else:
+                    state_now = self.state  # 一轮开始的状态
+                    if self.action_flag == 0:
+                        for inde, vav in enumerate(self.missi_range):
+                            if pygame.Rect(vav).collidepoint(self.pos):
+                                pygame.time.delay(self.time_stop)
+                                self.action_record1[0] = inde
+                                print('你选择了导弹%d' % (inde)),
+                                self.action_flag += 1
+                        pygame.time.delay(self.time_stop)
+                        self.draw()
+                        return 1
+                    elif self.action_flag == 1:
+                        for inde, vav in enumerate(self.tar_range):
+                            if pygame.Rect(vav).collidepoint(self.pos):
+                                pygame.time.delay(self.time_stop)
+                                self.action_record1[1] = inde
+                                print('你选择了目标%d' % (inde))
+                                self.action_flag += 1
+                                pygame.time.delay(self.time_stop)
+                                self.draw()
+                                return 1
+                    elif self.action_flag == 2:
+                        self.action_flag = 0
+                        action1 = self.action_record1[0] * 5 + self.action_record1[1]
+                        action2 = self.AI.choose_action(state_now, first=False)  # AI选择动作a2 整型
+                        print('玩家1选择了导弹%d,选择目标是%d' % ((self.action_record1[0], self.action_record1[1])))
+                        print('玩家2选择了导弹%d,选择目标是%d' % ((self.action_record2[0], self.action_record2[1])))
+                        self.action_record1 = [action1 // 5, action1 % 5]
+                        self.action_record2 = [action2 // 5, action2 % 5]
+                        state_next, reward, done, info = env.step(np.array([action1, action2]))
                 pygame.time.delay(self.time_stop)
                 self.state = state_next
                 if done:
                     self.game_state = 'end'
-                    print('玩家1收到伤害%.2f，玩家2受到伤害%.2f,因此赢者是玩家%d'%
-                          (self.state[4],self.state[9],info['winner']+1))
+                    print('玩家1收到伤害%.2f，玩家2受到伤害%.2f,因此赢者是玩家%d' %
+                          (self.state[4], self.state[9], info['winner'] + 1))
                     self.winner = info['winner']
             self.draw()  # 鼠标没点击就正常显示
             return 1
@@ -185,14 +184,19 @@ class Game(object):
                 pygame.draw.circle(self.screen, (0, 0, 255), (160 + index0 * 320, 60 + index1 * 120), banjing, 1)
                 if val2:
                     color1 = self.player_color[index0]
-                    # tem = (85, 102, 0)
-                    # if len(self.human_2):
-                    #     mi = self.human_2[1]
+                    tem = (85, 102, 0)
+                    if self.ai_mode == False:
+                        pass
+                    # if self.action_record:
+                    #     mi = self.action_record1[0]
                     #     if index1 == mi and index0 == 1:
                     #         color1 = tem
-                    # if len(self.human_1):
-                    #     mi = self.human_1[1]
+                    # if self.action_record1:
+                    #     mi = self.action_record1[0]
+                    #     tar = self.action_record1[1]
                     #     if index1 == mi and index0 == 0:
+                    #         color1 = tem
+                    #     if index1 == tar and index0 == 1:
                     #         color1 = tem
                     for i in range(val2):
                         degree = math.pi * 2 * i / val2 + self.interest * 2 * math.pi / 360
