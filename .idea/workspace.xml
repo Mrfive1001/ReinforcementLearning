@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/Test_Result.png" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/DqnSave/Adata.chkp.meta" afterPath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/DqnSave/Adata.chkp.meta" />
-      <change beforePath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/DqnSave/Bdata.chkp.data-00000-of-00001" afterPath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/DqnSave/Bdata.chkp.data-00000-of-00001" />
-      <change beforePath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/DqnSave/Bdata.chkp.index" afterPath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/DqnSave/Bdata.chkp.index" />
-      <change beforePath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/DqnSave/Bdata.chkp.meta" afterPath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/DqnSave/Bdata.chkp.meta" />
-      <change beforePath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/Train_Result.png" afterPath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/Train_Result.png" />
-      <change beforePath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/main_DQN_hands_display.py" afterPath="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/main_DQN_hands_display.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -576,7 +571,14 @@
       <option name="project" value="LOCAL" />
       <updated>1517660298713</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="增加左右手互博的结果，但是效果不是很好">
+      <created>1517724744480</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1517724744480</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView">
@@ -676,7 +678,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="增加随机模式开炮，主函数使用done来结束" />
     <MESSAGE value="增加两种模式，不打空，不选空" />
     <MESSAGE value="加入DQN，但是还没有跑出来结果，继续改进" />
     <MESSAGE value="加入DQN，更改动作空间格式，更改reward，基本能够运行，接下来看一下效果" />
@@ -701,7 +702,8 @@
     <MESSAGE value="修改模型之后的结果也挺不错，增加左右手互博的程序" />
     <MESSAGE value="增加load，将读取功能和载入以前参数功能分开" />
     <MESSAGE value="修改DQN，增加可以为不同的对象保存不同的网络的功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改DQN，增加可以为不同的对象保存不同的网络的功能" />
+    <MESSAGE value="增加左右手互博的结果，但是效果不是很好" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加左右手互博的结果，但是效果不是很好" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1022,20 +1024,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/main_DQN_hands_display.py">
+    <entry file="file://$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/main_DQN_hands.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="30">
+          <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="33" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/main_DQN_hands.py">
+    <entry file="file://$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/main_DQN_hands_display.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="33" />
+        <state relative-caret-position="113">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
