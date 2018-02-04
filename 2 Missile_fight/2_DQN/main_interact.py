@@ -193,11 +193,11 @@ class Game(object):
                     color1 = self.player_color[index0]
                     tem = (85, 102, 0)
                     if self.ai_mode == False:
-                        if self.action_record1[0]:
+                        if self.action_record1[0] != None:
                             mi = self.action_record1[0]
                             if index1 == mi and index0 == 0:
                                 color1 = tem
-                        if self.action_record1[1]:
+                        if self.action_record1[1] != None:
                             tar = self.action_record1[1]
                             if index1 == tar and index0 == 1:
                                 color1 = tem
