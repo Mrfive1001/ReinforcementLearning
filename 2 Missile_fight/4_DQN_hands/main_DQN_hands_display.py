@@ -17,7 +17,7 @@ RL_B = D3QN.DQN(env.action_dim, env.state_dim, load=True,
                 e_greedy_end=0.07, e_liner_times=50000, units=50,
                 train=False, replace_target_iter=50, gamma=0.95)
 step = 0
-episodes = 2000
+episodes = 50000
 win_rate = []
 win = 0
 win_memory = []
@@ -38,6 +38,8 @@ for episode in range(1, episodes):
             else:
                 win_memory.append(0)
             break
+        if step % 20 == 0:
+            RL_B.learn()
     if episode % 100 == 0:
         print("Big Episode: %d" % (episode // 100), "Win rate:%.2f" % (win / 100), 'Epsilon:%.2f' % (RL_B.epsilon))
         win_rate.append(win / 100)
@@ -46,7 +48,8 @@ print('Total Episodes : %d ,' % episodes, 'Average Rate : %.2f' % np.average(win
 # RL_B.model_save()
 # RL_A.model_save()
 plt.plot(win_rate)
+plt.ylim([0,1])
 plt.xlabel('Episode')
 plt.ylabel('Win_rate')
-plt.savefig(r'Train_Result.png')
+plt.savefig(r'Test_Result.png')
 plt.show()
