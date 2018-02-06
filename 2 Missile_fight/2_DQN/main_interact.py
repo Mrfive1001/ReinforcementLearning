@@ -16,14 +16,16 @@ class Game(object):
     def __init__(self):
         self.AI = RL_B  # 人工智能选手
         self.env = env  # 环境
-        self.time_stop = 300  # 每隔多少时间刷新
+        self.time_stop = 200  # 每隔多少时间刷新
         self.ai_mode = True  # 人工智能与人对战或者与电脑
 
+        self.width = 640
+        self.height = 480
         pygame.init()  # 初始化pygame
         self.font = pygame.font.SysFont("simsunnsimsun", 30)
-        self.screen = pygame.display.set_mode((640, 480), 0, 32)
+        self.screen = pygame.display.set_mode((self.width, self.height), 0, 32)
         pygame.display.set_caption("Missile_game!")
-        self.background = pygame.image.load(r'source\back0.jpg').convert()  # 背景图片
+        # self.background = pygame.image.load(r'source\back0.jpg').convert()  # 背景图片
         self.weixing = pygame.image.load(r'source\weixing.jpg').convert()
 
         self.interest = 0  # 图形是否进行转动
@@ -32,8 +34,8 @@ class Game(object):
         self.text_surface_you = self.font.render(u"点击进行电脑对战", True, (255, 255, 0))
         self.missi_range = []
         self.tar_range = []
-        self.rect_zuo = (0, 400, self.text_surface_zuo.get_width(), self.text_surface_zuo.get_height())
-        self.rect_you = ((640 - self.text_surface_you.get_width()), 400, self.text_surface_you.
+        self.rect_zuo = (0, self.height-80, self.text_surface_zuo.get_width(), self.text_surface_zuo.get_height())
+        self.rect_you = ((self.width - self.text_surface_you.get_width()), self.height-80, self.text_surface_you.
                          get_width(), self.text_surface_you.get_height())
         self.player_color = [(255, 0, 0), (0, 0, 255)]
 
@@ -68,7 +70,8 @@ class Game(object):
             else:
                 self.pos = None
         if self.game_state == 'start':  # 初始界面
-            self.screen.blit(self.background, (0, 0))
+            # self.screen.blit(self.background, (0, 0))
+            self.screen.fill((255, 255, 255))  # 设置背景为白色
             text_surface = self.font.render(u"点击开始游戏吧！", True, (167, 255, 0))
             w = text_surface.get_width()
             h = text_surface.get_height()
@@ -120,9 +123,9 @@ class Game(object):
                                 self.action_record1[1] = inde
                                 print('你选择了目标%d' % (inde))
                                 self.action_flag += 1
-                                pygame.time.delay(self.time_stop)
-                                self.draw()
-                                return 1
+                        pygame.time.delay(self.time_stop)
+                        self.draw()
+                        return 1
                     elif self.action_flag == 2:  # 确认按钮
                         self.action_flag = 0
                         action1 = self.action_record1[0] * 5 + self.action_record1[1]
@@ -130,13 +133,14 @@ class Game(object):
                         self.action_record2 = [action2 // 5, action2 % 5]
                         print('玩家1选择了导弹%d,选择目标是%d' % ((self.action_record1[0], self.action_record1[1])))
                         print('玩家2选择了导弹%d,选择目标是%d' % ((self.action_record2[0], self.action_record2[1])))
-                        # self.action_record1 = [action1 // 5, action1 % 5]
                         self.action_record1 = [None, None]
                         state_next, reward, done, info = env.step(np.array([action1, action2]))
                     else: # 点击地方错误
                         pygame.time.delay(self.time_stop)
                         self.draw()
                         return 1
+
+                # 状态step一步之后
                 pygame.time.delay(self.time_stop) # 小小的延迟
                 self.state = state_next
                 if done:
@@ -151,7 +155,7 @@ class Game(object):
             return 1
         elif self.game_state == 'end':
             self.screen.fill((255, 255, 255))  # 设置背景为白色
-            self.screen.blit(self.background, (0, 0))
+            # self.screen.blit(self.background, (0, 0))
             if self.winner == 0:
                 text_surface = self.font.render(u"哇，你赢了！！", True, (255, 0, 0))
             else:

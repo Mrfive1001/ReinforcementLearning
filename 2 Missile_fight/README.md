@@ -24,7 +24,7 @@
 * init() 初始化状态动作，定义空间维度以及其他元素初始化
 * reset() 初始化状态
 * step() 输入动作，输出下一个状态state,reward,done,info
-* render() 显示环境，可以利用gym中的rendering来画图，利用Viewer类，Transform类
+* render() 显示环境，可以利用gym中的rendering来画图，利用Viewer类，Transform类,适合于简单的画图，不适合交互
 * windows下可以使用的玩的：
     * CartPole-v0 短时间倒立摆
     * CartPole-v1 长时间倒立摆
@@ -32,4 +32,3 @@
     * MountainCar-v0  爬山车
     * MountainCarContinuous-v0  连续控制爬山车
     * Pendulum-v0 连续控制倒立摆
-### pyglet
