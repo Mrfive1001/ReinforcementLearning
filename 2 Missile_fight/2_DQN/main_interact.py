@@ -34,6 +34,9 @@ class Game(object):
         self.pos = None  # 鼠标点的位置
         self.text_surface_zuo = self.font.render(u"点击进行人机对战", True, self.corlors['black'])  # 选项
         self.text_surface_you = self.font.render(u"点击进行电脑对战", True, self.corlors['black'])
+        self.text_change = u''
+        self.blood_a = u'0'
+        self.blood_b = u'0'
         self.missi_range = []
         self.tar_range = []
         self.rect_zuo = (0, self.height - 80, self.text_surface_zuo.get_width(), self.text_surface_zuo.get_height())
@@ -62,6 +65,7 @@ class Game(object):
         self.action_record2 = [None, None]
         self.action_flag = 0
         self.state = self.env.reset()
+        self.text_change = u''
 
     def paint(self):  # 主要函数处理鼠标点击
         for event in pygame.event.get():
@@ -105,7 +109,7 @@ class Game(object):
                     action2 = self.AI.choose_action(state_now, first=False)  # AI选择动作a2 整型
                     self.action_record1 = [action1 // 5, action1 % 5]
                     self.action_record2 = [action2 // 5, action2 % 5]
-                    print('玩家1选择了导弹%d,选择目标是%d' % ((self.action_record1[0], self.action_record1[1])))
+                    self.text_change = '玩家1选择了导弹%d,选择目标是%d' % ((self.action_record1[0], self.action_record1[1]))
                     print('玩家2选择了导弹%d,选择目标是%d' % ((self.action_record2[0], self.action_record2[1])))
                     state_next, reward, done, info = env.step(np.array([action1, action2]))
                 else:  # 人机对战
@@ -115,7 +119,7 @@ class Game(object):
                             if pygame.Rect(vav).collidepoint(self.pos):
                                 pygame.time.delay(self.time_stop)
                                 self.action_record1[0] = inde
-                                print('你选择了导弹%d' % (inde)),
+                                self.text_change = '你选择了导弹%d' % (inde)
                                 self.action_flag += 1
                         pygame.time.delay(self.time_stop)
                         self.draw()
@@ -125,12 +129,12 @@ class Game(object):
                             if pygame.Rect(vav).collidepoint(self.pos):
                                 pygame.time.delay(self.time_stop)
                                 self.action_record1[1] = inde
-                                print('你选择了目标%d' % (inde))
+                                self.text_change += ('你选择了目标%d' % (inde))
                                 self.action_flag += 1
                         if self.action_record1[0] >= 3:
                             self.action_record1 = [None, None]
                             self.action_flag = 0
-                            print('选择动作不存在，重新选择')
+                            self.text_change = '选择动作不存在，重新选择'
                         pygame.time.delay(self.time_stop)
                         self.draw()
                         return 1
@@ -142,6 +146,7 @@ class Game(object):
                         print('玩家1选择了导弹%d,选择目标是%d' % ((self.action_record1[0], self.action_record1[1])))
                         print('玩家2选择了导弹%d,选择目标是%d' % ((self.action_record2[0], self.action_record2[1])))
                         self.action_record1 = [None, None]
+                        self.text_change = u''
                         state_next, reward, done, info = env.step(np.array([action1, action2]))
                     else:  # 点击地方错误
                         pygame.time.delay(self.time_stop)
@@ -192,9 +197,14 @@ class Game(object):
         self.screen.fill(self.corlors['white'])  # 设置背景为白色
         pygame.draw.line(self.screen, (0, 0, 0), (320, 0), (320, 400))
         pygame.draw.line(self.screen, (0, 0, 0), (0, 400), (self.width, 400))
+
+        text_surface_temp = self.font.render(self.text_change, True, self.corlors['blue'])
+        rect_temp = ((self.width - text_surface_temp.get_width()) / 2, self.height - 40,
+                     (self.width + text_surface_temp.get_width()) / 2, self.height)
+
         self.screen.blit(self.text_surface_zuo, (self.rect_zuo[0], self.rect_zuo[1]))
         self.screen.blit(self.text_surface_you, (self.rect_you[0], self.rect_you[1]))
-
+        self.screen.blit(text_surface_temp, (rect_temp[0], rect_temp[1]))
         situation1 = self.state[:5]
         situation2 = self.state[5:]  # 将当前状态画出来
         banjing = 50
@@ -226,7 +236,16 @@ class Game(object):
                     continue
             if val1[3]:  # 画出卫星
                 self.screen.blit(self.weixing, (index0 * (self.width - self.weixing.get_width()), 70))
-            pygame.draw.rect(self.screen, self.player_color[index0], (index0 * 540, 240, 100, 100))
+            _length = 90  # 基地的长宽
+            _dis = 530  # 两基地中心点的距离
+            pygame.draw.rect(self.screen, self.player_color[index0],
+                             ((self.width - _length + (2 * index0 - 1) * _dis) / 2, 240, _length, _length), 1)
+            blood_temp = self.font.render('%d' % self.state[index0 * 5 + 4], True, self.corlors['black'])
+            _blood_temp = ((self.width + (2 * index0 - 1) * _dis - blood_temp.get_width()) / 2
+                            , 240 + (_length - blood_temp.get_height()) / 2
+                            , (self.width + (2 * index0 - 1) * _dis + blood_temp.get_width()) / 2
+                            , 240 + (_length + blood_temp.get_height()) / 2)
+            self.screen.blit(blood_temp, (_blood_temp[0], _blood_temp[1]))
         pygame.display.update()
 
     def ai_fight(self):
