@@ -17,7 +17,7 @@ class Game(object):
         self.AI = RL_B  # 人工智能选手
         self.env = env  # 环境
         self.time_stop = 200  # 每隔多少时间刷新
-        self.ai_mode = True  # 人工智能与人对战或者与电脑
+        self.ai_mode = None  # 人工智能与人对战或者与电脑
 
         self.width = 640
         self.height = 480
@@ -28,16 +28,18 @@ class Game(object):
         # self.background = pygame.image.load(r'source\back0.jpg').convert()  # 背景图片
         self.weixing = pygame.image.load(r'source\weixing.jpg').convert()
 
+        self.corlors = {'white': (255, 255, 255), 'black': (0, 0, 0), 'orange': (255, 69, 0), 'gold': (255, 215, 0),
+                        'blue': (0, 191, 255), 'red': (255, 0, 0),'deepbule':(0,0,255)}
         self.interest = 0  # 图形是否进行转动
         self.pos = None  # 鼠标点的位置
-        self.text_surface_zuo = self.font.render(u"点击进行人机对战", True, (255, 255, 0))  # 选项
-        self.text_surface_you = self.font.render(u"点击进行电脑对战", True, (255, 255, 0))
+        self.text_surface_zuo = self.font.render(u"点击进行人机对战", True, self.corlors['black'])  # 选项
+        self.text_surface_you = self.font.render(u"点击进行电脑对战", True, self.corlors['black'])
         self.missi_range = []
         self.tar_range = []
-        self.rect_zuo = (0, self.height-80, self.text_surface_zuo.get_width(), self.text_surface_zuo.get_height())
-        self.rect_you = ((self.width - self.text_surface_you.get_width()), self.height-80, self.text_surface_you.
+        self.rect_zuo = (0, self.height - 80, self.text_surface_zuo.get_width(), self.text_surface_zuo.get_height())
+        self.rect_you = ((self.width - self.text_surface_you.get_width()), self.height - 80, self.text_surface_you.
                          get_width(), self.text_surface_you.get_height())
-        self.player_color = [(255, 0, 0), (0, 0, 255)]
+        self.player_color = [self.corlors['red'], self.corlors['deepbule']]
 
         self.game_state = 'start'  # 初始状态
         self.winner = None  # 赢者
@@ -47,9 +49,9 @@ class Game(object):
         self.action_flag = 0  # 选取动作进行到了第几步
 
         for index1, val1 in enumerate((self.missi_range, self.tar_range)):  # 增加鼠标点击的时候矩形
-            for i in range(3): # 左边为起始，右边为目标
+            for i in range(3):  # 左边为起始，右边为目标
                 val1.append((110 + index1 * 320, 10 + i * 120, 100, 100))
-            val1.append((index1 * (640 - self.weixing.get_width()), 70,
+            val1.append((index1 * (self.width - self.weixing.get_width()), 70,
                          self.weixing.get_width(), self.weixing.get_height()))
             val1.append((index1 * 540, 240, 100, 100))
 
@@ -61,7 +63,7 @@ class Game(object):
         self.action_flag = 0
         self.state = self.env.reset()
 
-    def paint(self): # 主要函数处理鼠标点击
+    def paint(self):  # 主要函数处理鼠标点击
         for event in pygame.event.get():
             if event.type == QUIT:  # 接收到退出事件后退出程序
                 return 0
@@ -71,11 +73,11 @@ class Game(object):
                 self.pos = None
         if self.game_state == 'start':  # 初始界面
             # self.screen.blit(self.background, (0, 0))
-            self.screen.fill((255, 255, 255))  # 设置背景为白色
-            text_surface = self.font.render(u"点击开始游戏吧！", True, (167, 255, 0))
+            self.screen.fill(self.corlors['white'])  # 设置背景为白色
+            text_surface = self.font.render(u"点击开始游戏吧！", True, self.corlors['black'])
             w = text_surface.get_width()
             h = text_surface.get_height()
-            rec = ((640 - w) / 2, (480 - h) / 2, w, h)
+            rec = ((self.width - w) / 2, (self.height - h) / 2, w, h)
             self.screen.blit(text_surface, (rec[0], rec[1]))
             if self.pos is not None:
                 if pygame.Rect(rec).collidepoint(self.pos):
@@ -95,6 +97,8 @@ class Game(object):
                     self.ai_mode = False
                     self.state_reset()
                     return 1
+                if self.ai_mode == None:
+                    return 1
                 if self.ai_mode:  # 电脑之间对战
                     state_now = self.state  # 一轮开始的状态
                     action1 = self.env.robot_action(mode='rand_smart', first=True)  # 选择出来a1 整型
@@ -104,7 +108,7 @@ class Game(object):
                     print('玩家1选择了导弹%d,选择目标是%d' % ((self.action_record1[0], self.action_record1[1])))
                     print('玩家2选择了导弹%d,选择目标是%d' % ((self.action_record2[0], self.action_record2[1])))
                     state_next, reward, done, info = env.step(np.array([action1, action2]))
-                else: # 人机对战
+                else:  # 人机对战
                     state_now = self.state  # 一轮开始的状态
                     if self.action_flag == 0:  # 人类选择使用哪一颗导弹
                         for inde, vav in enumerate(self.missi_range):
@@ -116,7 +120,7 @@ class Game(object):
                         pygame.time.delay(self.time_stop)
                         self.draw()
                         return 1
-                    elif self.action_flag == 1: # 人类选择打击那一个目标
+                    elif self.action_flag == 1:  # 人类选择打击那一个目标
                         for inde, vav in enumerate(self.tar_range):
                             if pygame.Rect(vav).collidepoint(self.pos):
                                 pygame.time.delay(self.time_stop)
@@ -135,17 +139,17 @@ class Game(object):
                         print('玩家2选择了导弹%d,选择目标是%d' % ((self.action_record2[0], self.action_record2[1])))
                         self.action_record1 = [None, None]
                         state_next, reward, done, info = env.step(np.array([action1, action2]))
-                    else: # 点击地方错误
+                    else:  # 点击地方错误
                         pygame.time.delay(self.time_stop)
                         self.draw()
                         return 1
 
                 # 状态step一步之后
-                pygame.time.delay(self.time_stop) # 小小的延迟
+                pygame.time.delay(self.time_stop)  # 小小的延迟
                 self.state = state_next
                 if done:
                     print('玩家1收到伤害%.2f，玩家2受到伤害%.2f,因此赢者是玩家%d' %
-                          (self.state[4], self.state[9], info['winner'] + 1))
+                          (info['damage1'], info['damage2'], info['winner'] + 1))
                     self.winner = info['winner']
                     if not self.ai_mode:
                         self.game_state = 'end'
@@ -154,15 +158,15 @@ class Game(object):
             self.draw()  # 鼠标没点击就正常显示
             return 1
         elif self.game_state == 'end':
-            self.screen.fill((255, 255, 255))  # 设置背景为白色
+            self.screen.fill(self.corlors['white'])  # 设置背景为白色
             # self.screen.blit(self.background, (0, 0))
             if self.winner == 0:
-                text_surface = self.font.render(u"哇，你赢了！！", True, (255, 0, 0))
+                text_surface = self.font.render(u"恭喜你打赢了了电脑！！", True, self.corlors['blue'])
             else:
-                text_surface = self.font.render(u"呵呵，电脑都打不过！", True, (167, 255, 255))
+                text_surface = self.font.render(u"很遗憾，你败给了人工智能！", True, self.corlors['orange'])
             w = text_surface.get_width()
             h = text_surface.get_height()
-            rec = ((640 - w) / 2, (480 - h) / 2, w, h)
+            rec = ((self.width - w) / 2, (self.height - h) / 2, w, h)
             self.screen.blit(text_surface, (rec[0], rec[1]))
             self.screen.blit(text_surface, (rec[0], rec[1]))
             self.screen.blit(self.text_surface_zuo, (self.rect_zuo[0], self.rect_zuo[1]))
@@ -181,21 +185,21 @@ class Game(object):
             return 1
 
     def draw(self):
-        self.screen.fill((255, 255, 255))  # 设置背景为白色
+        self.screen.fill(self.corlors['white'])  # 设置背景为白色
         pygame.draw.line(self.screen, (0, 0, 0), (320, 0), (320, 400))
-        pygame.draw.line(self.screen, (0, 0, 0), (0, 400), (640, 400))
+        pygame.draw.line(self.screen, (0, 0, 0), (0, 400), (self.width, 400))
         self.screen.blit(self.text_surface_zuo, (self.rect_zuo[0], self.rect_zuo[1]))
         self.screen.blit(self.text_surface_you, (self.rect_you[0], self.rect_you[1]))
 
         situation1 = self.state[:5]
         situation2 = self.state[5:]  # 将当前状态画出来
         banjing = 50
-        for index0, val1 in enumerate((situation1, situation2)): # 分别画出来两个情况
+        for index0, val1 in enumerate((situation1, situation2)):  # 分别画出来两个情况
             for index1, val2 in enumerate(val1[:3]):
-                pygame.draw.circle(self.screen, (0, 0, 255), (160 + index0 * 320, 60 + index1 * 120), banjing, 1)
+                pygame.draw.circle(self.screen, self.corlors['black'], (160 + index0 * 320, 60 + index1 * 120), banjing, 1)
                 if val2:
                     color1 = self.player_color[index0]
-                    tem = (85, 102, 0)
+                    tem = self.corlors['black']
                     if self.ai_mode == False:
                         if self.action_record1[0] != None:
                             mi = self.action_record1[0]
@@ -215,8 +219,8 @@ class Game(object):
                             int(60 + index1 * 120 - banjing / 2 * math.cos(degree))), int(banjing / 2 / val2))
                 else:
                     continue
-            if val1[3]: # 画出卫星
-                self.screen.blit(self.weixing, (index0 * (640 - self.weixing.get_width()), 70))
+            if val1[3]:  # 画出卫星
+                self.screen.blit(self.weixing, (index0 * (self.width - self.weixing.get_width()), 70))
             pygame.draw.rect(self.screen, self.player_color[index0], (index0 * 540, 240, 100, 100))
         pygame.display.update()
 

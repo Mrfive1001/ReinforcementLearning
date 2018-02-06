@@ -24,7 +24,7 @@ class MissileAI:
         # hit[i,j]第i个导弹命中j个地方的概率[命中率，损毁率]
         self.jump = int(self.state_dim / 2)  # 先后手区别的位数
         self.moon_help = 1.2  # 卫星起到的作用
-        self.viewer = None # 画图的作用
+        self.viewer = None  # 画图的作用
 
     def step(self, actions):
         action = np.zeros(4)
@@ -62,7 +62,7 @@ class MissileAI:
             done = True
             damage1 = self.state[4] + np.random.rand(1)
             damage2 = self.state[9] + np.random.rand(1)
-            reward = abs(int((damage1-damage2)/10))
+            reward = abs(int((damage1 - damage2) / 10))
             if damage1 > damage2:
                 info['winner'] = 0
                 reward1 += reward
@@ -71,6 +71,8 @@ class MissileAI:
                 info['winner'] = 1
                 reward1 -= 0
                 reward2 += reward
+            info['damage1'] = damage1
+            info['damage2'] = damage2
         else:
             done = False
         return self.state, np.array([reward1, reward2]), done, info
@@ -111,79 +113,5 @@ class MissileAI:
             missile = np.random.choice(missile)
             return missile * 5 + 4
 
-
-    def render(self,mode = 'human',close = False):
-        if close:
-            if self.viewer is not None:
-                self.viewer.close()
-                self.viewer = None
-            return
-        screen_width = 640
-        screen_height = 480
-        if self.viewer is None:
-            from gym.envs.classic_control import rendering
-            self.viewer = rendering.Viewer(screen_width, screen_height)
-            self.line1 = rendering.Line((100,300),(500,300))
-            self.line2 = rendering.Line((100, 200), (500, 200))
-            self.line3 = rendering.Line((100, 300), (100, 100))
-            self.line4 = rendering.Line((180, 300), (180, 100))
-            self.line5 = rendering.Line((260, 300), (260, 100))
-            self.line6 = rendering.Line((340, 300), (340, 100))
-            self.line7 = rendering.Line((420, 300), (420, 100))
-            self.line8 = rendering.Line((500, 300), (500, 100))
-            self.line9 = rendering.Line((100, 100), (180, 100))
-            self.line10 = rendering.Line((260, 100), (340, 100))
-            self.line11 = rendering.Line((420, 100), (500, 100))
-            #创建第一个骷髅
-            self.kulo1 = rendering.make_circle(40)
-            self.circletrans = rendering.Transform(translation=(140,150))
-            self.kulo1.add_attr(self.circletrans)
-            self.kulo1.set_color(0,0,0)
-            #创建第二个骷髅
-            self.kulo2 = rendering.make_circle(40)
-            self.circletrans = rendering.Transform(translation=(460, 150))
-            self.kulo2.add_attr(self.circletrans)
-            self.kulo2.set_color(0, 0, 0)
-            #创建金条
-            self.gold = rendering.make_circle(40)
-            self.circletrans = rendering.Transform(translation=(300, 150))
-            self.gold.add_attr(self.circletrans)
-            self.gold.set_color(1, 0.9, 0)
-            #创建机器人
-            self.robot= rendering.make_circle(30)
-            self.robotrans = rendering.Transform()
-            self.robot.add_attr(self.robotrans)
-            self.robot.set_color(0.8, 0.6, 0.4)
-
-            self.line1.set_color(0, 0, 0)
-            self.line2.set_color(0, 0, 0)
-            self.line3.set_color(0, 0, 0)
-            self.line4.set_color(0, 0, 0)
-            self.line5.set_color(0, 0, 0)
-            self.line6.set_color(0, 0, 0)
-            self.line7.set_color(0, 0, 0)
-            self.line8.set_color(0, 0, 0)
-            self.line9.set_color(0, 0, 0)
-            self.line10.set_color(0, 0, 0)
-            self.line11.set_color(0, 0, 0)
-
-            self.viewer.add_geom(self.line1)
-            self.viewer.add_geom(self.line2)
-            self.viewer.add_geom(self.line3)
-            self.viewer.add_geom(self.line4)
-            self.viewer.add_geom(self.line5)
-            self.viewer.add_geom(self.line6)
-            self.viewer.add_geom(self.line7)
-            self.viewer.add_geom(self.line8)
-            self.viewer.add_geom(self.line9)
-            self.viewer.add_geom(self.line10)
-            self.viewer.add_geom(self.line11)
-            self.viewer.add_geom(self.kulo1)
-            self.viewer.add_geom(self.kulo2)
-            self.viewer.add_geom(self.gold)
-            self.viewer.add_geom(self.robot)
-        if self.state is None: return None
-        self.robotrans.set_translation(self.x[2], self.y[1])
-        return self.viewer.render(return_rgb_array=mode == 'rgb_array')
-
-
+    def render(self):
+        pass
