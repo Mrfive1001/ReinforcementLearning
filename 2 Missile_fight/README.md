@@ -25,3 +25,11 @@
 * reset() 初始化状态
 * step() 输入动作，输出下一个状态state,reward,done,info
 * render() 显示环境，可以利用gym中的rendering来画图，利用Viewer类，Transform类
+* windows下可以使用的玩的：
+    * CartPole-v0 短时间倒立摆
+    * CartPole-v1 长时间倒立摆
+    * Acrobot-v1 两自由度连杆
+    * MountainCar-v0  爬山车
+    * MountainCarContinuous-v0  连续控制爬山车
+    * Pendulum-v0 连续控制倒立摆
+### pyglet
