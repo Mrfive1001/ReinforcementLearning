@@ -29,7 +29,7 @@ class Game(object):
         self.weixing = pygame.image.load(r'source\weixing.jpg').convert()
 
         self.corlors = {'white': (255, 255, 255), 'black': (0, 0, 0), 'orange': (255, 69, 0), 'gold': (255, 215, 0),
-                        'blue': (0, 191, 255), 'red': (255, 0, 0),'deepbule':(0,0,255)}
+                        'blue': (0, 191, 255), 'red': (255, 0, 0), 'deepbule': (0, 0, 255)}
         self.interest = 0  # 图形是否进行转动
         self.pos = None  # 鼠标点的位置
         self.text_surface_zuo = self.font.render(u"点击进行人机对战", True, self.corlors['black'])  # 选项
@@ -127,6 +127,10 @@ class Game(object):
                                 self.action_record1[1] = inde
                                 print('你选择了目标%d' % (inde))
                                 self.action_flag += 1
+                        if self.action_record1[0] >= 3:
+                            self.action_record1 = [None, None]
+                            self.action_flag = 0
+                            print('选择动作不存在，重新选择')
                         pygame.time.delay(self.time_stop)
                         self.draw()
                         return 1
@@ -196,7 +200,8 @@ class Game(object):
         banjing = 50
         for index0, val1 in enumerate((situation1, situation2)):  # 分别画出来两个情况
             for index1, val2 in enumerate(val1[:3]):
-                pygame.draw.circle(self.screen, self.corlors['black'], (160 + index0 * 320, 60 + index1 * 120), banjing, 1)
+                pygame.draw.circle(self.screen, self.corlors['black'], (160 + index0 * 320, 60 + index1 * 120), banjing,
+                                   1)
                 if val2:
                     color1 = self.player_color[index0]
                     tem = self.corlors['black']
