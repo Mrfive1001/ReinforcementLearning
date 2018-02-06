@@ -26,10 +26,6 @@ class MissileAI:
         self.moon_help = 1.2  # 卫星起到的作用
         self.viewer = None # 画图的作用
 
-
-        self.x = [140, 220, 300, 380, 460, 140, 300, 460]
-        self.y = [250, 250, 250, 250, 250, 150, 150, 150]
-
     def step(self, actions):
         action = np.zeros(4)
         action[0], action[1], action[2], action[3] = actions[0] // 5, actions[0] % 5, actions[1] // 5, actions[1] % 5
@@ -83,9 +79,6 @@ class MissileAI:
         # 初始化状态
         self.state = self.init_state
         return self.state
-
-    def render(self):
-        pass
 
     def robot_action(self, mode='rand_fool', first=True):
         # rand_fool
@@ -190,7 +183,6 @@ class MissileAI:
             self.viewer.add_geom(self.gold)
             self.viewer.add_geom(self.robot)
         if self.state is None: return None
-        #self.robotrans.set_translation(self.x[self.state-1],self.y[self.state-1])
         self.robotrans.set_translation(self.x[2], self.y[1])
         return self.viewer.render(return_rgb_array=mode == 'rgb_array')
 

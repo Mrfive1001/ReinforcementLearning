@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/2 Missile_fight/2_DQN/Missile_gymtest.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/2 Missile_fight/Missile.py" afterPath="$PROJECT_DIR$/2 Missile_fight/Missile.py" />
+      <change beforePath="$PROJECT_DIR$/2 Missile_fight/README.md" afterPath="$PROJECT_DIR$/2 Missile_fight/README.md" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,28 +40,38 @@
             <file leaf-file-name="Missile.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/2 Missile_fight/Missile.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="2011">
-                    <caret line="166" column="41" lean-forward="true" selection-start-line="166" selection-start-column="41" selection-end-line="166" selection-end-column="41" />
+                  <state relative-caret-position="-300">
+                    <caret line="143" column="62" lean-forward="false" selection-start-line="143" selection-start-column="51" selection-end-line="143" selection-end-column="62" />
                     <folding>
-                      <element signature="e#49#60#0" expanded="true" />
+                      <element signature="e#0#47#1" expanded="false" />
+                      <element signature="e#463#697#0" expanded="false" />
+                      <element signature="e#910#3150#0" expanded="false" />
+                      <element signature="e#2017#2436#0" expanded="false" />
+                      <element signature="e#2064#2390#0" expanded="false" />
+                      <element signature="e#2164#2390#0" expanded="false" />
+                      <element signature="e#2227#2312#0" expanded="false" />
+                      <element signature="e#2620#3043#0" expanded="false" />
+                      <element signature="e#2846#2927#0" expanded="false" />
+                      <element signature="e#2962#3043#0" expanded="false" />
+                      <element signature="e#3181#3251#0" expanded="false" />
+                      <element signature="e#3319#4542#0" expanded="false" />
+                      <element signature="e#3319#3330#0" expanded="false" />
+                      <element signature="e#3633#3726#0" expanded="false" />
+                      <element signature="e#3753#3862#0" expanded="false" />
+                      <element signature="e#3933#4274#0" expanded="false" />
+                      <element signature="e#4340#4542#0" expanded="false" />
+                      <element signature="e#4626#4743#0" expanded="false" />
+                      <element signature="e#4670#4724#0" expanded="false" />
                     </folding>
                   </state>
                 </provider>
               </entry>
             </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="rendering.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="rendering.py" pinned="false" current-in-tab="false">
               <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/gym/envs/classic_control/rendering.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="450">
-                    <caret line="45" column="36" lean-forward="false" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="36" />
+                  <state relative-caret-position="310">
+                    <caret line="173" column="12" lean-forward="false" selection-start-line="173" selection-start-column="8" selection-end-line="173" selection-end-column="12" />
                     <folding>
                       <element signature="e#31#62#0" expanded="true" />
                     </folding>
@@ -87,12 +98,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Missile_gymtest.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Missile_gymtest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/Missile_gymtest.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
               <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/2 Missile_fight/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="753">
+                <caret line="26" column="58" lean-forward="true" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
+                <folding />
+              </first_editor>
+              <second_editor>
+                <js_state />
+              </second_editor>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="120">
+                <caret line="7" column="37" lean-forward="true" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+                <folding />
+              </first_editor>
+              <second_editor>
+                <js_state />
+              </second_editor>
             </state>
           </provider>
         </entry>
@@ -186,7 +227,6 @@
         <option value="$PROJECT_DIR$/2 Missile_fight/D3QN.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/main_DQN.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN_hands.py" />
-        <option value="$PROJECT_DIR$/2 Missile_fight/README.md" />
         <option value="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/D3QN.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN_display.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py" />
@@ -197,6 +237,8 @@
         <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_interact.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/gym_learn.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/Missile_gymtest.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/2 Missile_fight/README.md" />
         <option value="$PROJECT_DIR$/2 Missile_fight/Missile.py" />
       </list>
     </option>
@@ -207,8 +249,8 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="303" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-2212" />
     <option name="y" value="-9" />
     <option name="width" value="1348" />
     <option name="height" value="765" />
@@ -690,7 +732,14 @@
       <option name="project" value="LOCAL" />
       <updated>1517747238675</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="在环境中增加render函数，但是其中的内容不是本项目的，只是学习这个框架">
+      <created>1517884160536</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1517884160536</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView">
@@ -703,17 +752,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1098" extended-state="7" />
+    <frame x="-2409" y="-9" width="2418" height="1368" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959327" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30347145" sideWeight="0.20708154" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5904628" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35050392" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.78051513" sideWeight="0.79291844" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1272571" sideWeight="0.79291844" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12124463" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27306867" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21715017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52575105" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -791,7 +840,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="reward只考虑结果，看一下效果" />
     <MESSAGE value="增加一层网络，增加target更改轮数，效果还不错，但是轮数太少，继续训练" />
     <MESSAGE value="增加网络大小，最后探索概率为0.01，效果大概在80%左右" />
     <MESSAGE value="增加训练模式和显示模式，显示模式下不学习，没有探索" />
@@ -816,7 +864,8 @@
     <MESSAGE value="增加中文注释，更改，左边为选手1，右边为选手2" />
     <MESSAGE value="与人对战基本功能实现，但是现在不能再选中的时候变颜色" />
     <MESSAGE value="增加选中变颜色功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加选中变颜色功能" />
+    <MESSAGE value="在环境中增加render函数，但是其中的内容不是本项目的，只是学习这个框架" />
+    <option name="LAST_COMMIT_MESSAGE" value="在环境中增加render函数，但是其中的内容不是本项目的，只是学习这个框架" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -971,19 +1020,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor>
-            <js_state />
-          </second_editor>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2 Missile_fight/A3C.md" />
     <entry file="file://$PROJECT_DIR$/2 Missile_fight/sdf.py" />
     <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/Result.png" />
@@ -1008,19 +1044,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN_hands.py" />
-    <entry file="file://$PROJECT_DIR$/2 Missile_fight/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="589">
-            <caret line="20" column="70" lean-forward="false" selection-start-line="20" selection-start-column="70" selection-end-line="20" selection-end-column="70" />
-            <folding />
-          </first_editor>
-          <second_editor>
-            <js_state />
-          </second_editor>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/4 Subway/subwaygraph2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
@@ -1150,22 +1173,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="120">
+            <caret line="7" column="37" lean-forward="true" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <js_state />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/gym/envs/classic_control/rendering.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="45" column="36" lean-forward="false" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="36" />
+        <state relative-caret-position="310">
+          <caret line="173" column="12" lean-forward="false" selection-start-line="173" selection-start-column="8" selection-end-line="173" selection-end-column="12" />
           <folding>
             <element signature="e#31#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/2 Missile_fight/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="753">
+            <caret line="26" column="58" lean-forward="true" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <js_state />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/2 Missile_fight/Missile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2011">
-          <caret line="166" column="41" lean-forward="true" selection-start-line="166" selection-start-column="41" selection-end-line="166" selection-end-column="41" />
+        <state relative-caret-position="-300">
+          <caret line="143" column="62" lean-forward="false" selection-start-line="143" selection-start-column="51" selection-end-line="143" selection-end-column="62" />
           <folding>
-            <element signature="e#49#60#0" expanded="true" />
+            <element signature="e#0#47#1" expanded="false" />
+            <element signature="e#463#697#0" expanded="false" />
+            <element signature="e#910#3150#0" expanded="false" />
+            <element signature="e#2017#2436#0" expanded="false" />
+            <element signature="e#2064#2390#0" expanded="false" />
+            <element signature="e#2164#2390#0" expanded="false" />
+            <element signature="e#2227#2312#0" expanded="false" />
+            <element signature="e#2620#3043#0" expanded="false" />
+            <element signature="e#2846#2927#0" expanded="false" />
+            <element signature="e#2962#3043#0" expanded="false" />
+            <element signature="e#3181#3251#0" expanded="false" />
+            <element signature="e#3319#4542#0" expanded="false" />
+            <element signature="e#3319#3330#0" expanded="false" />
+            <element signature="e#3633#3726#0" expanded="false" />
+            <element signature="e#3753#3862#0" expanded="false" />
+            <element signature="e#3933#4274#0" expanded="false" />
+            <element signature="e#4340#4542#0" expanded="false" />
+            <element signature="e#4626#4743#0" expanded="false" />
+            <element signature="e#4670#4724#0" expanded="false" />
           </folding>
         </state>
       </provider>
