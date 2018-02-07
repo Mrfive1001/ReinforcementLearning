@@ -18,12 +18,15 @@ class MissileAI:
         self.state = self.reset()
         self.state_dim = len(self.state)  # 状态的维度是10
         self.action_dim = 15  # 动作的维度是15个值
-        self.hit = np.array([[[0.9, 0.7], [0.75, 0.5], [0, 0], [0, 0], [0, 0]],
-                             [[0.8, 0.8], [0.7, 0.7], [0.7, 0.6], [0.7, 0.8], [0.5, 60]],
-                             [[0.7, 0.9], [0.65, 0.8], [0.6, 0.75], [0.7, 0.7], [0.7, 100]]])
+        # self.hit = np.array([[[0.9, 0.7], [0.75, 0.5], [0, 0], [0, 0], [0, 0]],
+        #                      [[0.8, 0.8], [0.7, 0.7], [0.7, 0.6], [0.7, 0.8], [0.5, 60]],
+        #                      [[0.7, 0.9], [0.65, 0.8], [0.6, 0.75], [0.7, 0.7], [0.7, 100]]])
+        self.hit = np.array([[[0.4, 0.4], [0.3, 0.4], [0.1, 0.4], [0, 0], [0, 0]],
+                              [[0.5, 0.5], [0.4, 0.5], [0.4, 0.5], [0.7, 1], [0.4, 60]],
+                              [[0.7, 0.6], [0.6, 0.6], [0.6, 0.6], [0, 0], [0.6, 100]]])
         # hit[i,j]第i个导弹命中j个地方的概率[命中率，损毁率]
         self.jump = int(self.state_dim / 2)  # 先后手区别的位数
-        self.moon_help = 1.2  # 卫星起到的作用
+        self.moon_help = 0.3  # 卫星起到的作用
         self.viewer = None  # 画图的作用
 
     def step(self, actions):
@@ -34,8 +37,8 @@ class MissileAI:
         t1 = action[1] + self.jump  # 选手1选择的目标
         a2 = action[2] + self.jump  # 选手2选择的导弹
         t2 = action[3]  # 选手2选择的目标
-        moon_add1 = self.moon_help if self.state[3] > 0 else 1  # 卫星的加成
-        moon_add2 = self.moon_help if self.state[8] > 0 else 1  # 卫星的加成
+        moon_add1 = self.moon_help if self.state[3] > 0 else 0  # 卫星的加成
+        moon_add2 = self.moon_help if self.state[8] > 0 else 0  # 卫星的加成
         hit_rate1, damage_rate1 = self.hit[action[0], action[1]]
         hit_rate2, damage_rate2 = self.hit[action[2], action[3]]
 
@@ -47,11 +50,11 @@ class MissileAI:
                 , [moon_add1, moon_add2], [state1, state2], [reward1, reward2]):
             if state[missile] > 0:  # 如果有弹
                 state[missile] -= 1  # 减少弹
-                if np.random.rand(1) < hit_rate * moon_add:  # 命中
+                if np.random.rand(1) < (hit_rate + moon_add):  # 命中
                     if store != 4 and store != 9:  # 命中非基地
                         tem = state[store]
                         for _ in range(tem):
-                            if np.random.rand(1) < damage_rate * moon_add:  # 损伤了
+                            if np.random.rand(1) < damage_rate:  # 损伤了
                                 state[store] -= 1
                     else:
                         state[store] -= damage_rate

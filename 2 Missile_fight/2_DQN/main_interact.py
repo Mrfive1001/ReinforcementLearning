@@ -159,10 +159,11 @@ class Game(object):
                 if done:
                     if self.state[4] < self.state[9]:
                         self.winner = 1 # 玩家2胜利
-                        self.text_change = '恭喜你获得胜利！'
+                        self.text_change = '很遗憾你输给了电脑！'
                     elif self.state[4] > self.state[9]:
                         self.winner = 0 # 玩家1胜利
-                        self.text_change = '很遗憾你输给了电脑！'
+                        self.text_change = '恭喜你获得胜利！'
+
                     else:
                         self.winner = -1 # 平局
                         self.text_change = '这一局结果是平局'
