@@ -129,7 +129,7 @@ class Game(object):
                             if pygame.Rect(vav).collidepoint(self.pos):
                                 pygame.time.delay(self.time_stop)
                                 self.action_record1[1] = inde
-                                self.text_change += ('你选择了目标%d' % (inde))
+                                self.text_change += ('，你选择了目标%d' % (inde))
                                 self.action_flag += 1
                         if self.action_record1[0] >= 3:
                             self.action_record1 = [None, None]
@@ -157,11 +157,21 @@ class Game(object):
                 pygame.time.delay(self.time_stop)  # 小小的延迟
                 self.state = state_next
                 if done:
-                    print('玩家1收到伤害%.2f，玩家2受到伤害%.2f,因此赢者是玩家%d' %
-                          (info['damage1'], info['damage2'], info['winner'] + 1))
-                    self.winner = info['winner']
+                    if self.state[4] < self.state[9]:
+                        self.winner = 1 # 玩家2胜利
+                        self.text_change = '恭喜你获得胜利！'
+                    elif self.state[4] > self.state[9]:
+                        self.winner = 0 # 玩家1胜利
+                        self.text_change = '很遗憾你输给了电脑！'
+                    else:
+                        self.winner = -1 # 平局
+                        self.text_change = '这一局结果是平局'
+                    # print('玩家1收到伤害%.2f，玩家2受到伤害%.2f,因此赢者是玩家%d' %
+                    #       (info['damage1'], info['damage2'], info['winner'] + 1))
+                    # self.winner = info['winner']
                     if not self.ai_mode:
-                        self.game_state = 'end'
+                        # self.game_state = 'end'
+                        pass
                     else:
                         self.state_reset()
             self.draw()  # 鼠标没点击就正常显示
