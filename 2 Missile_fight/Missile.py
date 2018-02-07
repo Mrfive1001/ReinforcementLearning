@@ -39,19 +39,20 @@ class MissileAI:
         hit_rate1, damage_rate1 = self.hit[action[0], action[1]]
         hit_rate2, damage_rate2 = self.hit[action[2], action[3]]
 
-        ran = [np.random.rand() for _ in range(4)]  # 选择四个概率来转轮盘
         state1 = self.state.copy()  # 为了先后手备份
         state2 = self.state.copy()
         reward1, reward2 = -1, -1  # 设置reward
-        for missile, store, hit_rate, damage_rate, moon_add, state, reward, ran1, ran2 in zip(
+        for missile, store, hit_rate, damage_rate, moon_add, state, reward in zip(
                 [a1, a2], [t1, t2], [hit_rate1, hit_rate2], [damage_rate1, damage_rate2]
-                , [moon_add1, moon_add2], [state1, state2], [reward1, reward2], ran[:2], ran[2:]):
+                , [moon_add1, moon_add2], [state1, state2], [reward1, reward2]):
             if state[missile] > 0:  # 如果有弹
                 state[missile] -= 1  # 减少弹
-                if ran1 < hit_rate * moon_add:  # 命中
+                if np.random.rand(1) < hit_rate * moon_add:  # 命中
                     if store != 4 and store != 9:  # 命中非基地
-                        if ran2 < damage_rate * moon_add:  # 损伤了
-                            state[store] = 0
+                        tem = state[store]
+                        for _ in range(tem):
+                            if np.random.rand(1) < damage_rate * moon_add:  # 损伤了
+                                state[store] -= 1
                     else:
                         state[store] -= damage_rate
             else:
