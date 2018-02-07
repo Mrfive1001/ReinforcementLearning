@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/2 Missile_fight/2_DQN/DqnSave/checkpoint" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/2 Missile_fight/2_DQN/DqnSave/Adata.chkp.data-00000-of-00001" afterPath="$PROJECT_DIR$/2 Missile_fight/2_DQN/DqnSave/Adata.chkp.data-00000-of-00001" />
-      <change beforePath="$PROJECT_DIR$/2 Missile_fight/2_DQN/DqnSave/Adata.chkp.index" afterPath="$PROJECT_DIR$/2 Missile_fight/2_DQN/DqnSave/Adata.chkp.index" />
-      <change beforePath="$PROJECT_DIR$/2 Missile_fight/2_DQN/DqnSave/Adata.chkp.meta" afterPath="$PROJECT_DIR$/2 Missile_fight/2_DQN/DqnSave/Adata.chkp.meta" />
-      <change beforePath="$PROJECT_DIR$/2 Missile_fight/2_DQN/Train_Result.png" afterPath="$PROJECT_DIR$/2 Missile_fight/2_DQN/Train_Result.png" />
       <change beforePath="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py" afterPath="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py" />
       <change beforePath="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_interact.py" afterPath="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_interact.py" />
+      <change beforePath="$PROJECT_DIR$/2 Missile_fight/Missile.py" afterPath="$PROJECT_DIR$/2 Missile_fight/Missile.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,11 +18,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN.coverage" NAME="main_DQN Coverage Results" MODIFIED="1517973645845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
+    <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN.coverage" NAME="main_DQN Coverage Results" MODIFIED="1517989524394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$A3C_discrete_action.coverage" NAME="A3C_discrete_action Coverage Results" MODIFIED="1517578085997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_A3C.coverage" NAME="main_A3C Coverage Results" MODIFIED="1517582008063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$asteroids.coverage" NAME="asteroids Coverage Results" MODIFIED="1517903885856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN/Asteroids_pyglet" />
-    <SUITE FILE_PATH="coverage/ReinforcementLearning$main_interact.coverage" NAME="main_interact Coverage Results" MODIFIED="1517984676640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
+    <SUITE FILE_PATH="coverage/ReinforcementLearning$main_interact.coverage" NAME="main_interact Coverage Results" MODIFIED="1517989439937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$sdf.coverage" NAME="sdf Coverage Results" MODIFIED="1517562967640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$Missile_gymtest.coverage" NAME="Missile_gymtest Coverage Results" MODIFIED="1517883657730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$Missile.coverage" NAME="Missile Coverage Results" MODIFIED="1517212576561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight" />
@@ -41,52 +37,27 @@
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_hands.coverage" NAME="main_DQN_hands Coverage Results" MODIFIED="1517660314968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$gym_learn.coverage" NAME="gym_learn Coverage Results" MODIFIED="1517882589148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
   </component>
-  <component name="DockManager">
-    <window id="3">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="main_interact.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_interact.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="520">
-                    <caret line="262" column="50" lean-forward="false" selection-start-line="262" selection-start-column="50" selection-end-line="262" selection-end-column="50" />
-                    <folding>
-                      <element signature="e#0#11#0" expanded="true" />
-                      <element signature="e#8388#8433#0" expanded="false" />
-                      <element signature="e#11376#12494#0" expanded="false" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="270">
-                <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-                <folding />
-              </first_editor>
-              <second_editor>
-                <js_state />
-              </second_editor>
+      <file leaf-file-name="main_interact.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_interact.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="280" column="23" lean-forward="false" selection-start-line="280" selection-start-column="23" selection-end-line="280" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#8413#8458#0" expanded="false" />
+                <element signature="e#11401#12519#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main_DQN_display.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN_display.py">
+      <file leaf-file-name="main_DQN.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="16" column="36" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="36" />
+            <state relative-caret-position="60">
+              <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -94,29 +65,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Train_Result.png" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/Train_Result.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main_DQN.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py">
+      <file leaf-file-name="Missile.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2 Missile_fight/Missile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-630">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="D3QN.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/D3QN.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="49" column="41" lean-forward="false" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
-              <folding />
+            <state relative-caret-position="-804">
+              <caret line="30" column="33" lean-forward="false" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="33" />
+              <folding>
+                <element signature="e#49#60#0" expanded="true" />
+                <element signature="e#4099#5322#0" expanded="false" />
+                <element signature="e#4099#4110#0" expanded="false" />
+                <element signature="e#4413#4506#0" expanded="false" />
+                <element signature="e#4533#4642#0" expanded="false" />
+                <element signature="e#4713#5054#0" expanded="false" />
+                <element signature="e#5120#5322#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,6 +112,8 @@
       <find>background</find>
       <find>640</find>
       <find>480</find>
+      <find>moon_help</find>
+      <find>moon_ip</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -190,11 +154,11 @@
         <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/Asteroids_pyglet.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/Asteroids_pyglet/asteroids.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/README.md" />
-        <option value="$PROJECT_DIR$/2 Missile_fight/Missile.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/D3QN.py" />
-        <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN_display.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_interact.py" />
+        <option value="$PROJECT_DIR$/2 Missile_fight/Missile.py" />
+        <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py" />
       </list>
     </option>
   </component>
@@ -205,7 +169,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="225" />
+    <option name="x" value="452" />
     <option name="y" value="-9" />
     <option name="width" value="1348" />
     <option name="height" value="766" />
@@ -305,7 +269,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main_interact">
+  <component name="RunManager" selected="Python.main_DQN">
     <configuration name="asteroids" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -410,9 +374,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.main_interact" />
-        <item index="1" class="java.lang.String" itemvalue="Python.main_DQN_display" />
-        <item index="2" class="java.lang.String" itemvalue="Python.main_DQN" />
+        <item index="0" class="java.lang.String" itemvalue="Python.main_DQN" />
+        <item index="1" class="java.lang.String" itemvalue="Python.main_interact" />
+        <item index="2" class="java.lang.String" itemvalue="Python.main_DQN_display" />
         <item index="3" class="java.lang.String" itemvalue="Python.asteroids" />
         <item index="4" class="java.lang.String" itemvalue="Python.www" />
       </list>
@@ -431,13 +395,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
-    </task>
-    <task id="LOCAL-00002" summary="增加状态维度，动作维度">
-      <created>1517226671293</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1517226671293</updated>
     </task>
     <task id="LOCAL-00003" summary="增加卫星，增加伤害，基本流程编写结束，分先后手">
       <created>1517230233793</created>
@@ -775,7 +732,14 @@
       <option name="project" value="LOCAL" />
       <updated>1517971831937</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="增加画图里面解释性的文字，卫星及基地">
+      <created>1517984790126</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1517984790126</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TodoView">
@@ -793,18 +757,18 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959327" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30347145" sideWeight="0.20708154" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37737963" sideWeight="0.79291844" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5904628" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2206047" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17357223" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6237402" sideWeight="0.79291844" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.288908" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12124463" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23980686" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19313304" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5112661" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.81858903" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.81858903" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -877,7 +841,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="增加左右手互博介绍" />
     <MESSAGE value="修改DQN方法中保存模型的操作，使得能够保存两个不同的模型，读取两个不同的模型" />
     <MESSAGE value="修正模型中的一个错误，先后手相同输赢，修改DQN选择动作" />
     <MESSAGE value="修改模型之后的结果也挺不错，增加左右手互博的程序" />
@@ -902,7 +865,8 @@
     <MESSAGE value="进行训练得到的结果大概胜率是85%" />
     <MESSAGE value="修改模型的概率，减小命中率" />
     <MESSAGE value="修改训练参数，不从探索为1开始训练" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改训练参数，不从探索为1开始训练" />
+    <MESSAGE value="增加画图里面解释性的文字，卫星及基地" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加画图里面解释性的文字，卫星及基地" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1162,27 +1126,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2 Missile_fight/Missile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1141">
-          <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
-          <folding>
-            <element signature="e#49#60#0" expanded="true" />
-            <element signature="e#3686#4909#0" expanded="false" />
-            <element signature="e#3686#3697#0" expanded="false" />
-            <element signature="e#4000#4093#0" expanded="false" />
-            <element signature="e#4120#4229#0" expanded="false" />
-            <element signature="e#4300#4641#0" expanded="false" />
-            <element signature="e#4707#4909#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="270">
-            <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+            <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
             <folding />
           </first_editor>
           <second_editor>
@@ -1191,37 +1139,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-630">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/Train_Result.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN_display.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="16" column="36" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 Missile_fight/Missile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-804">
+          <caret line="30" column="33" lean-forward="false" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="33" />
+          <folding>
+            <element signature="e#49#60#0" expanded="true" />
+            <element signature="e#4099#5322#0" expanded="false" />
+            <element signature="e#4099#4110#0" expanded="false" />
+            <element signature="e#4413#4506#0" expanded="false" />
+            <element signature="e#4533#4642#0" expanded="false" />
+            <element signature="e#4713#5054#0" expanded="false" />
+            <element signature="e#5120#5322#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/Train_Result.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_interact.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="262" column="50" lean-forward="false" selection-start-line="262" selection-start-column="50" selection-end-line="262" selection-end-column="50" />
+        <state relative-caret-position="305">
+          <caret line="280" column="23" lean-forward="false" selection-start-line="280" selection-start-column="23" selection-end-line="280" selection-end-column="23" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#8388#8433#0" expanded="false" />
-            <element signature="e#11376#12494#0" expanded="false" />
+            <element signature="e#8413#8458#0" expanded="false" />
+            <element signature="e#11401#12519#0" expanded="false" />
           </folding>
         </state>
       </provider>

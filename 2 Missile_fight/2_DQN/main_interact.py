@@ -30,7 +30,7 @@ class Game(object):
         self.weixing = pygame.image.load(r'source\weixing.jpg').convert()
 
         self.corlors = {'white': (255, 255, 255), 'black': (0, 0, 0), 'orange': (255, 69, 0), 'gold': (255, 215, 0),
-                        'blue': (0, 191, 255), 'red': (255, 0, 0), 'deepbule': (0, 0, 255)}
+                        'blue': (0, 191, 255), 'red': (255, 0, 0), 'deepbule': (0, 0, 255), 'gray': (105, 105, 105)}
         self.interest = 0  # 图形是否进行转动
         self.pos = None  # 鼠标点的位置
         self.text_surface_zuo = self.font.render(u"点击进行人机对战", True, self.corlors['black'])  # 选项
@@ -265,7 +265,7 @@ class Game(object):
             blood_temp = self.font.render('%d' % self.state[index0 * 5 + 4], True, self.corlors['black'])
             _blood_temp = ((self.width + (2 * index0 - 1) * _dis - blood_temp.get_width()) / 2
                            , 240 + (_length - blood_temp.get_height()) / 2
-                           , (self.width + (2 * index0 - 1) * _dis + blood_temp.get_width()) / 2
+                           , (self.width + (2 * index0 - 1) * _dis + blood_temp.get_width())  / 2
                            , 240 + (_length + blood_temp.get_height()) / 2)
             self.screen.blit(blood_temp, (_blood_temp[0], _blood_temp[1]))
         pygame.display.update()
