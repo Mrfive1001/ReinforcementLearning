@@ -5,13 +5,13 @@ import D3QN
 import matplotlib.pyplot as plt
 
 env = Missile.MissileAI()
-RL = D3QN.DQN(env.action_dim, env.state_dim,
+RL = D3QN.DQN(env.action_dim, env.state_dim,e_greedy_init=0.5,
               memory_size=1000, batch_size=64, load=False,
               learning_rate=0.001, dueling=True, double=True,
-              e_greedy_end=0.1, e_liner_times=20000, units=50,
+              e_greedy_end=0.1, e_liner_times=15000, units=50,
               train=True, replace_target_iter=50, gamma=0.95)
 step = 0
-episodes = 100000
+episodes = 50000
 win_rate = []
 win = 0
 for episode in range(1, episodes):
