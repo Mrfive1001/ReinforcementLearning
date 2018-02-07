@@ -23,6 +23,7 @@ class Game(object):
         self.height = 480
         pygame.init()  # 初始化pygame
         self.font = pygame.font.SysFont("simsunnsimsun", 30)
+        self.font_mini = pygame.font.SysFont("simsunnsimsun", 15)
         self.screen = pygame.display.set_mode((self.width, self.height), 0, 32)
         pygame.display.set_caption("Missile_game!")
         # self.background = pygame.image.load(r'source\back0.jpg').convert()  # 背景图片
@@ -110,6 +111,7 @@ class Game(object):
                     self.action_record1 = [action1 // 5, action1 % 5]
                     self.action_record2 = [action2 // 5, action2 % 5]
                     self.text_change = '玩家1选择了导弹%d,选择目标是%d' % ((self.action_record1[0], self.action_record1[1]))
+                    print(self.text_change)
                     print('玩家2选择了导弹%d,选择目标是%d' % ((self.action_record2[0], self.action_record2[1])))
                     state_next, reward, done, info = env.step(np.array([action1, action2]))
                 else:  # 人机对战
@@ -158,14 +160,14 @@ class Game(object):
                 self.state = state_next
                 if done:
                     if self.state[4] < self.state[9]:
-                        self.winner = 1 # 玩家2胜利
+                        self.winner = 1  # 玩家2胜利
                         self.text_change = '很遗憾你输给了电脑！'
                     elif self.state[4] > self.state[9]:
-                        self.winner = 0 # 玩家1胜利
+                        self.winner = 0  # 玩家1胜利
                         self.text_change = '恭喜你获得胜利！'
 
                     else:
-                        self.winner = -1 # 平局
+                        self.winner = -1  # 平局
                         self.text_change = '这一局结果是平局'
                     # print('玩家1收到伤害%.2f，玩家2受到伤害%.2f,因此赢者是玩家%d' %
                     #       (info['damage1'], info['damage2'], info['winner'] + 1))
@@ -221,8 +223,8 @@ class Game(object):
         banjing = 50
         for index0, val1 in enumerate((situation1, situation2)):  # 分别画出来两个情况
             for index1, val2 in enumerate(val1[:3]):
-                pygame.draw.circle(self.screen, self.corlors['black'], (160 + index0 * 320, 60 + index1 * 120), banjing,
-                                   1)
+                pygame.draw.circle(self.screen, self.corlors['black'], (160 + index0 * 320, 60 + index1 * 120),
+                                   banjing, 1)
                 if val2:
                     color1 = self.player_color[index0]
                     tem = self.corlors['black']
@@ -247,17 +249,36 @@ class Game(object):
                     continue
             if val1[3]:  # 画出卫星
                 self.screen.blit(self.weixing, (index0 * (self.width - self.weixing.get_width()), 70))
+                self._intro_paint(540, 60, 'weixing', index0)
+
+            self._intro_paint(530, 340, 'base', index0)
+
+            self._intro_paint(150, 60, 'near', index0)
+            self._intro_paint(150, 180, 'middle', index0)
+            self._intro_paint(150, 300, 'long', index0)
+
+            # 画出基地和血量
             _length = 90  # 基地的长宽
             _dis = 530  # 两基地中心点的距离
             pygame.draw.rect(self.screen, self.player_color[index0],
                              ((self.width - _length + (2 * index0 - 1) * _dis) / 2, 240, _length, _length), 1)
             blood_temp = self.font.render('%d' % self.state[index0 * 5 + 4], True, self.corlors['black'])
             _blood_temp = ((self.width + (2 * index0 - 1) * _dis - blood_temp.get_width()) / 2
-                            , 240 + (_length - blood_temp.get_height()) / 2
-                            , (self.width + (2 * index0 - 1) * _dis + blood_temp.get_width()) / 2
-                            , 240 + (_length + blood_temp.get_height()) / 2)
+                           , 240 + (_length - blood_temp.get_height()) / 2
+                           , (self.width + (2 * index0 - 1) * _dis + blood_temp.get_width()) / 2
+                           , 240 + (_length + blood_temp.get_height()) / 2)
             self.screen.blit(blood_temp, (_blood_temp[0], _blood_temp[1]))
         pygame.display.update()
+
+    def _intro_paint(self, _dis, _height, name, index0):
+        # 画出介绍文字
+        # _dis 两个中心点的距离
+        # _height 中心点的高度
+        intro_text = {'weixing': '卫星', 'base': '基地', 'near': '近程导弹', 'middle': '中程导弹', 'long': '远程导弹'}
+        _base = self.font_mini.render(intro_text[name], True, self.corlors['black'])
+        _base_pos = ((self.width + (2 * index0 - 1) * _dis - _base.get_width()) / 2,
+                     _height - _base.get_height() / 2)
+        self.screen.blit(_base, (_base_pos[0], _base_pos[1]))
 
     def ai_fight(self):
         while True:
