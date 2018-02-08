@@ -48,17 +48,15 @@ class MissileAI:
         hit_rate1, damage_rate1 = self.hit[action[0], action[1]]
         hit_rate2, damage_rate2 = self.hit[action[2], action[3]]
 
-        state_tem = self.state.copy()   # !!!!!!!!服了，什么鬼问题
-
         flag_launch = {str(a1): 0, str(a2): 0}
         for missile in [a1, a2]:  # 先打出去一颗弹
-            if state_tem[missile] > 0:  # 如果有弹
-                state_tem[missile] -= 1  # 减少弹
+            if self.state[missile] > 0:  # 如果有弹
+                self.state[missile] -= 1  # 减少弹
                 flag_launch[str(missile)] = 1
         # print((state_tem == self.state).all())
 
-        state1 = state_tem.copy()  # 为了先后手备份
-        state2 = state_tem.copy()
+        state1 = self.state.copy()  # 为了先后手备份
+        state2 = self.state.copy()
         reward1, reward2 = -1, -1  # 设置reward
         for missile, store, hit_rate, damage_rate, moon_add, state, reward, base_ip in zip(
                 [a1, a2], [t1, t2], [hit_rate1, hit_rate2], [damage_rate1, damage_rate2]
@@ -95,12 +93,12 @@ class MissileAI:
             info['damage2'] = damage2
         else:
             done = False
-        return self.state, np.array([reward1, reward2]), done, info
+        return self.state.copy(), np.array([reward1, reward2]), done, info
 
     def reset(self):
         # 初始化状态
         self.state = self.init_state.copy()
-        return self.state
+        return self.state.copy()
 
     def robot_action(self, mode='rand_fool', first=True):
         # rand_fool
