@@ -40,8 +40,8 @@ class MissileAI:
         a2 = action[2] + self.jump  # 选手2选择的导弹
         t2 = action[3]  # 选手2选择的目标
 
-        weixing_add1 = min(1, (self.weixing_hit_help if self.state[3] > 0 else 0) + 1)  # 卫星的加成
-        weixing_add2 = min(1, (self.weixing_hit_help if self.state[8] > 0 else 0) + 1)  # 卫星的加成
+        weixing_add1 = (self.weixing_hit_help if self.state[3] > 0 else 0) + 1  # 卫星的加成
+        weixing_add2 = (self.weixing_hit_help if self.state[8] > 0 else 0) + 1  # 卫星的加成
 
         base_ip1 = min(1, self.ip if (self.state[8] == 0 or t1 == 8) else self.ip * (1 + self.weixing_stop_help))
         base_ip2 = min(1, self.ip if (self.state[3] == 0 or t2 == 3) else self.ip * (1 + self.weixing_stop_help))
@@ -57,12 +57,12 @@ class MissileAI:
         state1 = self.state.copy()  # 为了先后手备份
         state2 = self.state.copy()
         reward1, reward2 = -1, -1  # 设置reward
-        for missile, store, hit_rate, damage_rate, weixing_add, state, reward, base_ip in zip(
+        for missile, store, hit_rate, damage_rate, moon_add, state, reward, base_ip in zip(
                 [a1, a2], [t1, t2], [hit_rate1, hit_rate2], [damage_rate1, damage_rate2]
                 , [weixing_add1, weixing_add2], [state1, state2], [reward1, reward2], [base_ip1, base_ip2]):
-            if flag_launch[str(missile)] == 1:
+            if flag_launch[str(missile)] == 1:  # 如果有弹
                 if np.random.rand(1) < (1 - base_ip):
-                    if np.random.rand(1) < (hit_rate * weixing_add):  # 命中
+                    if np.random.rand(1) < (hit_rate * moon_add):  # 命中
                         if store != 4 and store != 9:  # 命中非基地
                             tem = state[store]
                             for _ in range(tem):
@@ -95,7 +95,7 @@ class MissileAI:
 
     def reset(self):
         # 初始化状态
-        self.state = self.init_state
+        self.state = self.init_state.copy()
         return self.state
 
     def robot_action(self, mode='rand_fool', first=True):
