@@ -13,8 +13,8 @@ import requests
 
 class MissileAI:
     def __init__(self):
-        near, mid, long, moon, blood = 8, 5, 3, 1, 0
-        self.init_state = np.array([near, mid, long, moon, blood] * 2)  # 双方仓库导弹数目、卫星个数，血量
+        near, mid, long, weixing, blood = 8, 5, 3, 1, 0
+        self.init_state = np.array([near, mid, long, weixing, blood] * 2)  # 双方仓库导弹数目、卫星个数，血量
         self.state = self.reset()
         self.state_dim = len(self.state)  # 状态的维度是10
         self.action_dim = 15  # 动作的维度是15个值
@@ -22,13 +22,13 @@ class MissileAI:
         #                      [[0.8, 0.8], [0.7, 0.7], [0.7, 0.6], [0.7, 0.8], [0.5, 60]],
         #                      [[0.7, 0.9], [0.65, 0.8], [0.6, 0.75], [0.7, 0.7], [0.7, 100]]])
         self.hit = np.array([[[0.4, 0.4], [0.3, 0.4], [0.1, 0.4], [0, 0], [0, 0]],
-                             [[0.5, 0.5], [0.4, 0.5], [0.4, 0.5], [0.7, 0.8], [0.4, 60]],
-                             [[0.7, 0.6], [0.6, 0.6], [0.6, 0.6], [0.8, 0.8], [0.6, 100]]])
+                             [[0.5, 0.5], [0.4, 0.5], [0.4, 0.5], [0.7, 1], [0.4, 60]],
+                             [[0.7, 0.6], [0.6, 0.6], [0.6, 0.6], [0.8, 1], [0.6, 100]]])
         # hit[i,j]第i个导弹命中j个地方的概率[命中率，损毁率]
         self.ip = 0.2  # 拦截率
         self.jump = int(self.state_dim / 2)  # 先后手区别的位数
-        self.moon_hit_help = 0.5  # 卫星起到提高命中率的作用
-        self.moon_stop_help = 3  # 卫星起到的拦截作用
+        self.weixing_hit_help = 0.5  # 卫星起到提高命中率的作用
+        self.weixing_stop_help = 3  # 卫星起到的拦截作用
         self.viewer = None  # 画图的作用
 
     def step(self, actions):
@@ -40,24 +40,29 @@ class MissileAI:
         a2 = action[2] + self.jump  # 选手2选择的导弹
         t2 = action[3]  # 选手2选择的目标
 
-        moon_add1 = (self.moon_hit_help if self.state[3] > 0 else 0) + 1  # 卫星的加成
-        moon_add2 = (self.moon_hit_help if self.state[8] > 0 else 0) + 1  # 卫星的加成
+        weixing_add1 = min(1, (self.weixing_hit_help if self.state[3] > 0 else 0) + 1)  # 卫星的加成
+        weixing_add2 = min(1, (self.weixing_hit_help if self.state[8] > 0 else 0) + 1)  # 卫星的加成
 
-        base_ip1 = min(1, self.ip if (self.state[8] == 0 or t1 == 8) else self.ip * (1 + self.moon_stop_help))
-        base_ip2 = min(1, self.ip if (self.state[3] == 0 or t2 == 3) else self.ip * (1 + self.moon_stop_help))
+        base_ip1 = min(1, self.ip if (self.state[8] == 0 or t1 == 8) else self.ip * (1 + self.weixing_stop_help))
+        base_ip2 = min(1, self.ip if (self.state[3] == 0 or t2 == 3) else self.ip * (1 + self.weixing_stop_help))
         hit_rate1, damage_rate1 = self.hit[action[0], action[1]]
         hit_rate2, damage_rate2 = self.hit[action[2], action[3]]
+
+        flag_launch = {str(a1): 0, str(a2): 0}
+        for missile in [a1, a2]:  # 先打出去一颗弹
+            if self.state[missile] > 0:  # 如果有弹
+                self.state[missile] -= 1  # 减少弹
+                flag_launch[str(missile)] = 1
 
         state1 = self.state.copy()  # 为了先后手备份
         state2 = self.state.copy()
         reward1, reward2 = -1, -1  # 设置reward
-        for missile, store, hit_rate, damage_rate, moon_add, state, reward, base_ip in zip(
+        for missile, store, hit_rate, damage_rate, weixing_add, state, reward, base_ip in zip(
                 [a1, a2], [t1, t2], [hit_rate1, hit_rate2], [damage_rate1, damage_rate2]
-                , [moon_add1, moon_add2], [state1, state2], [reward1, reward2], [base_ip1, base_ip2]):
-            if state[missile] > 0:  # 如果有弹
-                state[missile] -= 1  # 减少弹
+                , [weixing_add1, weixing_add2], [state1, state2], [reward1, reward2], [base_ip1, base_ip2]):
+            if flag_launch[str(missile)] == 1:
                 if np.random.rand(1) < (1 - base_ip):
-                    if np.random.rand(1) < (hit_rate * moon_add):  # 命中
+                    if np.random.rand(1) < (hit_rate * weixing_add):  # 命中
                         if store != 4 and store != 9:  # 命中非基地
                             tem = state[store]
                             for _ in range(tem):
