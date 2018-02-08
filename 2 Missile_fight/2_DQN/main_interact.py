@@ -159,10 +159,17 @@ class Game(object):
                 pygame.time.delay(self.time_stop)  # 小小的延迟
                 self.state = state_next
                 if done:
-                    if self.state[4] < self.state[9]:
+                    a_temp = self.state[4]
+                    b_temp = self.state[9]
+                    if not self.ai_mode:
+                        # self.game_state = 'end'
+                        pass
+                    else:
+                        self.state_reset()
+                    if a_temp < b_temp:
                         self.winner = 1  # 玩家2胜利
                         self.text_change = '很遗憾你输给了电脑！'
-                    elif self.state[4] > self.state[9]:
+                    elif a_temp > b_temp:
                         self.winner = 0  # 玩家1胜利
                         self.text_change = '恭喜你获得胜利！'
 
@@ -172,11 +179,7 @@ class Game(object):
                     # print('玩家1收到伤害%.2f，玩家2受到伤害%.2f,因此赢者是玩家%d' %
                     #       (info['damage1'], info['damage2'], info['winner'] + 1))
                     # self.winner = info['winner']
-                    if not self.ai_mode:
-                        # self.game_state = 'end'
-                        pass
-                    else:
-                        self.state_reset()
+
             self.draw()  # 鼠标没点击就正常显示
             return 1
         elif self.game_state == 'end':
