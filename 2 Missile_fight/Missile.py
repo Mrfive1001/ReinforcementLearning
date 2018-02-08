@@ -27,8 +27,8 @@ class MissileAI:
         # hit[i,j]第i个导弹命中j个地方的概率[命中率，损毁率]
         self.ip = 0.2  # 拦截率
         self.jump = int(self.state_dim / 2)  # 先后手区别的位数
-        self.moon_hit_help = 1  # 卫星起到提高命中率的作用
-        self.moon_stop_help = 2  # 卫星起到的拦截作用
+        self.moon_hit_help = 0.5  # 卫星起到提高命中率的作用
+        self.moon_stop_help = 3  # 卫星起到的拦截作用
         self.viewer = None  # 画图的作用
 
     def step(self, actions):
@@ -43,8 +43,8 @@ class MissileAI:
         moon_add1 = (self.moon_hit_help if self.state[3] > 0 else 0) + 1  # 卫星的加成
         moon_add2 = (self.moon_hit_help if self.state[8] > 0 else 0) + 1  # 卫星的加成
 
-        base_ip1 = min(1, self.ip if self.state[8] == 0 else self.ip * (1 + self.moon_stop_help))
-        base_ip2 = min(1, self.ip if self.state[3] == 0 else self.ip * (1 + self.moon_stop_help))
+        base_ip1 = min(1, self.ip if (self.state[8] == 0 or t1 == 8) else self.ip * (1 + self.moon_stop_help))
+        base_ip2 = min(1, self.ip if (self.state[3] == 0 or t2 == 3) else self.ip * (1 + self.moon_stop_help))
         hit_rate1, damage_rate1 = self.hit[action[0], action[1]]
         hit_rate2, damage_rate2 = self.hit[action[2], action[3]]
 

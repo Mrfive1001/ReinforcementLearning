@@ -11,10 +11,10 @@ RL = D3QN.DQN(env.action_dim, env.state_dim, e_greedy_init=0.6,
               e_greedy_end=0.1, e_liner_times=15000, units=50,
               train=True, replace_target_iter=50, gamma=0.95)
 step = 0
-episodes = 100000
+episodes = 50000
 win_rate = []
 win = 0
-modes = ['rand_smart']
+modes = ['rand_smart', 'base_smart']
 for episode in range(1, episodes):
     ep_reward = np.array([0, 0])
     state_now = env.reset()
