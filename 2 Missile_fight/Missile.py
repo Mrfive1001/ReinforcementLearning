@@ -22,8 +22,8 @@ class MissileAI:
         #                      [[0.8, 0.8], [0.7, 0.7], [0.7, 0.6], [0.7, 0.8], [0.5, 60]],
         #                      [[0.7, 0.9], [0.65, 0.8], [0.6, 0.75], [0.7, 0.7], [0.7, 100]]])
         self.hit = np.array([[[0.4, 0.4], [0.3, 0.4], [0.1, 0.4], [0, 0], [0, 0]],
-                             [[0.5, 0.5], [0.4, 0.5], [0.4, 0.5], [0.7, 1], [0.4, 60]],
-                             [[0.7, 0.6], [0.6, 0.6], [0.6, 0.6], [0.8, 1], [0.6, 100]]])
+                             [[0.5, 0.5], [0.4, 0.5], [0.4, 0.5], [0.7, 0.8], [0.4, 60]],
+                             [[0.7, 0.6], [0.6, 0.6], [0.6, 0.6], [0.8, 0.8], [0.6, 100]]])
         # hit[i,j]第i个导弹命中j个地方的概率[命中率，损毁率]
         self.ip = 0.2  # 拦截率
         self.jump = int(self.state_dim / 2)  # 先后手区别的位数
@@ -48,19 +48,23 @@ class MissileAI:
         hit_rate1, damage_rate1 = self.hit[action[0], action[1]]
         hit_rate2, damage_rate2 = self.hit[action[2], action[3]]
 
+        state_tem = self.state.copy()   # !!!!!!!!服了，什么鬼问题
+
         flag_launch = {str(a1): 0, str(a2): 0}
         for missile in [a1, a2]:  # 先打出去一颗弹
-            if self.state[missile] > 0:  # 如果有弹
-                self.state[missile] -= 1  # 减少弹
+            if state_tem[missile] > 0:  # 如果有弹
+                state_tem[missile] -= 1  # 减少弹
                 flag_launch[str(missile)] = 1
+        # print((state_tem == self.state).all())
 
-        state1 = self.state.copy()  # 为了先后手备份
-        state2 = self.state.copy()
+        state1 = state_tem.copy()  # 为了先后手备份
+        state2 = state_tem.copy()
         reward1, reward2 = -1, -1  # 设置reward
         for missile, store, hit_rate, damage_rate, moon_add, state, reward, base_ip in zip(
                 [a1, a2], [t1, t2], [hit_rate1, hit_rate2], [damage_rate1, damage_rate2]
                 , [weixing_add1, weixing_add2], [state1, state2], [reward1, reward2], [base_ip1, base_ip2]):
             if flag_launch[str(missile)] == 1:  # 如果有弹
+                # state[missile] -= 1  # 减少弹
                 if np.random.rand(1) < (1 - base_ip):
                     if np.random.rand(1) < (hit_rate * moon_add):  # 命中
                         if store != 4 and store != 9:  # 命中非基地
