@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/6 TSP/TSP_Burma14.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/6 TSP/main_random.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,6 +31,7 @@
     <SUITE FILE_PATH="coverage/ReinforcementLearning$D3QN.coverage" NAME="D3QN Coverage Results" MODIFIED="1517992162140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$TSP_Burma14.coverage" NAME="TSP_Burma14 Coverage Results" MODIFIED="1519802945651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/6 TSP" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN__1_.coverage" NAME="main_DQN (1) Coverage Results" MODIFIED="1517627761886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
+    <SUITE FILE_PATH="coverage/ReinforcementLearning$main_random.coverage" NAME="main_random Coverage Results" MODIFIED="1519803513895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/6 TSP" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_hands_display.coverage" NAME="main_DQN_hands_display Coverage Results" MODIFIED="1517662580610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_display__1_.coverage" NAME="main_DQN_display (1) Coverage Results" MODIFIED="1517642761936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_hands.coverage" NAME="main_DQN_hands Coverage Results" MODIFIED="1517660314968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
@@ -45,7 +45,7 @@
             <file leaf-file-name="TSP_Burma14.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/6 TSP/TSP_Burma14.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="593">
+                  <state relative-caret-position="953">
                     <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
                     <folding>
                       <element signature="e#28#59#0" expanded="true" />
@@ -61,17 +61,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="480">
-                <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+              <first_editor relative-caret-position="390">
+                <caret line="16" column="19" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
                 <folding />
               </first_editor>
               <second_editor>
                 <js_state />
               </second_editor>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main_random.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/6 TSP/main_random.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-196">
+              <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -164,6 +176,7 @@
         <option value="$PROJECT_DIR$/Drl_Tips.md" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/6 TSP/TSP_Burma14.py" />
+        <option value="$PROJECT_DIR$/6 TSP/main_random.py" />
       </list>
     </option>
   </component>
@@ -266,7 +279,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.TSP_Burma14">
+  <component name="RunManager" selected="Python.main_random">
     <configuration name="Missile" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -343,39 +356,39 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="main_interact" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="main_random" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/6 TSP" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="ReinforcementLearning" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_interact.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/6 TSP/main_random.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.main_interact" />
-      <item index="1" class="java.lang.String" itemvalue="Python.main_DQN_display" />
-      <item index="2" class="java.lang.String" itemvalue="Python.main_DQN" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Missile" />
-      <item index="4" class="java.lang.String" itemvalue="Python.TSP_Burma14" />
+      <item index="0" class="java.lang.String" itemvalue="Python.main_DQN_display" />
+      <item index="1" class="java.lang.String" itemvalue="Python.main_DQN" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Missile" />
+      <item index="3" class="java.lang.String" itemvalue="Python.TSP_Burma14" />
+      <item index="4" class="java.lang.String" itemvalue="Python.main_random" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.TSP_Burma14" />
-        <item index="1" class="java.lang.String" itemvalue="Python.main_DQN" />
-        <item index="2" class="java.lang.String" itemvalue="Python.main_DQN_display" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Missile" />
-        <item index="4" class="java.lang.String" itemvalue="Python.main_interact" />
+        <item index="0" class="java.lang.String" itemvalue="Python.main_random" />
+        <item index="1" class="java.lang.String" itemvalue="Python.TSP_Burma14" />
+        <item index="2" class="java.lang.String" itemvalue="Python.main_DQN" />
+        <item index="3" class="java.lang.String" itemvalue="Python.main_DQN_display" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Missile" />
       </list>
     </recent_temporary>
   </component>
@@ -392,13 +405,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
-    </task>
-    <task id="LOCAL-00014" summary="增加一层网络，增加target更改轮数，效果还不错，但是轮数太少，继续训练">
-      <created>1517557730441</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1517557730441</updated>
     </task>
     <task id="LOCAL-00015" summary="增加网络大小，最后探索概率为0.01，效果大概在80%左右">
       <created>1517560198743</created>
@@ -736,7 +742,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519717477497</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="拷贝程林师兄环境，增加一些注释">
+      <created>1519802999930</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1519802999930</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TodoView">
@@ -756,7 +769,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30347145" sideWeight="0.20708154" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13055062" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27886322" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45381883" sideWeight="0.79291844" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.348135" sideWeight="0.79291844" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.288908" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12124463" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1612628" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -838,7 +851,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="与人对战基本功能实现，但是现在不能再选中的时候变颜色" />
     <MESSAGE value="增加选中变颜色功能" />
     <MESSAGE value="在环境中增加render函数，但是其中的内容不是本项目的，只是学习这个框架" />
     <MESSAGE value="增加gym格式和项目说明" />
@@ -863,7 +875,8 @@
     <MESSAGE value="找到错误，返回变量的时候一定要返回副本，不要直接返回，不然会互相之间有牵扯" />
     <MESSAGE value="学习DRL的调试技巧，结果不是很理想" />
     <MESSAGE value="增加太阳帆" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加太阳帆" />
+    <MESSAGE value="拷贝程林师兄环境，增加一些注释" />
+    <option name="LAST_COMMIT_MESSAGE" value="拷贝程林师兄环境，增加一些注释" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -879,13 +892,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2 Missile_fight/Missile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1158,8 +1164,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="480">
-            <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+          <first_editor relative-caret-position="390">
+            <caret line="16" column="19" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
             <folding />
           </first_editor>
           <second_editor>
@@ -1170,10 +1176,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/6 TSP/TSP_Burma14.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
+        <state relative-caret-position="953">
           <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
             <element signature="e#28#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/6 TSP/main_random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-196">
+          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
