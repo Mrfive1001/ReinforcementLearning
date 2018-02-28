@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/6 TSP/main_random.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/6 TSP/D3QN.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/6 TSP/main_D3QN.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -76,14 +77,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main_random.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main_random.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/6 TSP/main_random.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-196">
-              <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="7" />
+            <state relative-caret-position="284">
+              <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="D3QN.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/D3QN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1846">
+              <caret line="143" column="8" lean-forward="false" selection-start-line="143" selection-start-column="8" selection-end-line="143" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main_DQN.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="D3QN.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/6 TSP/D3QN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4396">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <element signature="e#210#228#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main_D3QN.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/6 TSP/main_D3QN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -177,6 +220,8 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/6 TSP/TSP_Burma14.py" />
         <option value="$PROJECT_DIR$/6 TSP/main_random.py" />
+        <option value="$PROJECT_DIR$/6 TSP/D3QN.py" />
+        <option value="$PROJECT_DIR$/6 TSP/main_D3QN.py" />
       </list>
     </option>
   </component>
@@ -220,11 +265,6 @@
             <path>
               <item name="ReinforcementLearning" type="b2602c69:ProjectViewProjectNode" />
               <item name="ReinforcementLearning" type="462c0819:PsiDirectoryNode" />
-              <item name="2 Missile_fight" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReinforcementLearning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReinforcementLearning" type="462c0819:PsiDirectoryNode" />
               <item name="6 TSP" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -254,17 +294,17 @@
     <option name="myIpythonEnabled" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\English\ReinforcementLearning\2 Missile_fight\3_A3C" />
-      <recent name="D:\English\ReinforcementLearning\2 Missile_fight\2_DQN" />
-      <recent name="D:\English\ReinforcementLearning\2 Missile_fight\tabuler" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\English\ReinforcementLearning\6 TSP" />
       <recent name="D:\English\ReinforcementLearning\2 Missile_fight\2_DQN\source" />
       <recent name="D:\English\ReinforcementLearning\2 Missile_fight\4_DQN_hands" />
       <recent name="D:\English\ReinforcementLearning\2 Missile_fight\4_DQN_hands\DqnSave" />
       <recent name="D:\English\ReinforcementLearning\2 Missile_fight\2_DQN" />
-      <recent name="D:\English\ReinforcementLearning\2 Missile_fight" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\English\ReinforcementLearning\2 Missile_fight\3_A3C" />
+      <recent name="D:\English\ReinforcementLearning\2 Missile_fight\2_DQN" />
+      <recent name="D:\English\ReinforcementLearning\2 Missile_fight\tabuler" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -405,13 +445,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
-    </task>
-    <task id="LOCAL-00015" summary="增加网络大小，最后探索概率为0.01，效果大概在80%左右">
-      <created>1517560198743</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1517560198743</updated>
     </task>
     <task id="LOCAL-00016" summary="增加训练模式和显示模式，显示模式下不学习，没有探索">
       <created>1517563287128</created>
@@ -749,7 +782,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519802999930</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="拷贝程林师兄随机策略，进行试验">
+      <created>1519804139980</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1519804139980</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TodoView">
@@ -763,7 +803,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2409" y="-9" width="2418" height="1331" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959327" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30347145" sideWeight="0.20708154" order="7" side_tool="true" content_ui="tabs" />
@@ -772,7 +811,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.348135" sideWeight="0.79291844" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.288908" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12124463" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1612628" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1612628" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5110921" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -851,7 +890,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="增加选中变颜色功能" />
     <MESSAGE value="在环境中增加render函数，但是其中的内容不是本项目的，只是学习这个框架" />
     <MESSAGE value="增加gym格式和项目说明" />
     <MESSAGE value="使用一个小栗子来学习pyglet，增加gym常见环境的说明" />
@@ -876,7 +914,8 @@
     <MESSAGE value="学习DRL的调试技巧，结果不是很理想" />
     <MESSAGE value="增加太阳帆" />
     <MESSAGE value="拷贝程林师兄环境，增加一些注释" />
-    <option name="LAST_COMMIT_MESSAGE" value="拷贝程林师兄环境，增加一些注释" />
+    <MESSAGE value="拷贝程林师兄随机策略，进行试验" />
+    <option name="LAST_COMMIT_MESSAGE" value="拷贝程林师兄随机策略，进行试验" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -892,20 +931,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2 Missile_fight/Missile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../StateControlAI/0_Problem/SmallStateControl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2 Missile_fight/1_Tabuler/imitatev2.4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1111,13 +1136,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="661">
           <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="28" column="25" lean-forward="false" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+          <folding>
+            <element signature="e#49#60#0" expanded="false" />
+            <element signature="e#4488#5711#0" expanded="false" />
+            <element signature="e#4488#4499#0" expanded="false" />
+            <element signature="e#4802#4895#0" expanded="false" />
+            <element signature="e#4922#5031#0" expanded="false" />
+            <element signature="e#5102#5443#0" expanded="false" />
+            <element signature="e#5509#5711#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1144,13 +1171,6 @@
           <second_editor>
             <js_state />
           </second_editor>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/D3QN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1052">
-          <caret line="143" column="8" lean-forward="false" selection-start-line="143" selection-start-column="8" selection-end-line="143" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -1186,11 +1206,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/6 TSP/main_random.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-196">
-          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="7" />
+        <state relative-caret-position="284">
+          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/D3QN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1846">
+          <caret line="143" column="8" lean-forward="false" selection-start-line="143" selection-start-column="8" selection-end-line="143" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/6 TSP/D3QN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4396">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#210#228#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/6 TSP/main_D3QN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
