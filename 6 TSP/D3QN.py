@@ -45,7 +45,7 @@ class DQN:
         self.memory_size = memory_size
         self.batch_size = batch_size
         self.e_liner_times = e_liner_times
-        self.epsilon_init = 1  # 初始的探索值
+        self.epsilon_init = 0.5  # 初始的探索值
         self.epsilon = self.epsilon_init
         self.epsilon_end = e_greedy_end
 
@@ -130,13 +130,31 @@ class DQN:
         self.memory[index, :] = transition
         self.memory_counter += 1
 
-    def choose_action(self, observation):
+    def choose_action(self, observation,env = None):
         observation = observation[np.newaxis, :]
-        if np.random.uniform() > self.epsilon:  # choosing action
-            actions_value = self.sess.run(self.q_eval, feed_dict={self.s: observation})
-            action = np.argmax(actions_value)
+        if self.train:
+            if np.random.uniform() > self.epsilon:
+                # actions_value = self.sess.run(self.q_eval, feed_dict={self.s: observation})
+                # action = np.argmax(actions_value)
+                actions_value = self.sess.run(self.q_eval, feed_dict={self.s: observation})[0]
+                state_tem = env.state.copy()
+                index_valid = [x for x in range(env.action_dim) if state_tem[x] == 1]
+                value_valid = [actions_value[x] for x in index_valid]
+                action_valid = int(np.argmax(value_valid))
+                action = index_valid[action_valid]
+            else:
+                # action = np.random.randint(0, self.n_actions)
+                state_tem = env.state.copy()
+                index_valid = [x for x in range(env.action_dim) if state_tem[x] == 1]
+                action = np.random.choice(index_valid)
         else:
-            action = np.random.randint(0, self.n_actions)
+            actions_value = self.sess.run(self.q_eval, feed_dict={self.s: observation})[0]
+            state_tem = env.state.copy()
+            index_valid = [x for x in range(env.action_dim) if state_tem[x] == 1]
+            value_valid = [actions_value[x] for x in index_valid]
+            action_valid = int(np.argmax(value_valid))
+            action = index_valid[action_valid]
+
         return action
 
     def learn(self):
