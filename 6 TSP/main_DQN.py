@@ -9,6 +9,7 @@ if __name__ == "__main__":
              learning_rate=0.01,
              gamma=0.9,
              e_greedy_end=0.05,
+             e_greedy_init=0.3,
              memory_size=3000,
              e_liner_times=10000,
              batch_size=256,

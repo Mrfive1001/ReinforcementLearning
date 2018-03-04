@@ -31,6 +31,7 @@ class DQN:
             dueling=False,  # 使用Dueling
             double=False,
             gamma=0.9,
+            e_greedy_init = 1,
             e_greedy_end=0.1,  # 最后的探索值 e_greedy
             e_liner_times=1000,  # 探索值经历多少次学习变成e_end
             units = 50,
@@ -45,7 +46,7 @@ class DQN:
         self.memory_size = memory_size
         self.batch_size = batch_size
         self.e_liner_times = e_liner_times
-        self.epsilon_init = 0.5  # 初始的探索值
+        self.epsilon_init = e_greedy_init  # 初始的探索值
         self.epsilon = self.epsilon_init
         self.epsilon_end = e_greedy_end
 
