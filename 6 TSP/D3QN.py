@@ -12,6 +12,8 @@ Include DQN DuelingDQN DoubleDQN
 
 import numpy as np
 import tensorflow as tf
+import os
+import sys
 
 
 # np.random.seed(1)
@@ -36,7 +38,8 @@ class DQN:
             e_greedy_end=0.1,  # 最后的探索值 e_greedy
             e_liner_times=1000,  # 探索值经历多少次学习变成e_end
             units=50,
-            train=True  # 训练的时候有探索
+            train=True,  # 训练的时候有探索
+            id='A'
 
     ):
         self.n_actions = n_actions
@@ -50,27 +53,31 @@ class DQN:
         self.epsilon_init = e_greedy_init  # 初始的探索值
         self.epsilon = self.epsilon_init
         self.epsilon_end = e_greedy_end
-
+        self.id = id
         self.dueling = dueling  # decide to use dueling DQN or not
         self.double = double
 
         self.units = units
         self.train = train
+        self.model_path0 = os.path.join(sys.path[0], 'DqnSave')
+        if not os.path.exists(self.model_path0):
+            os.mkdir(self.model_path0)
+        self.model_path = os.path.join(self.model_path0, self.id + 'data.chkp')
 
         self.learn_step_counter = 0
         self.memory = np.zeros((self.memory_size, n_features * 2 + 3))
-        self._build_net()
-        t_params = tf.get_collection('target_net_params')
-        e_params = tf.get_collection('eval_net_params')
-        self.replace_target_op = [tf.assign(t, e) for t, e in zip(t_params, e_params)]
-
-        if sess is None:
-            self.sess = tf.Session()
-            self.sess.run(tf.global_variables_initializer())
-        else:
-            self.sess = sess
-        if output_graph:
-            tf.summary.FileWriter("logs/", self.sess.graph)
+        self.graph = tf.Graph()
+        with self.graph.as_default():
+            self._build_net()
+            t_params = tf.get_collection('target_net_params')
+            e_params = tf.get_collection('eval_net_params')
+            self.replace_target_op = [tf.assign(t, e) for t, e in zip(t_params, e_params)]
+            self.sess = tf.Session(graph=self.graph)
+            self.actor_saver = tf.train.Saver()
+            if self.train:
+                self.sess.run(tf.global_variables_initializer())
+            else:
+                self.actor_saver.restore(self.sess, self.model_path)
         self.cost_his = []
 
     def _build_net(self):
@@ -194,3 +201,8 @@ class DQN:
         else:
             self.epsilon = 0
         self.learn_step_counter += 1
+
+    def model_save(self, id=None):
+        if id == None:
+            id = self.id
+        self.actor_saver.save(self.sess, os.path.join(self.model_path0, id + 'data.chkp'))
