@@ -91,7 +91,7 @@ class DQN:
                     self.A = tf.matmul(l1, w2) + b2
 
                 with tf.variable_scope('Q'):
-                    out = self.V + (self.A - tf.reduce_mean(self.A, axis=1, keep_dims=True))  # Q = V(s) + A(s,a)
+                    out = self.V + (self.A - tf.reduce_mean(self.A, axis=1, keepdims=True))  # Q = V(s) + A(s,a)
             else:
                 with tf.variable_scope('Q'):
                     w2 = tf.get_variable('w2', [n_l1, self.n_actions], initializer=w_initializer, collections=c_names)
