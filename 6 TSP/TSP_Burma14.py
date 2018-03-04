@@ -16,15 +16,15 @@ class ENV(object):
                                        [22.00, 96.05],
                                        [20.47, 97.02],
                                        [17.20, 96.29],
-                                       # [16.30, 97.38],
-                                       # [14.05, 98.12],
-                                       # [16.53, 97.38],
-                                       # [21.52, 95.59],
-                                       # [19.42, 97.13],
-                                       # [20.09, 94.55],
-                                       ]) # 地图上的点坐标
-        self.action_dim = len(self.city_location) # 动作维度
-        self.state_dim = self.action_dim # 状态维度
+                                       [16.30, 97.38],
+                                       [14.05, 98.12],
+                                       [16.53, 97.38],
+                                       [21.52, 95.59],
+                                       [19.42, 97.13],
+                                       [20.09, 94.55],
+                                       ])  # 地图上的点坐标
+        self.action_dim = len(self.city_location)  # 动作维度
+        self.state_dim = self.action_dim  # 状态维度
         self.action_old = int(0)
         self.state = self.reset()
 
@@ -46,32 +46,24 @@ class ENV(object):
 
     def step(self, action):
 
-        action = int(action)    # 动作
+        action = int(action)  # 动作
         reward_penalty = 0
         distance = 0
-        if self.state[action] == -1:    # 选择过了
-            reward_penalty = 500
-        else:
-            delta_location = np.array(self.city_location[action]) - np.array(self.city_location[self.action_old])
-            distance = np.sqrt(np.sum(np.square(delta_location)))
+        delta_location = np.array(self.city_location[action]) - np.array(self.city_location[self.action_old])
+        distance = np.sqrt(np.sum(np.square(delta_location)))
 
         self.state[action] = -1
-
-        delta_sum = np.sum(self.state + 1 * np.ones([self.state_dim]))
-        if delta_sum == 0: # 判断是否结束
+        if np.sum(self.state) == -1 * len(self.state):  # 判断是否结束
             delta_location = np.array(self.city_location[action]) - np.array(self.city_location[0])
             distance += np.sqrt(np.sum(np.square(delta_location)))
-            # reward -= np.sqrt(np.sum(np.square(self.city_location[action] - self.city_location[0])))
             done = True
         else:
             done = False
 
         reward = -(reward_penalty + distance)
-        info = {}
+        info = dict()
         info["distance"] = distance
-
         self.action_old = action
-
         return self.state.copy(), reward, done, info
 
 
