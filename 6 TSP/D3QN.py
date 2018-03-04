@@ -130,31 +130,26 @@ class DQN:
         self.memory[index, :] = transition
         self.memory_counter += 1
 
-    def choose_action(self, observation,env = None):
+    def choose_action(self, observation):
+        state_tem = observation.copy()
         observation = observation[np.newaxis, :]
         if self.train:
             if np.random.uniform() > self.epsilon:
-                # actions_value = self.sess.run(self.q_eval, feed_dict={self.s: observation})
-                # action = np.argmax(actions_value)
                 actions_value = self.sess.run(self.q_eval, feed_dict={self.s: observation})[0]
-                state_tem = env.state.copy()
-                index_valid = [x for x in range(env.action_dim) if state_tem[x] == 1]
+                index_valid = [x for x in range(len(state_tem)) if state_tem[x] == 1]
                 value_valid = [actions_value[x] for x in index_valid]
                 action_valid = int(np.argmax(value_valid))
                 action = index_valid[action_valid]
             else:
                 # action = np.random.randint(0, self.n_actions)
-                state_tem = env.state.copy()
-                index_valid = [x for x in range(env.action_dim) if state_tem[x] == 1]
+                index_valid = [x for x in range(len(state_tem)) if state_tem[x] == 1]
                 action = np.random.choice(index_valid)
         else:
             actions_value = self.sess.run(self.q_eval, feed_dict={self.s: observation})[0]
-            state_tem = env.state.copy()
-            index_valid = [x for x in range(env.action_dim) if state_tem[x] == 1]
+            index_valid = [x for x in range(len(state_tem)) if state_tem[x] == 1]
             value_valid = [actions_value[x] for x in index_valid]
             action_valid = int(np.argmax(value_valid))
             action = index_valid[action_valid]
-
         return action
 
     def learn(self):

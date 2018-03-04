@@ -3,12 +3,6 @@ from D3QN import DQN
 from TSP_Burma14 import ENV
 
 if __name__ == "__main__":
-    # maze game
-    state_track = []
-    action_track = []
-    time_track = []
-    action_ori_track = []
-    omega_track = []
     env = ENV()
     RL = DQN(n_actions=env.action_dim,
              n_features=env.state_dim,
@@ -20,12 +14,14 @@ if __name__ == "__main__":
              batch_size=256,
              double=True,
              dueling=True,
+             train = True
              )
     step = 0
     ep_reward = 0
     episodes = 100000
     for episode in range(episodes):
         ep_reward = 0
+
         # initial observation
         observation = env.reset()
         while True:
@@ -33,18 +29,15 @@ if __name__ == "__main__":
             env.render()
 
             # RL choose action based on observation
-            action = RL.choose_action(observation,env)
+            action = RL.choose_action(observation)
 
             # RL take action and get next observation and reward
             observation_, reward, done, info = env.step(action)
-            if episode == episodes - 1:
-                RL.train = False
             ep_reward += reward
             RL.store_transition(observation, action, reward, observation_)
 
             if (step > 200) and (step % 5 == 0):
                 RL.learn()
-
             # swap observation
             observation = observation_
 
