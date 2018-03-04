@@ -13,6 +13,7 @@ Include DQN DuelingDQN DoubleDQN
 import numpy as np
 import tensorflow as tf
 
+
 # np.random.seed(1)
 # tf.set_random_seed(1)
 
@@ -31,11 +32,11 @@ class DQN:
             dueling=False,  # 使用Dueling
             double=False,
             gamma=0.9,
-            e_greedy_init = 1,
+            e_greedy_init=1,
             e_greedy_end=0.1,  # 最后的探索值 e_greedy
             e_liner_times=1000,  # 探索值经历多少次学习变成e_end
-            units = 50,
-            train = True  # 训练的时候有探索
+            units=50,
+            train=True  # 训练的时候有探索
 
     ):
         self.n_actions = n_actions
@@ -57,7 +58,7 @@ class DQN:
         self.train = train
 
         self.learn_step_counter = 0
-        self.memory = np.zeros((self.memory_size, n_features * 2 + 2))
+        self.memory = np.zeros((self.memory_size, n_features * 2 + 3))
         self._build_net()
         t_params = tf.get_collection('target_net_params')
         e_params = tf.get_collection('eval_net_params')
@@ -123,10 +124,10 @@ class DQN:
 
             self.q_next = build_layers(self.s_, c_names, n_l1, w_initializer, b_initializer)
 
-    def store_transition(self, s, a, r, s_):
+    def store_transition(self, s, a, r, s_, done):
         if not hasattr(self, 'memory_counter'):
             self.memory_counter = 0
-        transition = np.hstack((s, [a, r], s_))
+        transition = np.hstack((s, [a, r], s_, done))
         index = self.memory_counter % self.memory_size
         self.memory[index, :] = transition
         self.memory_counter += 1
@@ -164,16 +165,16 @@ class DQN:
         batch_state = batch_memory[:, :self.n_features]
         batch_action = batch_memory[:, self.n_features].astype(int)
         batch_reward = batch_memory[:, self.n_features + 1]
-        batch_state_next = batch_memory[:, -self.n_features:]
-
+        batch_state_next = batch_memory[:, -self.n_features - 1:-1]
+        batch_done = batch_memory[:, -1].astype(int)
         if self.double == False:
-            q_next = self.sess.run(self.q_next, feed_dict={self.s_: batch_state_next}) # next observation
+            q_next = self.sess.run(self.q_next, feed_dict={self.s_: batch_state_next})  # next observation
             q_eval = self.sess.run(self.q_eval, {self.s: batch_state})
 
             q_target = q_eval.copy()
 
             batch_index = np.arange(self.batch_size, dtype=np.int32)
-            q_target[batch_index, batch_action] = batch_reward + self.gamma * np.max(q_next, axis=1)
+            q_target[batch_index, batch_action] = batch_reward + (1 - batch_done) * self.gamma * np.max(q_next, axis=1)
         else:
             # double DQN
             q_target = self.sess.run(self.q_eval, feed_dict={self.s: batch_state})
@@ -182,13 +183,14 @@ class DQN:
             batch_action_withMaxQ = np.argmax(q_next1, axis=1)
             batch_index = np.arange(self.batch_size, dtype=np.int32)
             q_next_Max = q_next2[batch_index, batch_action_withMaxQ]
-            q_target[batch_index, batch_action] = batch_reward + self.gamma * q_next_Max
+            q_target[batch_index, batch_action] = batch_reward + (1 - batch_done) * self.gamma * q_next_Max
         _, self.cost = self.sess.run([self._train_op, self.loss],
                                      feed_dict={self.s: batch_state,
                                                 self.q_target: q_target})
         self.cost_his.append(self.cost)
         if self.train == True:
-            self.epsilon = max(self.epsilon - (self.epsilon_init - self.epsilon_end) / self.e_liner_times, self.epsilon_end)
+            self.epsilon = max(self.epsilon - (self.epsilon_init - self.epsilon_end) / self.e_liner_times,
+                               self.epsilon_end)
         else:
             self.epsilon = 0
         self.learn_step_counter += 1

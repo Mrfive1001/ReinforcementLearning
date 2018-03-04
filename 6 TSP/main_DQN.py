@@ -35,7 +35,7 @@ if __name__ == "__main__":
             # RL take action and get next observation and reward
             observation_, reward, done, info = env.step(action)
             ep_reward += reward
-            RL.store_transition(observation, action, reward, observation_)
+            RL.store_transition(observation, action, reward, observation_, done)
 
             if (step > 200) and (step % 5 == 0):
                 RL.learn()
