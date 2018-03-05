@@ -17,7 +17,7 @@ if __name__ == "__main__":
              batch_size=256,
              double=True,
              dueling=True,
-             train=True if 1 == 1 else False
+             train=True if 0 == 1 else False
              )
     step = 0
     ep_reward = 0
@@ -25,27 +25,17 @@ if __name__ == "__main__":
         episodes = 30000
         for episode in range(episodes):
             ep_reward = 0
-
             # initial observation
             observation = env.reset()
             while True:
-                # fresh env
                 env.render()
-
-                # RL choose action based on observation
                 action = RL.choose_action(observation)
-
-                # RL take action and get next observation and reward
                 observation_, reward, done, info = env.step(action)
                 ep_reward += reward
                 RL.store_transition(observation, action, reward, observation_, done)
-
                 if (step > 200) and (step % 5 == 0):
                     RL.learn()
-                # swap observation
                 observation = observation_
-
-                # break while loop when end of this episode
                 if done:
                     break
                 step += 1
@@ -66,7 +56,6 @@ if __name__ == "__main__":
             print('reward', reward)
             ep_reward += reward
             observation = observation_
-
             for i in range(len(env.city_location)):
                 plt.scatter(env.city_location[i][0], env.city_location[i][1])
                 plt.text(env.city_location[i][0], env.city_location[i][1], str(i), size=15, alpha=0.2)
@@ -74,7 +63,6 @@ if __name__ == "__main__":
             plt.show()
             plt.pause(0.5)
             step += 1
-
             if done:
                 record[step + 1, 0] = env.city_location[0][0]
                 record[step + 1, 1] = env.city_location[0][1]
