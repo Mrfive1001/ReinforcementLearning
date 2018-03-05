@@ -7,13 +7,13 @@ if __name__ == "__main__":
     env = ENV()
     RL = DQN(n_actions=env.action_dim,
              n_features=env.state_dim,
-             learning_rate=0.01,
+             learning_rate=0.001,
              gamma=0.9,
-             e_greedy_end=0.05,
+             e_greedy_end=0.1,
              e_greedy_init=0.3,
              memory_size=3000,
-             e_liner_times=5000,
-             units=100,
+             e_liner_times=10000,
+             units=10,
              batch_size=256,
              double=True,
              dueling=True,
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     step = 0
     ep_reward = 0
     if RL.train:
-        episodes = 10000
+        episodes = 20000
         for episode in range(episodes):
             ep_reward = 0
 

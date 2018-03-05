@@ -82,10 +82,14 @@ class DQN:
 
     def _build_net(self):
         def build_layers(s, c_names, n_l1, w_initializer, b_initializer):
+            with tf.variable_scope('l0'):
+                w0 = tf.get_variable('w0', [self.n_features, n_l1], initializer=w_initializer, collections=c_names)
+                b0 = tf.get_variable('b0', [1, n_l1], initializer=b_initializer, collections=c_names)
+                l0 = tf.nn.relu(tf.matmul(s, w0) + b0)
             with tf.variable_scope('l1'):
-                w1 = tf.get_variable('w1', [self.n_features, n_l1], initializer=w_initializer, collections=c_names)
+                w1 = tf.get_variable('w1', [n_l1, n_l1], initializer=w_initializer, collections=c_names)
                 b1 = tf.get_variable('b1', [1, n_l1], initializer=b_initializer, collections=c_names)
-                l1 = tf.nn.relu(tf.matmul(s, w1) + b1)
+                l1 = tf.nn.relu(tf.matmul(l0, w1) + b1)
 
             if self.dueling:
                 # Dueling DQN
