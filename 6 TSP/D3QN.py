@@ -7,7 +7,7 @@ Add API by MrFive
 
 Include DQN DuelingDQN DoubleDQN
 
-双层网络
+三层网络
 """
 
 import numpy as np
@@ -67,6 +67,7 @@ class DQN:
         self.learn_step_counter = 0
         self.memory = np.zeros((self.memory_size, n_features * 2 + 3))
         self.graph = tf.Graph()
+
         with self.graph.as_default():
             self._build_net()
             t_params = tf.get_collection('target_net_params')
@@ -78,7 +79,6 @@ class DQN:
                 self.sess.run(tf.global_variables_initializer())
             else:
                 self.actor_saver.restore(self.sess, self.model_path)
-        self.cost_his = []
 
     def _build_net(self):
         def build_layers(s, c_names, n_l1, w_initializer, b_initializer):
@@ -198,13 +198,13 @@ class DQN:
         _, self.cost = self.sess.run([self._train_op, self.loss],
                                      feed_dict={self.s: batch_state,
                                                 self.q_target: q_target})
-        self.cost_his.append(self.cost)
         if self.train == True:
             self.epsilon = max(self.epsilon - (self.epsilon_init - self.epsilon_end) / self.e_liner_times,
                                self.epsilon_end)
+            self.learn_step_counter += 1
         else:
             self.epsilon = 0
-        self.learn_step_counter += 1
+
 
     def model_save(self, id=None):
         if id == None:
