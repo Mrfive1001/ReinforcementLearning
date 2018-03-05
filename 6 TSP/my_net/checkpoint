@@ -1,0 +1,2 @@
+model_checkpoint_path: "D:\\MrFive\\Documents\\Code\\ReinforcementLearning\\6 TSP/my_net/data.chkp"
+all_model_checkpoint_paths: "D:\\MrFive\\Documents\\Code\\ReinforcementLearning\\6 TSP/my_net/data.chkp"

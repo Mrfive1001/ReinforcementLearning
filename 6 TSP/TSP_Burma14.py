@@ -15,7 +15,7 @@ class ENV(object):
                                        [25.23, 97.24],
                                        [22.00, 96.05],
                                        [20.47, 97.02],
-                                       [17.20, 96.29],
+                                       # [17.20, 96.29],
                                        # [16.30, 97.38],
                                        # [14.05, 98.12],
                                        # [16.53, 97.38],
@@ -48,7 +48,6 @@ class ENV(object):
 
         action = int(action)  # 动作
         reward_penalty = 0
-        distance = 0
         delta_location = np.array(self.city_location[action]) - np.array(self.city_location[self.action_old])
         distance = np.sqrt(np.sum(np.square(delta_location)))
 
