@@ -14,7 +14,7 @@ if __name__ == "__main__":
              memory_size=3000,
              e_liner_times=10000,
              units=10,
-             batch_size=256,
+             batch_size=64,
              double=True,
              dueling=True,
              train=True if 0 == 1 else False
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     step = 0
     ep_reward = 0
     if RL.train:
-        episodes = 30000
+        episodes = 20000
         for episode in range(episodes):
             ep_reward = 0
             # initial observation
