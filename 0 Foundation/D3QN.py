@@ -181,3 +181,46 @@ class DQN:
 
     def model_save(self):
         self.actor_saver.save(self.sess, os.path.join(self.model_path0, 'data.chkp'))
+
+
+if __name__ == '__main__':
+    env = ENV()
+    RL = DQN(n_actions=env.action_dim,
+             n_features=env.state_dim,
+             learning_rate=0.001,
+             gamma=0.90,
+             e_greedy_end=0.1,
+             e_greedy_init=0.8,
+             memory_size=3000,
+             e_liner_times=10000,
+             units=10,
+             batch_size=64,
+             double=True,
+             dueling=True,
+             train=True
+             )
+    step = 0
+    ep_reward = 0
+    if RL.train:
+        episodes = 20000
+        for episode in range(episodes):
+            ep_reward = 0
+            # initial observation
+            observation = env.reset()
+            while True:
+                env.render()
+                action = RL.choose_action(observation)
+                observation_, reward, done, info = env.step(action)
+                ep_reward += reward
+                RL.store_transition(observation, action, reward, observation_, done)
+                if (step > 200) and (step % 5 == 0):
+                    RL.learn()
+                observation = observation_
+                if done:
+                    break
+                step += 1
+            print('Episode:', episode + 1, ' ep_reward: %.4f' % ep_reward, 'epsilon: %.3f' % RL.epsilon)
+        RL.model_save()
+    else:
+        pass
+    # Display
