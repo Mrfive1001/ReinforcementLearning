@@ -5,6 +5,7 @@ Include DQN DuelingDQN DoubleDQN
 """
 # 包含done的处理
 # 可以保存网络
+# 三层神经网络
 
 import numpy as np
 import tensorflow as tf
