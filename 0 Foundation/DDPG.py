@@ -4,18 +4,20 @@ DDPG Method
 '''
 
 # 这里面的DDPG是双层网络
-#
-#
+# 增加done的处理
+# 可以保存网络
+# 三层网络
 
 import tensorflow as tf
 import numpy as np
 import os
 import sys
 
+
 # tf.set_random_seed(2)
 
 
-class ddpg(object):
+class DDPG(object):
     def __init__(
             self,
             a_dim,  # 动作的维度
@@ -30,7 +32,8 @@ class ddpg(object):
             TAU=0.3,  # 软替代率，例如0.01表示学习eval网络0.01的值，和原网络0.99的值
             MEMORY_SIZE=10000,  # 记忆池容量
             BATCH_SIZE=256,  # 批次数量
-            units=64,   # 每层神经网络单元数
+            units_a=64,  # Actor神经网络单元数
+            units_c=64,  # Crtic神经网络单元数
             reload_flag=False,  # 是否读取
             train=True  # 训练的时候有探索
     ):
@@ -42,7 +45,8 @@ class ddpg(object):
         self.TAU = TAU
         self.MEMORY_CAPACITY = MEMORY_SIZE
         self.BATCH_SIZE = BATCH_SIZE
-        self.units = units
+        self.units_a = units_a
+        self.units_c = units_c
         self.epsilon_init = epilon_init  # 初始的探索值
         self.epsilon = self.epsilon_init
         self.epsilon_end = e_greedy_end
@@ -94,7 +98,9 @@ class ddpg(object):
         tf.summary.scalar('td_error', td_error)
         self.ctrain = tf.train.AdamOptimizer(self.LR_C).minimize(td_error, var_list=self.ce_params)
 
-        a_loss = - tf.reduce_mean(q)  # maximize the q
+        # maximize the q
+        a_loss = - tf.reduce_mean(q)
+        # 通过ae网络参数来最大化q
         self.atrain = tf.train.AdamOptimizer(self.LR_A).minimize(a_loss, var_list=self.ae_params)
 
         self.actor_saver = tf.train.Saver()
@@ -145,20 +151,22 @@ class ddpg(object):
     def _build_a(self, s, scope, trainable):
         # 建立actor网络
         with tf.variable_scope(scope):
-            n_l1 = self.units
-            net = tf.layers.dense(s, n_l1, activation=tf.nn.relu, name='l1', trainable=trainable)
-            a = tf.layers.dense(net, self.a_dim, activation=tf.nn.tanh, name='a', trainable=trainable)
+            n_l1 = self.units_a
+            net0 = tf.layers.dense(s, n_l1, activation=tf.nn.relu, name='l0', trainable=trainable)
+            net1 = tf.layers.dense(net0, n_l1, activation=tf.nn.relu, name='l1', trainable=trainable)
+            a = tf.layers.dense(net1, self.a_dim, activation=tf.nn.tanh, name='a', trainable=trainable)
             return tf.multiply(a, abs(self.a_bound[0] - self.a_bound[1]) / 2, name='scaled_a') + np.mean(self.a_bound)
 
     def _build_c(self, s, a, scope, trainable):
         # 建立critic网络
         with tf.variable_scope(scope):
-            n_l1 = self.units
+            n_l1 = self.units_c
             w1_s = tf.get_variable('w1_s', [self.s_dim, n_l1], trainable=trainable)
             w1_a = tf.get_variable('w1_a', [self.a_dim, n_l1], trainable=trainable)
             b1 = tf.get_variable('b1', [1, n_l1], trainable=trainable)
-            net = tf.nn.relu(tf.matmul(s, w1_s) + tf.matmul(a, w1_a) + b1)
-            q = tf.layers.dense(net, 1, trainable=trainable)  # Q(s,a)
+            net1 = tf.nn.relu(tf.matmul(s, w1_s) + tf.matmul(a, w1_a) + b1)
+            net2 = tf.layers.dense(net1, n_l1, activation=tf.nn.relu, name='l2', trainable=trainable)
+            q = tf.layers.dense(net2, 1, trainable=trainable)  # Q(s,a)
             return q
 
     def net_save(self):
