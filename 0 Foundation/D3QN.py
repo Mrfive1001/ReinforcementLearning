@@ -3,6 +3,8 @@ The Dueling DQN based on this paper: https://arxiv.org/abs/1511.06581
 Add API by MrFive
 Include DQN DuelingDQN DoubleDQN
 """
+# 包含done的处理
+# 可以保存网络
 
 import numpy as np
 import tensorflow as tf
