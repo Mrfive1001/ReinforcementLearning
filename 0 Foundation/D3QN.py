@@ -19,7 +19,7 @@ class DQN:
             n_actions,  # 动作空间个数（输出动作维度）
             n_features,  # 状态空间个数（输入状态量个数）
             learning_rate=0.001,  # 学习率
-            replace_target_iter=200,  # 更新eval网络代数
+            replace_target_iter=200,  # 更新target网络代数
             memory_size=500,  # 记忆池数量
             batch_size=32,  # 每次样本更新数目
             dueling=False,  # 使用Dueling 使用优势函数网络改进
@@ -50,7 +50,7 @@ class DQN:
 
         self.learn_step_counter = 0  # 学习轮数
 
-        self.model_path0 = os.path.join(sys.path[0], 'DqnSave')
+        self.model_path0 = os.path.join(sys.path[0], 'DQN_Net')
         if not os.path.exists(self.model_path0):
             os.mkdir(self.model_path0)
         self.model_path = os.path.join(self.model_path0, 'data.chkp')
