@@ -13,6 +13,8 @@ import shutil
 import sys
 import copy
 import matplotlib.pyplot as plt
+from tensorflow.contrib import layers
+
 
 # tf.set_random_seed(2)
 
@@ -79,7 +81,6 @@ class A3C:
 
         self.display(train_flag=True)
 
-
     def display(self, train_flag=False):
         if train_flag:
             pass
@@ -94,7 +95,8 @@ class A3C:
         step = 0
         step_his = []
         for step in range(500):
-            action =  self.GLOBAL_AC.choose_action_best(observation, self.para.env)  # RL choose action based on observation
+            action = self.GLOBAL_AC.choose_action_best(observation,
+                                                       self.para.env)  # RL choose action based on observation
             # if step == 3:
             #     action = 4
             step_his.append(action)
@@ -109,7 +111,8 @@ class A3C:
 
             for i in range(len(self.para.env.city_location)):
                 plt.scatter(self.para.env.city_location[i][0], self.para.env.city_location[i][1])
-                plt.text(self.para.env.city_location[i][0], self.para.env.city_location[i][1], str(i), size=15, alpha=0.2)
+                plt.text(self.para.env.city_location[i][0], self.para.env.city_location[i][1], str(i), size=15,
+                         alpha=0.2)
             plt.plot(trajectory_record[:step + 2, 0], trajectory_record[:step + 2, 1])
             plt.show()
             plt.pause(0.5)
@@ -120,7 +123,6 @@ class A3C:
                 print(distance)
                 print('action', step_his)
                 break
-
 
 
 class ACNet(object):
@@ -139,6 +141,10 @@ class ACNet(object):
 
                 # 网络构建
                 self.a_prob, self.v, self.a_params, self.c_params = self._build_net(scope)
+                # 正则化项
+
+                # a_regu = layers.l2_regularizer(0.1)
+                # self.a_regu_loss = tf.contrib.layers.l2_regularizer(a_regu)
 
                 # 价值网络优化
                 td = tf.subtract(self.v_target, self.v, name='TD_error')
@@ -147,7 +153,7 @@ class ACNet(object):
 
                 with tf.name_scope('a_loss'):
                     log_prob = tf.reduce_sum(
-                        tf.log(self.a_prob) * tf.one_hot(self.a_his, self.para.N_A, dtype=tf.float32),
+                        tf.log(self.a_prob + 1e-5) * tf.one_hot(self.a_his, self.para.N_A, dtype=tf.float32),
                         axis=1, keepdims=True)
                     exp_v = log_prob * tf.stop_gradient(td)
                     entropy = -tf.reduce_sum(self.a_prob * tf.log(self.a_prob + 1e-5),
@@ -158,7 +164,6 @@ class ACNet(object):
                 with tf.name_scope('local_grad'):
                     self.a_grads = tf.gradients(self.a_loss, self.a_params)  # 计算梯度
                     self.c_grads = tf.gradients(self.c_loss, self.c_params)  # 计算梯度
-
             with tf.name_scope('sync'):
                 with tf.name_scope('pull'):  # 把全局的pull到本地
                     self.pull_a_params_op = [l_p.assign(g_p) for l_p, g_p in zip(self.a_params, globalAC.a_params)]
@@ -191,11 +196,11 @@ class ACNet(object):
         prob_weights = self.para.SESS.run(self.a_prob, feed_dict={self.s: s[np.newaxis, :]}).reshape(self.para.N_S)
         state_tem = env.state.copy()
         index_valid = [x for x in range(env.action_dim) if state_tem[x] == 1]
-        prob_valid = [prob_weights[x] for x in index_valid] # 有效的prob
+        prob_valid = [prob_weights[x] for x in index_valid]  # 有效的prob
         prob_valid /= np.sum(prob_valid)  # 归一化
         num_valid = prob_valid.shape[0]
         action_valid = np.random.choice(range(num_valid),
-                                  p=prob_valid.ravel())  # select action w.r.t the actions prob
+                                        p=prob_valid.ravel())  # select action w.r.t the actions prob
         action = index_valid[action_valid]
         return action
 
@@ -203,7 +208,7 @@ class ACNet(object):
         prob_weights = self.para.SESS.run(self.a_prob, feed_dict={self.s: s[np.newaxis, :]}).reshape(self.para.N_S)
         state_tem = env.state.copy()
         index_valid = [x for x in range(env.action_dim) if state_tem[x] == 1]
-        prob_valid = [prob_weights[x] for x in index_valid] # 有效的prob
+        prob_valid = [prob_weights[x] for x in index_valid]  # 有效的prob
         prob_valid /= np.sum(prob_valid)  # 归一化       ]
         action_valid = np.argmax(prob_valid)
         action = index_valid[action_valid]
@@ -227,7 +232,7 @@ class Worker(object):
                 a = self.AC.choose_action(s, self.env_l)  # 选取动作
                 s_, r, done, info = self.env_l.step(a)
 
-                ep_r +=  info["distance"]
+                ep_r += r
                 buffer_s.append(s)
                 buffer_a.append(a)
                 buffer_r.append(r)  # normalize
