@@ -171,3 +171,36 @@ class DDPG(object):
 
     def net_save(self):
         self.actor_saver.save(self.sess, self.modelpath)
+
+
+if __name__ == '__main__':
+    env = ENV()
+    RL = DDPG(a_dim=env.action_dim,
+              s_dim=env.state_dim,
+              a_bound=env.a_bound,
+              train=True
+              )
+    step = 0
+    ep_reward = 0
+    if RL.train:
+        episodes = 20000
+        for episode in range(episodes):
+            ep_reward = 0
+            # initial observation
+            observation = env.reset()
+            while True:
+                env.render()
+                action = RL.choose_action(observation)
+                observation_, reward, done, info = env.step(action)
+                ep_reward += reward
+                RL.store_transition(observation, action, reward, observation_, done)
+                if step % 5 == 0:
+                    RL.learn()
+                observation = observation_
+                if done:
+                    break
+                step += 1
+            print('Episode:', episode + 1, ' ep_reward: %.4f' % ep_reward, 'epsilon: %.3f' % RL.epsilon)
+        RL.model_save()
+    else:
+        pass

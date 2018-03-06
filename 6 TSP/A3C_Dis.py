@@ -143,8 +143,8 @@ class ACNet(object):
                 self.a_prob, self.v, self.a_params, self.c_params = self._build_net(scope)
                 # 正则化项
 
-                # a_regu = layers.l2_regularizer(0.1)
-                # self.a_regu_loss = tf.contrib.layers.l2_regularizer(a_regu)
+                a_regu = layers.l2_regularizer(0.1)
+                self.a_regu_loss = tf.contrib.layers.l2_regularizer(a_regu)
 
                 # 价值网络优化
                 td = tf.subtract(self.v_target, self.v, name='TD_error')
@@ -153,13 +153,13 @@ class ACNet(object):
 
                 with tf.name_scope('a_loss'):
                     log_prob = tf.reduce_sum(
-                        tf.log(self.a_prob + 1e-5) * tf.one_hot(self.a_his, self.para.N_A, dtype=tf.float32),
+                        tf.log(self.a_prob) * tf.one_hot(self.a_his, self.para.N_A, dtype=tf.float32),
                         axis=1, keepdims=True)
                     exp_v = log_prob * tf.stop_gradient(td)
                     entropy = -tf.reduce_sum(self.a_prob * tf.log(self.a_prob + 1e-5),
                                              axis=1, keepdims=True)  # encourage exploration
                     self.exp_v = self.para.ENTROPY_BETA * entropy + exp_v
-                    self.a_loss = tf.reduce_mean(-self.exp_v)
+                    self.a_loss = tf.reduce_mean(-self.exp_v) + self.a_regu_loss
 
                 with tf.name_scope('local_grad'):
                     self.a_grads = tf.gradients(self.a_loss, self.a_params)  # 计算梯度
@@ -232,7 +232,7 @@ class Worker(object):
                 a = self.AC.choose_action(s, self.env_l)  # 选取动作
                 s_, r, done, info = self.env_l.step(a)
 
-                ep_r += r
+                ep_r += info["distance"]
                 buffer_s.append(s)
                 buffer_a.append(a)
                 buffer_r.append(r)  # normalize
