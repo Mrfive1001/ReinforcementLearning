@@ -96,7 +96,7 @@ class A3C:
         self.actor_saver.save(self.para.SESS, self.para.modelpath)
 
     def choose_action(self, state):
-        return self.GLOBAL_AC.choose_action(state)
+        return self.GLOBAL_AC.choose_best(state)
 
     def display(self):
         if not self.para.train:
@@ -284,3 +284,21 @@ class Worker(object):
                     )
                     self.para.GLOBAL_EP += 1
                     break
+
+
+if __name__ == '__main__':
+    env = ENV()
+    para = A3C.Para(env,
+                    a_constant = False,
+                    units_a=10,
+                    units_c=20,
+                    MAX_GLOBAL_EP=40000,
+                    UPDATE_GLOBAL_ITER=2,
+                    gamma=0.9,
+                    ENTROPY_BETA=0.1,
+                    LR_A=0.0007,
+                    LR_C=0.001)
+    RL = A3C.A3C(para)
+    RL.run()
+    #可以使用
+    RL.choose_action()
