@@ -204,6 +204,7 @@ class ACNet(object):
     def pull_global(self):  # 函数：执行pull动作
         self.para.SESS.run([self.pull_a_params_op, self.pull_c_params_op])
 
+    # 连续动作，全局网络选择连函数等价
     def choose_action(self, s):  # 函数：选择动作action
         s = s[np.newaxis, :]
         if self.para.a_constant:
@@ -216,6 +217,13 @@ class ACNet(object):
             else:
                 return np.argmax(prob_weights)
 
+    def choose_best(self, s): # 函数：选择最好的动作action
+        s = s[np.newaxis, :]
+        if self.para.a_constant:
+            return self.para.SESS.run(self.A, {self.s: s})[0]
+        else:
+            prob_weights = self.para.SESS.run(self.a_prob, feed_dict={self.s: s}).reshape(self.para.N_S)
+            return np.argmax(prob_weights)
 
 class Worker(object):
     # 并行处理核的数量为实例数量
