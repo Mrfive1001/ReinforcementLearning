@@ -27,9 +27,9 @@ class Para:
                  units_a=30,  # 双层网络，第一层的大小
                  units_c=100,  # 双层网络，critic第一层的大小
                  MAX_GLOBAL_EP=2000,  # 全局需要跑多少轮数
-                 UPDATE_GLOBAL_ITER=30,  # 多少代进行一次学习
+                 UPDATE_GLOBAL_ITER=30,  # 多少代进行一次学习，调小一些学的比较快
                  gamma=0.9,  # 奖励衰减率
-                 ENTROPY_BETA=0.01,  # 表征探索大小的量
+                 ENTROPY_BETA=0.01,  # 表征探索大小的量，越大结果越不确定
                  LR_A=0.0001,  # Actor的学习率
                  LR_C=0.001,  # Crtic的学习率
                  MAX_EP_STEP=510,  # 控制一个回合的最长长度
@@ -134,6 +134,7 @@ class ACNet(object):
                 if self.para.a_constant:
                     mu, sigma, self.v, self.a_params, self.c_params = self._build_net(scope)  # mu 均值 sigma 均方差
                     with tf.name_scope('wrap_a_out'):
+                        # 似乎sigma值定下来会效果更好
                         mu, sigma = mu * abs(A_BOUND[1] - A_BOUND[0]) / 2 + \
                                     np.mean(A_BOUND), sigma + 1e-4  # 归一化反映射，防止方差为零
                     normal_dist = tf.contrib.distributions.Normal(mu, sigma)  # tf自带的正态分布函数
@@ -152,7 +153,8 @@ class ACNet(object):
                     if self.para.a_constant:
                         log_prob = normal_dist.log_prob(self.a_his)  # 概率的log值
                         exp_v = log_prob * tf.stop_gradient(td)  # stop_gradient停止梯度传递的意思
-                        entropy = normal_dist.entropy()  # encourage exploration，香农熵，评价分布的不确定性，
+                        entropy = normal_dist.entropy()
+                        # encourage exploration，香农熵，评价分布的不确定性，鼓励探索，防止提早进入次优
                         self.exp_v = self.para.ENTROPY_BETA * entropy + exp_v
                         self.a_loss = tf.reduce_mean(-self.exp_v)  # actor的优化目标是价值函数最大
                     else:
