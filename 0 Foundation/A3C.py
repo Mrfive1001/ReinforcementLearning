@@ -225,6 +225,8 @@ class Worker(object):
         self.AC = ACNet(name, para, globalAC)
 
     def work(self):
+        # 并行处理核的环境是独立的
+        # 某些参数是共享的例如self.para.GLOBAL_EP
         total_step = 1
         buffer_s, buffer_a, buffer_r = [], [], []  # 类似于memory，存储运行轨迹
         while self.para.GLOBAL_EP < self.para.MAX_GLOBAL_EP:
