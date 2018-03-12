@@ -25,15 +25,17 @@ class Env:
         return self.state.copy()
 
     def step(self, action):
-        # 求微分
+        # 当前状态的参数值
         _r, _theta, _v_r, _v_theta = self.state
-
+        # 求微分
         r_dot = _v_r
         theta_dot = _v_theta / _r
         v_r_dot = self.constant['beta'] * ((np.cos(action)) ** 3) / (_r ** 2) + (_v_theta ** 2) / _r - 1 / (_r ** 2)
         v_theta_dot = self.constant['beta'] * np.sin(action) * (np.cos(action) ** 2) / (_r ** 2) - _v_r * _v_theta / _r
-
+        # 下一个状态
         self.state += self.delta_t * np.array([r_dot, theta_dot, v_r_dot, v_theta_dot])
+        # 判断是否结束
 
+        # 设计reward函数
 
         return self.state.copy(), reward, done, info
