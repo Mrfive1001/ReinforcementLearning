@@ -8,8 +8,8 @@ class Env:
         self.t = None
         self.state = None
         self.delta_t = 0.01
-        self.constant = {'beta': 1,'r0':1,'v_r0':0,'theta0':0}
-        self.constant['v_theta0'] = 1/np.sqrt(self.constant['r0'])
+        self.constant = {'beta': 0.05, 'r0': 1, 'v_r0': 1, 'theta0': 0}
+        self.constant['v_theta0'] = 1 / np.sqrt(self.constant['r0'])
         self.reset()
         self.state_dim = len(self.state)
         self.action_dim = 1
@@ -21,7 +21,7 @@ class Env:
 
     def reset(self):
         self.t = 0
-        self.state = np.array(self.constant['r0','theta0','v_r0','v_theta0'])  # [r theta v_r v_theta]
+        self.state = np.array(self.constant['r0', 'theta0', 'v_r0', 'v_theta0'])  # [r theta v_r v_theta]
         return self.state.copy()
 
     def step(self, action):
