@@ -93,14 +93,14 @@ class A3C:
             t.start()
             worker_threads.append(t)
         COORD.join(worker_threads)
-        self.actor_saver.save(self.para.SESS, self.para.modelpath)
+        self.actor_saver.save(self.para.SESS, self.para.model_path)
 
     def choose_action(self, state):
         return self.GLOBAL_AC.choose_best(state)
 
     def display(self):
         if not self.para.train:
-            self.actor_saver.restore(self.para.SESS, self.para.modelpath)
+            self.actor_saver.restore(self.para.SESS, self.para.model_path)
         # display
 
 
@@ -181,7 +181,7 @@ class ACNet(object):
         w_init = tf.random_normal_initializer(0., .1)
         with tf.variable_scope('actor'):
             l_a1 = tf.layers.dense(self.s, self.para.units_a, tf.nn.relu6, kernel_initializer=w_init, name='la1')
-            l_a = tf.layers.dense(self.la1, self.para.units_a, tf.nn.relu6, kernel_initializer=w_init, name='la')
+            l_a = tf.layers.dense(l_a1, self.para.units_a, tf.nn.relu6, kernel_initializer=w_init, name='la')
             if self.para.a_constant:
                 mu = tf.layers.dense(l_a, self.para.N_A, tf.nn.tanh, kernel_initializer=w_init, name='mu')
                 sigma = tf.layers.dense(l_a, self.para.N_A, tf.nn.softplus, kernel_initializer=w_init, name='sigma')
