@@ -46,12 +46,12 @@ class Env:
         # 下一个状态
         self.state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
         # 判断是否结束
-        self.t += self.delta_d
-        if self.t >= 200 or self.state[0] >= self.constant['r_f']:
+        self.t += self.delta_d  # 单位是天
+        if self.t >= 200 or self.state[0] >= self.constant['r_f']: # 超过一定距离和一定天数就结束
             done = True
         else:
             done = False
-        info = None
+        info = {'t':self.t}
         # 设计reward函数
         reward = None
         return self.state.copy(), reward, done, info
