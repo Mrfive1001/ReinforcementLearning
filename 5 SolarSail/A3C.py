@@ -47,6 +47,9 @@ class Para:
         self.ENTROPY_BETA = ENTROPY_BETA
         self.LR_A = LR_A
         self.LR_C = LR_C
+        self.best_r = []
+        self.best_phi = []
+        self.best_epr = None
 
         # 保存网络位置
         self.model_path0 = os.path.join(sys.path[0], 'A3C_Net')
@@ -240,12 +243,17 @@ class Worker(object):
         total_step = 1
         buffer_s, buffer_a, buffer_r = [], [], []  # 类似于memory，存储运行轨迹
         while self.para.GLOBAL_EP < self.para.MAX_GLOBAL_EP:
+            r_tra = []
+            phi_tra = []
             s = self.env_l.reset()
+            r_tra.append(s[0])
+            phi_tra.append(s[1])
             ep_r = 0
             for ep_t in range(self.para.MAX_EP_STEP):  # MAX_EP_STEP每个片段的最大个数
                 a = self.AC.choose_action(s)  # 选取动作
                 s_, r, done, info = self.env_l.step(a)
-
+                r_tra.append(s_[0])
+                phi_tra.append(s_[1])
                 ep_r += r
                 buffer_s.append(s)
                 buffer_a.append(a)
@@ -277,6 +285,14 @@ class Worker(object):
                 total_step += 1
                 if done:  # 每个片段结束，输出一下结果
                     self.para.GLOBAL_RUNNING_R.append(ep_r)
+                    if self.para.best_epr is None:
+                        self.para.best_epr = ep_r
+                    else:
+                        if self.para.best_epr < ep_r:
+                            self.para.best_epr = ep_r
+                            self.para.best_phi = phi_tra.copy()
+                            self.para.best_r = r_tra.copy()
+
                     print(
                         self.name,
                         "Ep:", self.para.GLOBAL_EP,
