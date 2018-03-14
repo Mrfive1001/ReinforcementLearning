@@ -21,7 +21,7 @@ class Env:
         self.constant['v_f'] = 1 / np.sqrt(self.constant['r_f'])
         self.reset()
         self.state_dim = len(self.state)
-        self.theta_dim = 1
+        self.action_dim = 1
         self.abound = np.array([-90, 90])
 
     def render(self):
@@ -53,70 +53,9 @@ class Env:
             done = False
         info = {'t':self.t}
         # 设计reward函数
-        reward = None
+        reward = -1
         return self.state.copy(), reward, done, info
 
-    # def display(self):
-    #     phi = []
-    #     r = []
-    #     # for i in range(int(66 / self.delta_d)):
-    #     #     state = env.step(0)[0]
-    #     #     r0, phi0, _, _ = state
-    #     #     phi.append(phi0)
-    #     #     r.append(r0)
-    #     # for i in range(int(66 / self.delta_d)):
-    #     #     state = env.step(70)[0]
-    #     #     r0, phi0, _, _ = state
-    #     #     phi.append(phi0)
-    #     #     r.append(r0)
-    #     # for i in range(int(66 / self.delta_d)):
-    #     #     state = env.step(60)[0]
-    #     #     r0, phi0, _, _ = state
-    #     #     phi.append(phi0)
-    #     #     r.append(r0)
-    #     # for i in range(int(66 / self.delta_d)):
-    #     #     state = env.step(50)[0]
-    #     #     r0, phi0, _, _ = state
-    #     #     phi.append(phi0)
-    #     #     r.append(r0)
-    #     # for i in range(int(66 / self.delta_d)):
-    #     #     state = env.step(45)[0]
-    #     #     r0, phi0, _, _ = state
-    #     #     phi.append(phi0)
-    #     #     r.append(r0)
-    #     for i in range(int(32 / self.delta_d)):
-    #         state = env.step(-48)[0]
-    #         r0, phi0, _, _ = state
-    #         phi.append(phi0)
-    #         r.append(r0)
-    #     for i in range(int(32 / self.delta_d)):
-    #         state = env.step(-55)[0]
-    #         r0, phi0, _, _ = state
-    #         phi.append(phi0)
-    #         r.append(r0)
-    #     for i in range(int(32 / self.delta_d)):
-    #         state = env.step(-67)[0]
-    #         r0, phi0, _, _ = state
-    #         phi.append(phi0)
-    #         r.append(r0)
-    #     for i in range(int(32 / self.delta_d)):
-    #         state = env.step(-79)[0]
-    #         r0, phi0, _, _ = state
-    #         phi.append(phi0)
-    #         r.append(r0)
-    #     for i in range(int(32 / self.delta_d)):
-    #         state = env.step(0)[0]
-    #         r0, phi0, _, _ = state
-    #         phi.append(phi0)
-    #         r.append(r0)
-    #     print(r[-1])
-    #     plt.subplot(111, polar=True)
-    #     theta = np.arange(0, 2 * np.pi, 0.02)
-    #     plt.plot(theta, 1 * np.ones_like(theta))
-    #     plt.plot(theta, 1.547 * np.ones_like(theta))
-    #     plt.plot(theta, 0.7233 * np.ones_like(theta))
-    #     plt.plot(phi, r)
-    #     plt.show()
 
 
 if __name__ == '__main__':
