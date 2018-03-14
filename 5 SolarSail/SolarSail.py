@@ -13,7 +13,7 @@ class Env:
         self.mu = 1.32712348 * (10 ** 20)
         self.TU = np.sqrt(self.AU ** 3 / self.mu)
         # 特征加速度ac和光压因子beta或者说k的转换关系ac = 5.93beta
-        self.delta_d = 0.5  # 仿真步长，未归一化，单位天
+        self.delta_d = 1  # 仿真步长，未归一化，单位天
         self.delta_t = self.delta_d * (24 * 60 * 60) / self.TU  # 无单位
         self.constant = {'k': 2 / 5.93, 'r0': 1, 'u0': 0, 'phi0': 0,
                          'r_f': 1.524, 'u_f': 0, 'phi_f': 0}
@@ -47,15 +47,21 @@ class Env:
         self.state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
         # 判断是否结束
         self.t += self.delta_d  # 单位是天
-        if self.t >= 200 or self.state[0] >= self.constant['r_f']: # 超过一定距离和一定天数就结束
+        if self.t >= 300 or self.state[0] >= self.constant['r_f']:  # 超过一定距离和一定天数就结束
             done = True
         else:
             done = False
-        info = {'t':self.t}
+        info = {'t': self.t}
+        info['target'] = [self.constant['r_f'], self.constant['phi_f'], self.constant['u_f'], self.constant['v_f']]
         # 设计reward函数
         reward = -1
-        return self.state.copy(), reward, done, info
+        c1, c2, c3 = 100, 500, 100
+        if done:
+            reward -= c1 * np.abs(self.state[0] - self.constant['r_f']) + c2 * np.abs(
+                self.state[2] - self.constant['u_f']) + \
+                      c3 * np.abs(self.state[3] - self.constant['v_f'])
 
+        return self.state.copy(), reward, done, info
 
 
 if __name__ == '__main__':
