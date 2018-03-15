@@ -50,6 +50,7 @@ class Para:
         self.best_r = []
         self.best_phi = []
         self.best_epr = None
+        self.best_day = None
 
         # 保存网络位置
         self.model_path0 = os.path.join(sys.path[0], 'A3C_Net')
@@ -292,6 +293,7 @@ class Worker(object):
                             self.para.best_epr = ep_r
                             self.para.best_phi = phi_tra.copy()
                             self.para.best_r = r_tra.copy()
+                            self.para.best_day = info['t']
 
                     print(
                         self.name,
