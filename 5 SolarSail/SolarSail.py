@@ -55,11 +55,17 @@ class Env:
         info['target'] = [self.constant['r_f'], self.constant['phi_f'], self.constant['u_f'], self.constant['v_f']]
         # 设计reward函数
         reward = -1
-        c1, c2, c3 = 100, 400, 100
+        c1, c2, c3 = 100, 1000, 100
         if done:
-            reward -= c1 * np.abs(self.state[0] - self.constant['r_f']) + c2 * np.abs(
-                self.state[2] - self.constant['u_f']) + \
-                      c3 * np.abs(self.state[3] - self.constant['v_f'])
+            # if np.abs(self.state[0] - self.constant['r_f'])+np.abs(self.state[2] - self.constant['u_f'])<0.5:
+            #     reward+= 200
+            # else:
+            #     reward -= c1 * np.abs(self.state[0] - self.constant['r_f']) + \
+            #               c2 * np.abs(self.state[2] - self.constant['u_f']) + \
+            #               c3 * np.abs(self.state[3] - self.constant['v_f'])
+            reward += 400 -c1 * np.abs(self.state[0] - self.constant['r_f']) - \
+                          c2 * np.abs(self.state[2] - self.constant['u_f']) - \
+                          c3 * np.abs(self.state[3] - self.constant['v_f'])
 
         return self.state.copy(), reward, done, info
 
