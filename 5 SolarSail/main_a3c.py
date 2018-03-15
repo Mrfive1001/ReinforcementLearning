@@ -10,11 +10,11 @@ if __name__ == '__main__':
                     units_a=32,
                     units_c=64,
                     MAX_GLOBAL_EP=200,
-                    UPDATE_GLOBAL_ITER=30,
+                    UPDATE_GLOBAL_ITER=50,
                     gamma=0.9,
-                    ENTROPY_BETA=1,
-                    LR_A=0.0007,
-                    LR_C=0.001,
+                    ENTROPY_BETA=0.1,
+                    LR_A=0.00008,
+                    LR_C=0.0001,
                     train=True)
     RL = A3C.A3C(para)
     RL.run()
@@ -41,6 +41,7 @@ if __name__ == '__main__':
     print('目标参数', info['target'])
     print('测试总奖励是', epr)
     print('过程中最好是', para.best_epr)
+    print('过程中最短天数是', para.best_day)
     plt.subplot(111, polar=True)
     theta = np.arange(0, 2 * np.pi, 0.02)
     plt.plot(theta, 1 * np.ones_like(theta))
