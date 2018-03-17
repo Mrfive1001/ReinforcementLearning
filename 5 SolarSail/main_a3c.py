@@ -9,10 +9,10 @@ if __name__ == '__main__':
                     a_constant=True,
                     units_a=64,
                     units_c=128,
-                    MAX_GLOBAL_EP=20000,
-                    UPDATE_GLOBAL_ITER=180,
+                    MAX_GLOBAL_EP=50000,
+                    UPDATE_GLOBAL_ITER=4,
                     gamma=0.9,
-                    ENTROPY_BETA=0.01,
+                    ENTROPY_BETA=0.1,
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train=True)
