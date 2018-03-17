@@ -47,7 +47,7 @@ class Env:
         self.state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
         # 判断是否结束
         self.t += self.delta_d  # 单位是天
-        if self.t >= 400 or self.state[0] >= self.constant['r_f']:  # 超过一定距离和一定天数就结束
+        if self.t >= 500 or self.state[0] >= self.constant['r_f']:  # 超过一定距离和一定天数就结束
             done = True
         else:
             done = False
@@ -55,9 +55,9 @@ class Env:
         info['target'] = [self.constant['r_f'], self.constant['phi_f'], self.constant['u_f'], self.constant['v_f']]
         # 设计reward函数
         reward = -1
-        c1, c2, c3 = 100, 10, 0
+        c1, c2, c3 = 100, 1000, 0
         if done:
-            reward += -c1 * np.abs(self.state[0] - self.constant['r_f']) - \
+            reward += 400-c1 * np.abs(self.state[0] - self.constant['r_f']) - \
                           c2 * np.abs(self.state[2] - self.constant['u_f']) - \
                           c3 * np.abs(self.state[3] - self.constant['v_f'])
 
