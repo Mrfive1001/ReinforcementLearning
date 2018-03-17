@@ -25,7 +25,9 @@ if __name__ == '__main__':
     r.append(state_now[0])
     phi.append(state_now[1])
     while True:
-        state_next, reward, done, info = env.step(choose_action(t))
+        action = choose_action(t)/90.0
+        # action = -45/90.0
+        state_next, reward, done, info = env.step(action)
         t = info['t']
         state_now = state_next
         r.append(state_now[0])

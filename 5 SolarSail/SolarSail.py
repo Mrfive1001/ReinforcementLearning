@@ -22,7 +22,7 @@ class Env:
         self.reset()
         self.state_dim = len(self.state)
         self.action_dim = 1
-        self.abound = np.array([-90, 90])
+        self.abound = np.array([0, 1])
 
     def render(self):
         pass
@@ -35,7 +35,7 @@ class Env:
 
     def step(self, action):
         # 传入单位是度
-        theta = (action / 180) * np.pi
+        theta = (action / 2) * np.pi
         _r, _phi, _u, _v = self.state  # 当前状态的参数值
         # 求微分
         r_dot = _u
@@ -47,7 +47,7 @@ class Env:
         self.state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
         # 判断是否结束
         self.t += self.delta_d  # 单位是天
-        if self.t >= 300 or self.state[0] >= self.constant['r_f']:  # 超过一定距离和一定天数就结束
+        if self.t >= 400 or self.state[0] >= self.constant['r_f']:  # 超过一定距离和一定天数就结束
             done = True
         else:
             done = False
