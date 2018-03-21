@@ -9,7 +9,7 @@ if __name__ == '__main__':
                     a_constant=True,
                     units_a=64,
                     units_c=128,
-                    MAX_GLOBAL_EP=50000,
+                    MAX_GLOBAL_EP=30000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.9,
                     ENTROPY_BETA=0.1,
