@@ -14,7 +14,7 @@ if __name__ == '__main__':
                     MAX_GLOBAL_EP=50000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
-                    ENTROPY_BETA_init=0.05,
+                    ENTROPY_BETA_init=0.01, # 太大最后测试效果很差
                     ENTROPY_BETA_times=10000,
                     ENTROPY_BETA_end=0.05,
                     LR_A=0.00002,
