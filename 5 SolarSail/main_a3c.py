@@ -20,6 +20,7 @@ if __name__ == '__main__':
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train=True)
+    number = 5
     RL = A3C.A3C(para)
     RL.run()
     phi = []
@@ -53,4 +54,5 @@ if __name__ == '__main__':
     plt.plot(theta, 1.547 * np.ones_like(theta))
     # plt.plot(para.best_phi, para.best_r, '--')
     plt.plot(phi, r)
-    plt.savefig('A3C3.png')
+    plt.savefig('A3C'+str(number)+'.png')
+    print('number:',number)
