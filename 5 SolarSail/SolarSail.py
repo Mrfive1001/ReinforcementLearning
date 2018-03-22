@@ -68,6 +68,10 @@ class Env:
         return self.state.copy(), reward, done, info
 
 
+        # reward定义
+        # 保持探索
+        # 增加学习轮数
+        # 增加网络大小
 if __name__ == '__main__':
     env = Env()
     print(env.step(0))
