@@ -23,7 +23,7 @@ class Env:
         self.state_dim = len(self.state)
         self.action_dim = 1
         self.abound = np.array([0, 1])
-        self.times = 1
+        self.times = 50
 
     def render(self):
         pass
@@ -50,20 +50,20 @@ class Env:
             self.state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
             # 判断是否结束
             self.t += self.delta_d  # 单位是天
-            reward -= np.abs(self.state[0] - self.constant['r_f'])/10
-            if self.t >= 300:  # 超过一定距离和一定天数就结束
+            reward -= 1
+            reward -= np.abs(self.state[0] - self.constant['r_f'])/5
+            if self.t >= 400 or self.state[0] >= self.constant['r_f']:  # 超过一定距离和一定天数就结束
                 done = True
-                reward += 10
                 break
             else:
                 done = False
         info = {'t': self.t}
         info['target'] = [self.constant['r_f'], self.constant['phi_f'], self.constant['u_f'], self.constant['v_f']]
-        # c1, c2, c3 = 1000, 1000, 1000
-        # if done:
-        #     reward += 500-c1 * np.abs(self.state[0] - self.constant['r_f']) - \
-        #                   c2 * np.abs(self.state[2] - self.constant['u_f']) - \
-        #                   c3 * np.abs(self.state[3] - self.constant['v_f'])
+        c1, c2, c3 = 100, 500, 0
+        if done:
+            reward += 300-c1 * np.abs(self.state[0] - self.constant['r_f']) - \
+                          c2 * np.abs(self.state[2] - self.constant['u_f']) - \
+                          c3 * np.abs(self.state[3] - self.constant['v_f'])
 
         return self.state.copy(), reward, done, info
 

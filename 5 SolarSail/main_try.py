@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from SolarSail import Env
 
@@ -20,6 +22,7 @@ if __name__ == '__main__':
     phi = []
     r = []
     env = Env()
+    env.times = 1
     t = 0
     state_now = env.reset()
     r.append(state_now[0])
@@ -42,4 +45,4 @@ if __name__ == '__main__':
     plt.plot(theta, 1 * np.ones_like(theta))
     plt.plot(theta, 1.547 * np.ones_like(theta))
     plt.plot(phi, r)
-    plt.show()
+    plt.savefig('try.png')

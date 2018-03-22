@@ -11,7 +11,7 @@ import numpy as np
 import os
 import shutil
 import matplotlib
-# matplotlib.use('Agg')
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import sys
 import copy
@@ -29,7 +29,9 @@ class Para:
                  MAX_GLOBAL_EP=2000,  # 全局需要跑多少轮数
                  UPDATE_GLOBAL_ITER=30,  # 多少代进行一次学习，调小一些学的比较快
                  gamma=0.9,  # 奖励衰减率
-                 ENTROPY_BETA=0.01,  # 表征探索大小的量，越大结果越不确定
+                 ENTROPY_BETA_init=1,  # 表征探索大小的量，越大结果越不确定
+                 ENTROPY_BETA_end=0.01,  # 表征探索大小的量，越大结果越不确定
+                 ENTROPY_BETA_times = 1000,# 表示多少次到达终点
                  LR_A=0.0001,  # Actor的学习率
                  LR_C=0.001,  # Crtic的学习率
                  MAX_EP_STEP=510,  # 控制一个回合的最长长度
@@ -44,7 +46,10 @@ class Para:
         self.units_a = units_a
         self.units_c = units_c
         self.a_constant = a_constant
-        self.ENTROPY_BETA = ENTROPY_BETA
+        self.ENTROPY_BETA_init = ENTROPY_BETA_init
+        self.ENTROPY_BETA_times = ENTROPY_BETA_times
+        self.ENTROPY_BETA_end = ENTROPY_BETA_end
+        self.ENTROPY_BETA = ENTROPY_BETA_init
         self.LR_A = LR_A
         self.LR_C = LR_C
         self.best_r = []
@@ -52,6 +57,7 @@ class Para:
         self.best_epr = None
         self.best_day = None
         self.best_state = None
+        self.train = train
 
         # 保存网络位置
         self.model_path0 = os.path.join(sys.path[0], 'A3C_Net')
@@ -89,16 +95,19 @@ class A3C:
         self.actor_saver = tf.train.Saver()
 
     def run(self):
-        self.para.SESS.run(tf.global_variables_initializer())
-        COORD = tf.train.Coordinator()
-        worker_threads = []
-        for worker in self.workers:
-            job = lambda: worker.work()
-            t = threading.Thread(target=job)
-            t.start()
-            worker_threads.append(t)
-        COORD.join(worker_threads)
-        self.actor_saver.save(self.para.SESS, self.para.model_path)
+        if not self.para.train:
+            self.actor_saver.restore(self.para.SESS, self.para.model_path)
+        else:
+            self.para.SESS.run(tf.global_variables_initializer())
+            COORD = tf.train.Coordinator()
+            worker_threads = []
+            for worker in self.workers:
+                job = lambda: worker.work()
+                t = threading.Thread(target=job)
+                t.start()
+                worker_threads.append(t)
+            COORD.join(worker_threads)
+            self.actor_saver.save(self.para.SESS, self.para.model_path)
 
     def choose_action(self, state):
         return self.GLOBAL_AC.choose_best(state)
@@ -245,6 +254,8 @@ class Worker(object):
         total_step = 1
         buffer_s, buffer_a, buffer_r = [], [], []  # 类似于memory，存储运行轨迹
         while self.para.GLOBAL_EP < self.para.MAX_GLOBAL_EP:
+            self.para.ENTROPY_BETA = max(self.para.ENTROPY_BETA_end,self.para.ENTROPY_BETA_init - \
+                                     (self.para.GLOBAL_EP/self.para.ENTROPY_BETA_times)*(self.para.ENTROPY_BETA_init-self.para.ENTROPY_BETA_end))
             r_tra = []
             phi_tra = []
             s = self.env_l.reset()
@@ -315,7 +326,9 @@ if __name__ == '__main__':
                     MAX_GLOBAL_EP=40000,
                     UPDATE_GLOBAL_ITER=2,
                     gamma=0.9,
-                    ENTROPY_BETA=0.1,
+                    ENTROPY_BETA_init=1,
+                    ENTROPY_BETA_times = 1000,
+                    ENTROPY_BETA_end = 0.01,
                     LR_A=0.0007,
                     LR_C=0.001)
     RL = A3C.A3C(para)

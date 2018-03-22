@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from SolarSail import Env
 import A3C
@@ -7,22 +9,24 @@ if __name__ == '__main__':
     env = Env()
     para = A3C.Para(env,
                     a_constant=True,
-                    units_a=64,
-                    units_c=128,
-                    MAX_GLOBAL_EP=30000,
+                    units_a=128,
+                    units_c=256,
+                    MAX_GLOBAL_EP=50000,
                     UPDATE_GLOBAL_ITER=4,
-                    gamma=0.9,
-                    ENTROPY_BETA=0.1,
+                    gamma=0.95,
+                    ENTROPY_BETA_init=0.05,
+                    ENTROPY_BETA_times=10000,
+                    ENTROPY_BETA_end=0.05,
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train=True)
     RL = A3C.A3C(para)
     RL.run()
-
     phi = []
     r = []
     env = Env()
     t = 0
+    env.times = 1
     state_now = env.reset()
     r.append(state_now[0])
     phi.append(state_now[1])
@@ -49,4 +53,4 @@ if __name__ == '__main__':
     plt.plot(theta, 1.547 * np.ones_like(theta))
     plt.plot(para.best_phi, para.best_r, '--')
     plt.plot(phi, r)
-    plt.show()
+    plt.savefig('A3C2.png')
