@@ -72,6 +72,7 @@ class Env:
         # 保持探索
         # 增加学习轮数
         # 增加网络大小
+        # 总reward跨0
 if __name__ == '__main__':
     env = Env()
     print(env.step(0))
