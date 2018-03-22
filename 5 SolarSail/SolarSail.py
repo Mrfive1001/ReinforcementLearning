@@ -23,7 +23,7 @@ class Env:
         self.state_dim = len(self.state)
         self.action_dim = 1
         self.abound = np.array([0, 1])
-        self.times = 30
+        self.times = 1
 
     def render(self):
         pass
@@ -51,7 +51,7 @@ class Env:
             # 判断是否结束
             self.t += self.delta_d  # 单位是天
             reward -= np.abs(self.state[0] - self.constant['r_f'])/10
-            if self.t >= 400:  # 超过一定距离和一定天数就结束
+            if self.t >= 300:  # 超过一定距离和一定天数就结束
                 done = True
                 reward += 10
                 break

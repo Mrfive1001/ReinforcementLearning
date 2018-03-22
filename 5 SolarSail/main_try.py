@@ -4,16 +4,16 @@ from SolarSail import Env
 
 
 def choose_action(t):
-    if t <= 66:
+    if t <= 65:
         return 0
-    elif t <= 2 * 66:
+    elif t <= 2 * 65:
         return 70
-    elif t <= 3 * 66:
-        return 60
-    elif t <= 4 * 66:
-        return 50
+    elif t <= 3 * 65:
+        return 62
+    elif t <= 4 * 65:
+        return 54
     else:
-        return 45
+        return 47
 
 
 if __name__ == '__main__':
@@ -36,6 +36,7 @@ if __name__ == '__main__':
             break
     print('转移轨道时间%d天' % t)
     print(state_now)
+    print('目标参数', info['target'])
     plt.subplot(111, polar=True)
     theta = np.arange(0, 2 * np.pi, 0.02)
     plt.plot(theta, 1 * np.ones_like(theta))
