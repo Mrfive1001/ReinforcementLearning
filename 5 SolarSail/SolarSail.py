@@ -50,20 +50,20 @@ class Env:
             self.state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
             # 判断是否结束
             self.t += self.delta_d  # 单位是天
-            reward -= 1
             reward -= np.abs(self.state[0] - self.constant['r_f'])/5
-            if self.t >= 400 or self.state[0] >= self.constant['r_f']:  # 超过一定距离和一定天数就结束
+            if self.t >= 400:  # 超过一定距离和一定天数就结束
                 done = True
+                reward += 40
                 break
             else:
                 done = False
         info = {'t': self.t}
         info['target'] = [self.constant['r_f'], self.constant['phi_f'], self.constant['u_f'], self.constant['v_f']]
-        c1, c2, c3 = 100, 500, 0
-        if done:
-            reward += 300-c1 * np.abs(self.state[0] - self.constant['r_f']) - \
-                          c2 * np.abs(self.state[2] - self.constant['u_f']) - \
-                          c3 * np.abs(self.state[3] - self.constant['v_f'])
+        # c1, c2, c3 = 100, 0, 0
+        # if done:
+        #     reward += 0-c1 * np.abs(self.state[0] - self.constant['r_f']) - \
+        #                   c2 * np.abs(self.state[2] - self.constant['u_f']) - \
+        #                   c3 * np.abs(self.state[3] - self.constant['v_f'])
 
         return self.state.copy(), reward, done, info
 

@@ -11,7 +11,7 @@ if __name__ == '__main__':
                     a_constant=True,
                     units_a=128,
                     units_c=256,
-                    MAX_GLOBAL_EP=50000,
+                    MAX_GLOBAL_EP=30000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
                     ENTROPY_BETA_init=0.01, # 太大最后测试效果很差
@@ -20,7 +20,7 @@ if __name__ == '__main__':
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train=True)
-    number = 5
+    number = 6
     RL = A3C.A3C(para)
     RL.run()
     phi = []
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     theta = np.arange(0, 2 * np.pi, 0.02)
     plt.plot(theta, 1 * np.ones_like(theta))
     plt.plot(theta, 1.547 * np.ones_like(theta))
-    # plt.plot(para.best_phi, para.best_r, '--')
+    plt.plot(para.best_phi, para.best_r, '--')
     plt.plot(phi, r)
     plt.savefig('A3C'+str(number)+'.png')
     print('number:',number)
