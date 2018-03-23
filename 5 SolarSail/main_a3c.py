@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib
-matplotlib.use('Agg')
+# matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from SolarSail import Env
 import A3C
@@ -23,16 +23,51 @@ if __name__ == '__main__':
     number = 6
     RL = A3C.A3C(para)
     RL.run()
+    plt.figure(1)
+    plt.subplot(111, polar=True)
+    if para.train:
+        # print('过程中最短天数是', para.best_day)
+        # print('最好轨道参数', para.best_state)
+        # print('过程中最好奖励是', para.best_epr)
+        # plt.plot(para.best_phi, para.best_r, '--')
+        phi_best = []
+        r_best = []
+        env = Env()
+        state_now = env.reset()
+        r_best.append(state_now[0])
+        phi_best.append(state_now[1])
+        epr_best = 0
+        times_old = env.times
+        env.times = 1
+        t_best = 0
+        actions_best = []
+        while True:
+            action = para.best_action[int(t_best/times_old)]
+            actions_best.append(action)
+            state_next, reward, done, info = env.step(action)
+            t_best = info['t']
+            state_now = state_next
+            r_best.append(state_now[0])
+            phi_best.append(state_now[1])
+            epr_best += reward
+            if done:
+                break
+        plt.plot(phi_best, r_best,'k')
+        print('最好轨道参数是：',state_now)
+        print('最好轨道奖励是：',epr_best)
     phi = []
     r = []
     env = Env()
-    t = 0
     env.times = 1
+    t = 0
+    actions = []
     state_now = env.reset()
     r.append(state_now[0])
     phi.append(state_now[1])
     epr = 0
     while True:
+        action = RL.choose_action(state_now)
+        actions.append(action)
         state_next, reward, done, info = env.step(RL.choose_action(state_now))
         t = info['t']
         epr += reward
@@ -41,18 +76,18 @@ if __name__ == '__main__':
         phi.append(state_now[1])
         if done:
             break
-    print('转移轨道时间%d天' % t)
-    print('过程中最短天数是', para.best_day)
     print('测试轨道参数', state_now)
-    print('最好轨道参数', para.best_state)
     print('目标参数', info['target'])
     print('测试总奖励是', epr)
-    print('过程中最好奖励是', para.best_epr)
-    plt.subplot(111, polar=True)
     theta = np.arange(0, 2 * np.pi, 0.02)
     plt.plot(theta, 1 * np.ones_like(theta))
     plt.plot(theta, 1.547 * np.ones_like(theta))
-    plt.plot(para.best_phi, para.best_r, '--')
-    plt.plot(phi, r)
+    plt.plot(phi, r,'y')
     plt.savefig('A3C'+str(number)+'.png')
+    plt.figure(2)
+    plt.subplot(111)
+    plt.plot(actions,'y')
+    plt.plot(actions_best,'k')
+    plt.savefig('A3C_action'+str(number)+'.png')
     print('number:',number)
+    plt.show()

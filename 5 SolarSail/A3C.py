@@ -12,7 +12,7 @@ import os
 import shutil
 import matplotlib
 
-matplotlib.use('Agg')
+# matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import sys
 import copy
@@ -58,6 +58,7 @@ class Para:
         self.best_epr = None
         self.best_day = None
         self.best_state = None
+        self.best_action = None
         self.train = train
 
         # 保存网络位置
@@ -264,12 +265,14 @@ class Worker(object):
                                                      self.para.ENTROPY_BETA_init - self.para.ENTROPY_BETA_end))
             r_tra = []
             phi_tra = []
+            actions = []
             s = self.env_l.reset()
             r_tra.append(s[0])
             phi_tra.append(s[1])
             ep_r = 0
             for ep_t in range(self.para.MAX_EP_STEP):  # MAX_EP_STEP每个片段的最大个数
                 a = self.AC.choose_action(s)  # 选取动作
+                actions.append(a)
                 s_, r, done, info = self.env_l.step(a)
                 r_tra.append(s_[0])
                 phi_tra.append(s_[1])
@@ -313,7 +316,7 @@ class Worker(object):
                             self.para.best_r = r_tra.copy()
                             self.para.best_day = info['t']
                             self.para.best_state = s.copy()
-
+                            self.para.best_action = actions.copy()
                     print(
                         self.name,
                         "Ep:", self.para.GLOBAL_EP,
