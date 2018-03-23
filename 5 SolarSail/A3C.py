@@ -11,6 +11,7 @@ import numpy as np
 import os
 import shutil
 import matplotlib
+
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import sys
@@ -31,7 +32,7 @@ class Para:
                  gamma=0.9,  # 奖励衰减率
                  ENTROPY_BETA_init=1,  # 表征探索大小的量，越大结果越不确定
                  ENTROPY_BETA_end=0.01,  # 表征探索大小的量，越大结果越不确定
-                 ENTROPY_BETA_times = 1000,# 表示多少次到达终点
+                 ENTROPY_BETA_times=1000,  # 表示多少次到达终点
                  LR_A=0.0001,  # Actor的学习率
                  LR_C=0.001,  # Crtic的学习率
                  MAX_EP_STEP=510,  # 控制一个回合的最长长度
@@ -109,8 +110,11 @@ class A3C:
             COORD.join(worker_threads)
             self.actor_saver.save(self.para.SESS, self.para.model_path)
 
-    def choose_action(self, state):
+    def choose_best(self, state):
         return self.GLOBAL_AC.choose_best(state)
+
+    def choose_action(self, state):
+        return self.workers[0].AC.choose_action(state)
 
     def display(self):
         if not self.para.train:
@@ -231,13 +235,14 @@ class ACNet(object):
             else:
                 return np.argmax(prob_weights)
 
-    def choose_best(self, s): # 函数：选择最好的动作action
+    def choose_best(self, s):  # 函数：选择最好的动作action
         s = s[np.newaxis, :]
         if self.para.a_constant:
             return self.para.SESS.run(self.A, {self.s: s})[0]
         else:
             prob_weights = self.para.SESS.run(self.a_prob, feed_dict={self.s: s}).reshape(self.para.N_S)
             return np.argmax(prob_weights)
+
 
 class Worker(object):
     # 并行处理核的数量为实例数量
@@ -254,8 +259,9 @@ class Worker(object):
         total_step = 1
         buffer_s, buffer_a, buffer_r = [], [], []  # 类似于memory，存储运行轨迹
         while self.para.GLOBAL_EP < self.para.MAX_GLOBAL_EP:
-            self.para.ENTROPY_BETA = max(self.para.ENTROPY_BETA_end,self.para.ENTROPY_BETA_init - \
-                                     (self.para.GLOBAL_EP/self.para.ENTROPY_BETA_times)*(self.para.ENTROPY_BETA_init-self.para.ENTROPY_BETA_end))
+            self.para.ENTROPY_BETA = max(self.para.ENTROPY_BETA_end, self.para.ENTROPY_BETA_init - \
+                                         (self.para.GLOBAL_EP / self.para.ENTROPY_BETA_times) * (
+                                                     self.para.ENTROPY_BETA_init - self.para.ENTROPY_BETA_end))
             r_tra = []
             phi_tra = []
             s = self.env_l.reset()
@@ -320,18 +326,18 @@ class Worker(object):
 if __name__ == '__main__':
     env = ENV()
     para = A3C.Para(env,
-                    a_constant = False,
+                    a_constant=False,
                     units_a=10,
                     units_c=20,
                     MAX_GLOBAL_EP=40000,
                     UPDATE_GLOBAL_ITER=2,
                     gamma=0.9,
                     ENTROPY_BETA_init=1,
-                    ENTROPY_BETA_times = 1000,
-                    ENTROPY_BETA_end = 0.01,
+                    ENTROPY_BETA_times=1000,
+                    ENTROPY_BETA_end=0.01,
                     LR_A=0.0007,
                     LR_C=0.001)
     RL = A3C.A3C(para)
     RL.run()
-    #可以使用
+    # 可以使用
     RL.choose_action()
