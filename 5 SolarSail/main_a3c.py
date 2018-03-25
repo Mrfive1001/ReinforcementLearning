@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib
-
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from SolarSail import Env
@@ -15,16 +14,16 @@ if __name__ == '__main__':
                     a_constant=True,
                     units_a=128,
                     units_c=256,
-                    MAX_GLOBAL_EP=100,
+                    MAX_GLOBAL_EP=30000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
-                    ENTROPY_BETA_init=0.01,  # 太大最后测试效果很差
+                    ENTROPY_BETA_init=0.03,  # 太大最后测试效果很差
                     ENTROPY_BETA_times=10000,
                     ENTROPY_BETA_end=0.05,
                     LR_A=0.00002,
                     LR_C=0.0001,
-                    train=True)
-    number = 1  # 调试参数编号
+                    train=False)
+    number = 2  # 调试参数编号
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据
     actions_best = []
@@ -50,8 +49,7 @@ if __name__ == '__main__':
     env.times = 1
     t_best = 0
     while True:
-        action = para.best_action[int(t_best / times_old)]
-        actions_best.append(action)
+        action = actions_best[int(t_best / times_old)]
         state_next, reward, done, info = env.step(action)
         t_best = info['t']
         state_now = state_next
@@ -60,6 +58,9 @@ if __name__ == '__main__':
         epr_best += reward
         if done:
             break
+    print('最好轨道参数是：', state_now)
+    print('最好轨道奖励是：', epr_best)
+    print('最好轨道天数是：', t_best)
     # 画出测试
     phi = []
     r = []
@@ -86,10 +87,9 @@ if __name__ == '__main__':
     plt.figure(1)
     plt.subplot(111, polar=True)
     plt.plot(phi_best, r_best, 'k')
-    print('最好轨道参数是：', state_now)
-    print('最好轨道奖励是：', epr_best)
     print('测试轨道参数是：', state_now)
     print('测试轨道奖励是：', epr)
+    print('测试轨道天数是：', t)
     print('目标轨道参数是：', info['target'])
     theta = np.arange(0, 2 * np.pi, 0.02)
     plt.plot(theta, 1 * np.ones_like(theta))

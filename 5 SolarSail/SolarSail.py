@@ -53,7 +53,7 @@ class Env:
             dif = np.abs(self.state[0] - self.constant['r_f']) + \
                   np.abs(self.state[2] - self.constant['u_f']) + \
                   np.abs(self.state[3] - self.constant['v_f'])
-            if self.t >= 400 or dif < 0.1:  # 超过一定距离和一定天数就结束
+            if self.t >= 400 or dif < 0.02:  # 超过一定距离和一定天数就结束
                 done = True
                 reward += 60
                 break
