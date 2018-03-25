@@ -23,7 +23,7 @@ if __name__ == '__main__':
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train=True)
-    number = 6  # 调试参数编号
+    number = 4  # 调试参数编号
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据
     actions_best = []
@@ -44,12 +44,14 @@ if __name__ == '__main__':
     state_now = env.reset()
     r_best.append(state_now[0])
     phi_best.append(state_now[1])
+    actions_plot = []
     epr_best = 0
     times_old = env.times
     env.times = 1
     t_best = 0
     while True:
         action = actions_best[int(t_best / times_old)]
+        actions_plot.append(action)
         state_next, reward, done, info = env.step(action)
         t_best = info['t']
         state_now = state_next
@@ -94,12 +96,12 @@ if __name__ == '__main__':
     theta = np.arange(0, 2 * np.pi, 0.02)
     plt.plot(theta, 1 * np.ones_like(theta))
     plt.plot(theta, 1.547 * np.ones_like(theta))
-    plt.plot(phi, r, 'y')
+    # plt.plot(phi, r, 'y')
     plt.savefig(os.path.join(path0, 'A3C_effect' + str(number) + '.png'))
     plt.figure(2)
     plt.subplot(111)
     plt.plot(actions, 'y')
-    plt.plot(actions_best, 'k')
+    plt.plot(actions_plot, 'k')
     plt.savefig(os.path.join(path0, 'A3C_action' + str(number) + '.png'))
     print('number:', number)
     print(para.best_action)
