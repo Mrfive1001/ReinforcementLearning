@@ -49,7 +49,7 @@ class Env:
             self.state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
             # 判断是否结束
             self.t += self.delta_d  # 单位是天
-            reward -= (np.abs(self.state[0] - self.constant['r_f']) + 1) / 5  # 考虑时间和距离
+            reward -= (np.abs(self.state[0] - self.constant['r_f']) + 0.3) / 5  # 考虑时间和距离
             dif = np.abs(self.state[0] - self.constant['r_f']) + \
                   np.abs(self.state[2] - self.constant['u_f']) + \
                   np.abs(self.state[3] - self.constant['v_f'])
