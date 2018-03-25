@@ -12,7 +12,7 @@ if __name__ == '__main__':
                     a_constant=True,
                     units_a=128,
                     units_c=256,
-                    MAX_GLOBAL_EP=100,
+                    MAX_GLOBAL_EP=30000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
                     ENTROPY_BETA_init=0.01, # 太大最后测试效果很差
