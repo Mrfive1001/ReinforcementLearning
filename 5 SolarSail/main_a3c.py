@@ -11,7 +11,7 @@ if __name__ == '__main__':
                     a_constant=True,
                     units_a=128,
                     units_c=256,
-                    MAX_GLOBAL_EP=30000,
+                    MAX_GLOBAL_EP=60000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
                     ENTROPY_BETA_init=0.01, # 太大最后测试效果很差
@@ -41,6 +41,7 @@ if __name__ == '__main__':
         env.times = 1
         t_best = 0
         actions_best = []
+        print(para.best_action)
         while True:
             action = para.best_action[int(t_best/times_old)]
             actions_best.append(action)

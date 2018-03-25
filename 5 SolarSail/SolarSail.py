@@ -51,7 +51,7 @@ class Env:
             # 判断是否结束
             self.t += self.delta_d  # 单位是天
             reward -= np.abs(self.state[0] - self.constant['r_f'])/5
-            if self.t >= 400:  # 超过一定距离和一定天数就结束
+            if self.t >= 400 or self.state[0] >= self.constant['r_f']:  # 超过一定距离和一定天数就结束
                 done = True
                 reward += 40
                 break

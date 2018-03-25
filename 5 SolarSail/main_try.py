@@ -1,34 +1,25 @@
 import numpy as np
+
 import matplotlib
 # matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from SolarSail import Env
 
-
-def choose_action(t):
-    if t <= 65:
-        return 0
-    elif t <= 2 * 65:
-        return 70
-    elif t <= 3 * 65:
-        return 62
-    elif t <= 4 * 65:
-        return 54
-    else:
-        return 47
-
-
+actions = [0.12775242, 0.98694867, 1,  1, 0.5018742, 0.4078638, 0.6552601, 1]
+# actions = [0, 70, 62, 54, 47]
 if __name__ == '__main__':
     phi = []
     r = []
     env = Env()
+    # old_times = 65
+    old_times = 50
     env.times = 1
     t = 0
     state_now = env.reset()
     r.append(state_now[0])
     phi.append(state_now[1])
     while True:
-        action = choose_action(t)/90.0
+        action = actions[int(t/old_times)]
         # action = -45/90.0
         state_next, reward, done, info = env.step(action)
         t = info['t']
