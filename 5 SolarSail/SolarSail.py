@@ -49,10 +49,13 @@ class Env:
             self.state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
             # 判断是否结束
             self.t += self.delta_d  # 单位是天
-            reward -= np.abs(self.state[0] - self.constant['r_f'])/5
-            if self.t >= 400:  # 超过一定距离和一定天数就结束
+            reward -= (np.abs(self.state[0] - self.constant['r_f']) + 1) / 5  # 考虑时间和距离
+            dif = np.abs(self.state[0] - self.constant['r_f']) + \
+                  np.abs(self.state[2] - self.constant['u_f']) + \
+                  np.abs(self.state[3] - self.constant['v_f'])
+            if self.t >= 400 or dif < 0.1:  # 超过一定距离和一定天数就结束
                 done = True
-                reward += 40
+                reward += 60
                 break
             else:
                 done = False
@@ -67,11 +70,6 @@ class Env:
         return self.state.copy(), reward, done, info
 
 
-        # reward定义
-        # 保持探索
-        # 增加学习轮数
-        # 增加网络大小
-        # 总reward跨0
 if __name__ == '__main__':
     env = Env()
     print(env.step(0))
