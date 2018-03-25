@@ -4,6 +4,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from SolarSail import Env
 import A3C
+import pickle
 
 if __name__ == '__main__':
     env = Env()
@@ -20,38 +21,40 @@ if __name__ == '__main__':
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train=True)
-    number = 6
+    number = 6  # 调试参数编号
     RL = A3C.A3C(para)
-    RL.run()
-    plt.figure(1)
-    plt.subplot(111, polar=True)
+    RL.run()    # 训练或者载入数据
     actions_best = []
     if para.train:
-        phi_best = []
-        r_best = []
-        env = Env()
-        state_now = env.reset()
+        with open('action_data.txt', 'wb') as file:
+            pickle.dump(para.best_action, file)
+            actions_best = para.best_action.copy()
+    else:
+        with open('action_data.txt', 'rb') as file:
+            actions_best = pickle.load(file)
+    # 画出最好的动作
+    phi_best = []
+    r_best = []
+    env = Env()
+    state_now = env.reset()
+    r_best.append(state_now[0])
+    phi_best.append(state_now[1])
+    epr_best = 0
+    times_old = env.times
+    env.times = 1
+    t_best = 0
+    while True:
+        action = para.best_action[int(t_best/times_old)]
+        actions_best.append(action)
+        state_next, reward, done, info = env.step(action)
+        t_best = info['t']
+        state_now = state_next
         r_best.append(state_now[0])
         phi_best.append(state_now[1])
-        epr_best = 0
-        times_old = env.times
-        env.times = 1
-        t_best = 0
-        print(para.best_action)
-        while True:
-            action = para.best_action[int(t_best/times_old)]
-            actions_best.append(action)
-            state_next, reward, done, info = env.step(action)
-            t_best = info['t']
-            state_now = state_next
-            r_best.append(state_now[0])
-            phi_best.append(state_now[1])
-            epr_best += reward
-            if done:
-                break
-        plt.plot(phi_best, r_best,'k')
-        print('最好轨道参数是：',state_now)
-        print('最好轨道奖励是：',epr_best)
+        epr_best += reward
+        if done:
+            break
+    # 画出测试
     phi = []
     r = []
     env = Env()
@@ -73,9 +76,15 @@ if __name__ == '__main__':
         phi.append(state_now[1])
         if done:
             break
-    print('测试轨道参数', state_now)
-    print('目标参数', info['target'])
-    print('测试总奖励是', epr)
+    # 显示
+    plt.figure(1)
+    plt.subplot(111, polar=True)
+    plt.plot(phi_best, r_best,'k')
+    print('最好轨道参数是：',state_now)
+    print('最好轨道奖励是：',epr_best)
+    print('测试轨道参数是：', state_now)
+    print('测试轨道奖励是：', epr)
+    print('目标轨道参数是：', info['target'])
     theta = np.arange(0, 2 * np.pi, 0.02)
     plt.plot(theta, 1 * np.ones_like(theta))
     plt.plot(theta, 1.547 * np.ones_like(theta))
@@ -86,4 +95,6 @@ if __name__ == '__main__':
     plt.plot(actions,'y')
     plt.plot(actions_best,'k')
     plt.savefig('A3C_action'+str(number)+'.png')
+
     print('number:',number)
+    print(para.best_action)
