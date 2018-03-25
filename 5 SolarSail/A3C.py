@@ -10,10 +10,6 @@ import tensorflow as tf
 import numpy as np
 import os
 import shutil
-import matplotlib
-
-# matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 import sys
 import copy
 
@@ -53,11 +49,7 @@ class Para:
         self.ENTROPY_BETA = ENTROPY_BETA_init
         self.LR_A = LR_A
         self.LR_C = LR_C
-        self.best_r = []
-        self.best_phi = []
         self.best_epr = None
-        self.best_day = None
-        self.best_state = None
         self.best_action = None
         self.train = train
 
@@ -262,20 +254,14 @@ class Worker(object):
         while self.para.GLOBAL_EP < self.para.MAX_GLOBAL_EP:
             self.para.ENTROPY_BETA = max(self.para.ENTROPY_BETA_end, self.para.ENTROPY_BETA_init - \
                                          (self.para.GLOBAL_EP / self.para.ENTROPY_BETA_times) * (
-                                                     self.para.ENTROPY_BETA_init - self.para.ENTROPY_BETA_end))
-            r_tra = []
-            phi_tra = []
+                                                 self.para.ENTROPY_BETA_init - self.para.ENTROPY_BETA_end))
             actions = []
             s = self.env_l.reset()
-            r_tra.append(s[0])
-            phi_tra.append(s[1])
             ep_r = 0
             for ep_t in range(self.para.MAX_EP_STEP):  # MAX_EP_STEP每个片段的最大个数
                 a = self.AC.choose_action(s)  # 选取动作
-                actions.append(a)
+                actions.append(a[0])
                 s_, r, done, info = self.env_l.step(a)
-                r_tra.append(s_[0])
-                phi_tra.append(s_[1])
                 ep_r += r
                 buffer_s.append(s)
                 buffer_a.append(a)
@@ -312,10 +298,6 @@ class Worker(object):
                     else:
                         if self.para.best_epr < ep_r:
                             self.para.best_epr = ep_r
-                            self.para.best_phi = phi_tra.copy()
-                            self.para.best_r = r_tra.copy()
-                            self.para.best_day = info['t']
-                            self.para.best_state = s.copy()
                             self.para.best_action = actions.copy()
                     print(
                         self.name,

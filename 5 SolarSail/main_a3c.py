@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib
-# matplotlib.use('Agg')
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from SolarSail import Env
 import A3C
@@ -27,10 +27,6 @@ if __name__ == '__main__':
     plt.subplot(111, polar=True)
     actions_best = []
     if para.train:
-        # print('过程中最短天数是', para.best_day)
-        # print('最好轨道参数', para.best_state)
-        # print('过程中最好奖励是', para.best_epr)
-        # plt.plot(para.best_phi, para.best_r, '--')
         phi_best = []
         r_best = []
         env = Env()
@@ -91,4 +87,3 @@ if __name__ == '__main__':
     plt.plot(actions_best,'k')
     plt.savefig('A3C_action'+str(number)+'.png')
     print('number:',number)
-    plt.show()

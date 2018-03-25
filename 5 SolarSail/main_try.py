@@ -1,18 +1,18 @@
 import numpy as np
 
 import matplotlib
-# matplotlib.use('Agg')
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from SolarSail import Env
 
 actions = [0.12775242, 0.98694867, 1,  1, 0.5018742, 0.4078638, 0.6552601, 1]
-# actions = [0, 70, 62, 54, 47]
+# actions = [0, 70, 62, 54, 47]/90
 if __name__ == '__main__':
     phi = []
     r = []
     env = Env()
     # old_times = 65
-    old_times = 50
+    old_times = env.times
     env.times = 1
     t = 0
     state_now = env.reset()
