@@ -11,7 +11,7 @@ if __name__ == '__main__':
                     a_constant=True,
                     units_a=128,
                     units_c=256,
-                    MAX_GLOBAL_EP=50000,
+                    MAX_GLOBAL_EP=60000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
                     ENTROPY_BETA_init=0.01, # 太大最后测试效果很差
@@ -20,7 +20,7 @@ if __name__ == '__main__':
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train=True)
-    number = 9
+    number = 6
     RL = A3C.A3C(para)
     RL.run()
     plt.figure(1)
@@ -41,6 +41,7 @@ if __name__ == '__main__':
         times_old = env.times
         env.times = 1
         t_best = 0
+        print(para.best_action)
         while True:
             action = para.best_action[int(t_best/times_old)]
             actions_best.append(action)
