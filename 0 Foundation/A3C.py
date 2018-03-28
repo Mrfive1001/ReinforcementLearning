@@ -84,19 +84,25 @@ class A3C:
         self.actor_saver = tf.train.Saver()
 
     def run(self):
-        self.para.SESS.run(tf.global_variables_initializer())
-        COORD = tf.train.Coordinator()
-        worker_threads = []
-        for worker in self.workers:
-            job = lambda: worker.work()
-            t = threading.Thread(target=job)
-            t.start()
-            worker_threads.append(t)
-        COORD.join(worker_threads)
-        self.actor_saver.save(self.para.SESS, self.para.model_path)
+        if not self.para.train:
+            self.actor_saver.restore(self.para.SESS, self.para.model_path)
+        else:
+            self.para.SESS.run(tf.global_variables_initializer())
+            COORD = tf.train.Coordinator()
+            worker_threads = []
+            for worker in self.workers:
+                job = lambda: worker.work()
+                t = threading.Thread(target=job)
+                t.start()
+                worker_threads.append(t)
+            COORD.join(worker_threads)
+            self.actor_saver.save(self.para.SESS, self.para.model_path)
+
+    def choose_best(self, state):
+        return self.GLOBAL_AC.choose_best(state)
 
     def choose_action(self, state):
-        return self.GLOBAL_AC.choose_best(state)
+        return self.workers[0].AC.choose_action(state)
 
     def display(self):
         if not self.para.train:
