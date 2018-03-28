@@ -15,7 +15,7 @@ if __name__ == '__main__':
                     a_constant=True,
                     units_a=128,
                     units_c=256,
-                    MAX_GLOBAL_EP=30000,
+                    MAX_GLOBAL_EP=200,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
                     ENTROPY_BETA = 0.03,
@@ -25,7 +25,50 @@ if __name__ == '__main__':
     number = 1  # 调试参数编号
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据
-    # # 画出最好的动作
+    env = Env()
+    s = env.reset()
+    # action = np.array([(-1.609601 + 5) / 10, (0.042179 + 5) / 10, \
+    #                    (-0.160488 + 5) / 10, (-1.597537 + 5) / 10, (568 - 100) / 500])
+    RL.choose_action(s)
+    observation, reward, done, info = env.step(RL.choose_action(s))
+    print(reward)
+
+    states_profile = info['states_profile']
+    alpha_profile = info['alpha_profile']
+
+    plt.subplot(111, polar=True)
+    theta = np.arange(0, 2 * np.pi, 0.02)
+    plt.plot(theta, 1 * np.ones_like(theta), 'm')
+    plt.plot(theta, 1.524 * np.ones_like(theta), 'b')
+    plt.plot(states_profile[:, 1], states_profile[:, 0], 'r')
+
+    plt.figure(2)
+    plt.plot(states_profile[:, 0], 'm')
+    plt.plot(env.constant['r_f'] * np.ones(len(states_profile[:, 0])))
+    plt.title('r')
+
+    plt.figure(3)
+    plt.plot(states_profile[:, 2], 'm')
+    plt.plot(env.constant['u_f'] * np.ones(len(states_profile[:, 0])))
+    plt.title('v')
+    plt.title('u')
+
+    plt.figure(4)
+    plt.plot(states_profile[:, 3], 'm')
+    plt.plot(env.constant['v_f'] * np.ones(len(states_profile[:, 0])))
+    plt.title('v')
+
+    plt.figure(5)
+    plt.plot(alpha_profile * 57.3, 'm')
+    plt.title('alpha')
+
+    plt.figure(6)
+    plt.plot(info['reward_profile'], 'm')
+    plt.title('reward')
+
+    plt.show()
+
+# # 画出最好的动作
     # phi = []
     # r = []
     # env = Env()
