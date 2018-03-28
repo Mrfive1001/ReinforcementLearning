@@ -7,16 +7,7 @@
     <list id="d89413eb-f083-4ebd-be5e-5bbdaac04a98" name="略微修改了模型，更加的符合逻辑，由于在选择动作的时候会排除掉走过的点，所以不需要惩罚" comment="" />
     <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_Net/checkpoint" afterPath="$PROJECT_DIR$/7 SolarSail2/A3C_Net/checkpoint" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_Net/data.chkp.data-00000-of-00001" afterPath="$PROJECT_DIR$/7 SolarSail2/A3C_Net/data.chkp.data-00000-of-00001" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_Net/data.chkp.index" afterPath="$PROJECT_DIR$/7 SolarSail2/A3C_Net/data.chkp.index" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_Net/data.chkp.meta" afterPath="$PROJECT_DIR$/7 SolarSail2/A3C_Net/data.chkp.meta" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_action1.png" afterPath="$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_action1.png" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_effect1.png" afterPath="$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_effect1.png" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/action1_data.txt" afterPath="$PROJECT_DIR$/7 SolarSail2/A3C_result/action1_data.txt" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/SolarSail.py" afterPath="$PROJECT_DIR$/7 SolarSail2/SolarSail.py" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/main_a3c.py" afterPath="$PROJECT_DIR$/7 SolarSail2/main_a3c.py" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/main_try.py" afterPath="$PROJECT_DIR$/7 SolarSail2/main_try.py" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -76,14 +67,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main_a3c.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main_a3c.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/7 SolarSail2/main_a3c.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="99" column="21" lean-forward="false" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
+            <state relative-caret-position="150">
+              <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="25" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="445">
+                <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+                <folding />
+              </first_editor>
+              <second_editor>
+                <js_state />
+              </second_editor>
             </state>
           </provider>
         </entry>
@@ -206,12 +212,12 @@
         <option value="$PROJECT_DIR$/0 Foundation/A3C.py" />
         <option value="$PROJECT_DIR$/5 SolarSail/A3C.py" />
         <option value="$PROJECT_DIR$/5 SolarSail/main_try.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/5 SolarSail/SolarSail.py" />
         <option value="$PROJECT_DIR$/5 SolarSail/main_a3c.py" />
         <option value="$PROJECT_DIR$/7 SolarSail2/main_try.py" />
         <option value="$PROJECT_DIR$/7 SolarSail2/SolarSail.py" />
         <option value="$PROJECT_DIR$/7 SolarSail2/main_a3c.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -252,22 +258,6 @@
             <path>
               <item name="ReinforcementLearning" type="b2602c69:ProjectViewProjectNode" />
               <item name="ReinforcementLearning" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReinforcementLearning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReinforcementLearning" type="462c0819:PsiDirectoryNode" />
-              <item name="5 SolarSail" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReinforcementLearning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReinforcementLearning" type="462c0819:PsiDirectoryNode" />
-              <item name="7 SolarSail2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReinforcementLearning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReinforcementLearning" type="462c0819:PsiDirectoryNode" />
-              <item name="7 SolarSail2" type="462c0819:PsiDirectoryNode" />
-              <item name="A3C_result" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -388,13 +378,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
-    </task>
-    <task id="LOCAL-00090" summary="修改A3C网络可以适应离散和连续两种情况">
-      <created>1520388750356</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1520388750356</updated>
     </task>
     <task id="LOCAL-00091" summary="增加worker的注释">
       <created>1520388915228</created>
@@ -732,7 +715,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522221189192</updated>
     </task>
-    <option name="localTasksCounter" value="139" />
+    <task id="LOCAL-00139" summary="效果很好，可以直接使用">
+      <created>1522224309002</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1522224309002</updated>
+    </task>
+    <option name="localTasksCounter" value="140" />
     <servers />
   </component>
   <component name="TodoView">
@@ -835,7 +825,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="将abound转换为0-1之间的距离，范围转到400轮" />
     <MESSAGE value="先测试一下前两个惩罚参数的效果，第一个效果很好，大概114天能够到达目标" />
     <MESSAGE value="略微修改一些参数" />
     <MESSAGE value="增加最好的最后状态保存" />
@@ -860,7 +849,8 @@
     <MESSAGE value="修正一些错误" />
     <MESSAGE value="增加一些结果，测试25步效果" />
     <MESSAGE value="增加金星数据" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加金星数据" />
+    <MESSAGE value="效果很好，可以直接使用" />
+    <option name="LAST_COMMIT_MESSAGE" value="效果很好，可以直接使用" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1002,19 +992,6 @@
     <entry file="file://$PROJECT_DIR$/5 SolarSail/A3C_action10.png" />
     <entry file="file://$PROJECT_DIR$/5 SolarSail/还不错.png" />
     <entry file="file://$PROJECT_DIR$/5 SolarSail/try.png" />
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="414">
-            <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-            <folding />
-          </first_editor>
-          <second_editor>
-            <js_state />
-          </second_editor>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Drl_Tips.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
@@ -1134,11 +1111,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/7 SolarSail2/main_a3c.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="99" column="21" lean-forward="false" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
+        <state relative-caret-position="150">
+          <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="25" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="445">
+            <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <js_state />
+          </second_editor>
         </state>
       </provider>
     </entry>
