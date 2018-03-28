@@ -15,14 +15,14 @@ class Env:
         self.delta_d = 1  # 仿真步长，未归一化，单位天
         self.delta_t = self.delta_d * (24 * 60 * 60) / self.TU  # 无单位
         self.constant = {'k': 2 / 5.93, 'r0': 1, 'u0': 0, 'phi0': 0,
-                         'r_f': 1.524, 'u_f': 0, 'phi_f': 0}
+                         'r_f': 0.7233, 'u_f': 0, 'phi_f': 0}
         self.constant['v0'] = 1 / np.sqrt(self.constant['r0'])
         self.constant['v_f'] = 1 / np.sqrt(self.constant['r_f'])
         self.reset()
         self.state_dim = len(self.state)
         self.action_dim = 1
-        self.abound = np.array([-0.3, 1])
-        self.times = 50
+        self.abound = np.array([-1, 1])
+        self.times = 25
 
     def render(self):
         pass
@@ -53,9 +53,9 @@ class Env:
             dif = np.abs(self.state[0] - self.constant['r_f']) + \
                   np.abs(self.state[2] - self.constant['u_f']) + \
                   np.abs(self.state[3] - self.constant['v_f'])
-            if self.t >= 400 or dif <= 0.01:  # 超过一定距离和一定天数就结束
+            if self.t >= 200:  # 超过一定距离和一定天数就结束
                 done = True
-                reward += 30
+                reward += 15
                 break
             else:
                 done = False
