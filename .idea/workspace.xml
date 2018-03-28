@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list id="d89413eb-f083-4ebd-be5e-5bbdaac04a98" name="略微修改了模型，更加的符合逻辑，由于在选择动作的时候会排除掉走过的点，所以不需要惩罚" comment="" />
     <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py" />
       <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,8 +62,8 @@
       <file leaf-file-name="main_a3c.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-30">
-              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="116">
+              <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -74,11 +74,9 @@
       <file leaf-file-name="A3C.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5338">
-              <caret line="248" column="34" lean-forward="true" selection-start-line="248" selection-start-column="12" selection-end-line="248" selection-end-column="34" />
-              <folding>
-                <element signature="e#132#154#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="180">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="2" selection-end-line="14" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -207,8 +205,8 @@
         <option value="$PROJECT_DIR$/7 SolarSail2/SolarSail.py" />
         <option value="$PROJECT_DIR$/7 SolarSail2/main_a3c.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py" />
         <option value="$PROJECT_DIR$/8 SolarSail_Maximum/SolarSail_Max.py" />
+        <option value="$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py" />
         <option value="$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py" />
       </list>
     </option>
@@ -341,10 +339,11 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <recent_temporary>
-      <list size="3">
+      <list size="4">
         <item index="0" class="java.lang.String" itemvalue="Python.main_a3c" />
         <item index="1" class="java.lang.String" itemvalue="Python.main_a3c" />
         <item index="2" class="java.lang.String" itemvalue="Python.main_a3c" />
+        <item index="3" class="java.lang.String" itemvalue="Python.main_a3c" />
       </list>
     </recent_temporary>
   </component>
@@ -362,13 +361,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
-    </task>
-    <task id="LOCAL-00095" summary="增加离散函数选取最佳动作函数">
-      <created>1520413511297</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1520413511297</updated>
     </task>
     <task id="LOCAL-00096" summary="增加主函数，并且修改一点选取最佳动作的主函数">
       <created>1520413868535</created>
@@ -706,7 +698,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522231277568</updated>
     </task>
-    <option name="localTasksCounter" value="144" />
+    <task id="LOCAL-00144" summary="使用本地编译器，">
+      <created>1522237341434</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1522237341434</updated>
+    </task>
+    <option name="localTasksCounter" value="145" />
     <servers />
   </component>
   <component name="TodoView">
@@ -723,11 +722,11 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959327" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36847946" sideWeight="0.41769546" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37309942" sideWeight="0.41791844" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34517202" sideWeight="0.49785408" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2863485" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27953216" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38830408" sideWeight="0.58230454" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37309942" sideWeight="0.58208156" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7369589" sideWeight="0.70439917" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2355967" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22049356" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -809,7 +808,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="修改一些学习参数" />
     <MESSAGE value="修改了一些学习参数，但是效果不太好" />
     <MESSAGE value="每隔某些代进行一次学习，学习比较多的话效果还不错" />
     <MESSAGE value="修改一些reward和调试参数" />
@@ -834,7 +832,8 @@
     <MESSAGE value="修改环境，使得环境输入为一步强化学习" />
     <MESSAGE value="修改A3C，增加存储功能" />
     <MESSAGE value="修改完毕，接下来进行调试参数和增加画图功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改完毕，接下来进行调试参数和增加画图功能" />
+    <MESSAGE value="使用本地编译器，" />
+    <option name="LAST_COMMIT_MESSAGE" value="使用本地编译器，" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1102,7 +1101,7 @@
         <state relative-caret-position="53">
           <caret line="113" column="25" lean-forward="true" selection-start-line="113" selection-start-column="25" selection-end-line="113" selection-end-column="25" />
           <folding>
-            <element signature="e#12#30#0" expanded="true" />
+            <element signature="e#12#30#0" expanded="false" />
             <element signature="e#983#987#0" expanded="false" />
           </folding>
         </state>
@@ -1110,18 +1109,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5338">
-          <caret line="248" column="34" lean-forward="true" selection-start-line="248" selection-start-column="12" selection-end-line="248" selection-end-column="34" />
-          <folding>
-            <element signature="e#132#154#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="2" selection-end-line="14" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="116">
+          <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

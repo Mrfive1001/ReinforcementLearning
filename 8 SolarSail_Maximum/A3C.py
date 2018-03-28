@@ -10,9 +10,9 @@ import tensorflow as tf
 import numpy as np
 import os
 import shutil
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
+# import matplotlib
+# matplotlib.use('Agg')
+# import matplotlib.pyplot as plt
 import sys
 import copy
 

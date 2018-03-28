@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib
 
-matplotlib.use('Agg')
+# matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from SolarSail_Max import SolarSail_Max as Env
 import A3C
@@ -15,13 +15,13 @@ if __name__ == '__main__':
                     a_constant=True,
                     units_a=128,
                     units_c=256,
-                    MAX_GLOBAL_EP=200,
+                    MAX_GLOBAL_EP=30000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
                     ENTROPY_BETA = 0.03,
                     LR_A=0.00002,
                     LR_C=0.0001,
-                    train=True)
+                    train=False)
     number = 1  # 调试参数编号
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据
