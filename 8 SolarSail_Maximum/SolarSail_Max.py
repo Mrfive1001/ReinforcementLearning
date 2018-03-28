@@ -22,7 +22,7 @@ class SolarSail_Max:
         self.reset()
         self.state_dim = len(self.state)
         self.action_dim = 5
-        self.a_bound = []
+        self.abound = np.array([[0]*self.action_dim,[1]*self.action_dim])
 
     def render(self):
         pass
@@ -82,7 +82,7 @@ class SolarSail_Max:
             c1 = -100
             c2 = -100
             c3 = -100
-            reward = 10-self.t + c1 * np.abs(self.constant['r_f'] - self.state[0]) + \
+            reward = 30-self.t + c1 * np.abs(self.constant['r_f'] - self.state[0]) + \
                       c2 * np.abs(self.constant['u_f'] - self.state[2]) + \
                       c3 * np.abs(self.constant['v_f'] - self.state[3])
 
