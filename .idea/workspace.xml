@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list id="d89413eb-f083-4ebd-be5e-5bbdaac04a98" name="略微修改了模型，更加的符合逻辑，由于在选择动作的时候会排除掉走过的点，所以不需要惩罚" comment="" />
-    <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
+    <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="增加探索率可以变化的格式，但是实际效果还没加上">
       <change beforePath="" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/Method.py" />
       <change beforePath="" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/main.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/0 Foundation/A3C.py" afterPath="$PROJECT_DIR$/0 Foundation/A3C.py" />
       <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -387,20 +386,6 @@
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
     </task>
-    <task id="LOCAL-00097" summary="修改了轮数，效果变得很不错">
-      <created>1520416307463</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1520416307463</updated>
-    </task>
-    <task id="LOCAL-00098" summary="建立简单的太阳帆模型，但是没有找到具体参数">
-      <created>1520772419400</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1520772419400</updated>
-    </task>
     <task id="LOCAL-00099" summary="增加状态转移矩阵和参数字典">
       <created>1520779939714</created>
       <option name="number" value="00099" />
@@ -730,7 +715,21 @@
       <option name="project" value="LOCAL" />
       <updated>1522244339313</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="学习了30000代，效果还不错">
+      <created>1522290279599</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1522290279600</updated>
+    </task>
+    <task id="LOCAL-00147" summary="增加探索率可以变化的格式，但是实际效果还没加上">
+      <created>1522290471007</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1522290471007</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="TodoView">
@@ -744,11 +743,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2009" y="-323" width="2018" height="1106" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959327" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37309942" sideWeight="0.41791844" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2863485" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2863485" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27953216" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37309942" sideWeight="0.58208156" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7369589" sideWeight="0.70439917" order="11" side_tool="false" content_ui="tabs" />
@@ -833,7 +831,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="每隔某些代进行一次学习，学习比较多的话效果还不错" />
     <MESSAGE value="修改一些reward和调试参数" />
     <MESSAGE value="复现论文中能够使用" />
     <MESSAGE value="增加三个测试结果，使用前面机器进行调试" />
@@ -858,7 +855,8 @@
     <MESSAGE value="修改完毕，接下来进行调试参数和增加画图功能" />
     <MESSAGE value="使用本地编译器，" />
     <MESSAGE value="学习了30000代，效果还不错" />
-    <option name="LAST_COMMIT_MESSAGE" value="学习了30000代，效果还不错" />
+    <MESSAGE value="增加探索率可以变化的格式，但是实际效果还没加上" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加探索率可以变化的格式，但是实际效果还没加上" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
