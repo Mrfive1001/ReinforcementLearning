@@ -18,13 +18,13 @@ if __name__ == '__main__':
                     MAX_GLOBAL_EP=30000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
-                    ENTROPY_BETA_init=0.03,  # 太大最后测试效果很差
+                    ENTROPY_BETA_init=0.06,  # 太大最后测试效果很差
                     ENTROPY_BETA_times=10000,
                     ENTROPY_BETA_end=0.05,
                     LR_A=0.00002,
                     LR_C=0.0001,
-                    train=False)
-    number = 1  # 调试参数编号
+                    train=True)
+    number = 3  # 调试参数编号
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据
     actions_best = []

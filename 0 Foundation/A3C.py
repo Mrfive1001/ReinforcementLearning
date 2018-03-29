@@ -140,6 +140,7 @@ class ACNet(object):
                 # 网络引入
                 self.s = tf.placeholder(tf.float32, [None, self.para.N_S], 'S')  # 状态
                 self.a_his = tf.placeholder(tf.float32, [None, self.para.N_A], 'A')  # 动作
+                self.entropy_var = tf.placeholder(tf.float32, shape=None, name='entropy_var')  # 可变的探索量
                 self.v_target = tf.placeholder(tf.float32, [None, 1], 'Vtarget')  # 目标价值
                 # 网络构建
                 if self.para.a_constant:
@@ -166,7 +167,7 @@ class ACNet(object):
                         exp_v = log_prob * tf.stop_gradient(td)  # stop_gradient停止梯度传递的意思
                         entropy = normal_dist.entropy()
                         # encourage exploration，香农熵，评价分布的不确定性，鼓励探索，防止提早进入次优
-                        self.exp_v = self.para.ENTROPY_BETA * entropy + exp_v
+                        self.exp_v = self.entropy_var * entropy + exp_v
                         self.a_loss = tf.reduce_mean(-self.exp_v)  # actor的优化目标是价值函数最大
                     else:
                         log_prob = tf.reduce_sum(tf.one_hot(self.a_his, self.para.N_A, dtype=tf.float32)
@@ -174,7 +175,7 @@ class ACNet(object):
                         exp_v = log_prob * tf.stop_gradient(td)
                         entropy = -tf.reduce_sum(self.a_prob * tf.log(self.a_prob + 1e-5),
                                                  axis=1, keepdims=True)  # encourage exploration
-                        self.exp_v = self.para.ENTROPY_BETA * entropy + exp_v
+                        self.exp_v = self.entropy_var * entropy + exp_v
                         self.a_loss = tf.reduce_mean(-self.exp_v)
 
                 with tf.name_scope('local_grad'):
@@ -277,13 +278,13 @@ class Worker(object):
                         v_s_ = r + self.para.gamma * v_s_
                         buffer_v_target.append(v_s_)
                     buffer_v_target.reverse()
-
-                    buffer_s, buffer_a, buffer_v_target = np.vstack(buffer_s), np.vstack(buffer_a), np.vstack(
-                        buffer_v_target)
+                    buffer_s, buffer_a, buffer_v_target = np.vstack(buffer_s), np.vstack(buffer_a), \
+                                                          np.vstack(buffer_v_target)
                     feed_dict = {
                         self.AC.s: buffer_s,
                         self.AC.a_his: buffer_a,
                         self.AC.v_target: buffer_v_target,
+                        self.AC.entropy_var: self.para.ENTROPY_BETA
                     }
                     self.AC.update_global(feed_dict)
                     buffer_s, buffer_a, buffer_r = [], [], []
