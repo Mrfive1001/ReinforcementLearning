@@ -2,12 +2,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 class SolarSail_Max:
 
-    def __init__(self):
+    def __init__(self, random=False):
         self.t = None  # 真实的时间
         self.td = None  # 按照天结算的时间
         self.state = None
+        self.random = random
         # 归一化参数长度除以AU,时间除以TU
         self.AU = 1.4959787 * (10 ** 11)
         self.mu = 1.32712348 * (10 ** 20)
@@ -22,7 +24,7 @@ class SolarSail_Max:
         self.reset()
         self.state_dim = len(self.state)
         self.action_dim = 5
-        self.abound = np.array([[0]*self.action_dim,[1]*self.action_dim])
+        self.abound = np.array([[0] * self.action_dim, [1] * self.action_dim])
 
     def render(self):
         pass
@@ -30,17 +32,22 @@ class SolarSail_Max:
     def reset(self):
         self.t = 0
         self.td = 0
-        self.state = np.array([self.constant['r0'], self.constant['phi0'],
-                               self.constant['u0'], self.constant['v0']])  # [r phi u v]
+        if self.random:
+            r = np.random.rand() / 5.0 + 1
+        else:
+            r = self.constant['r0']
+        v = 1 / np.sqrt(r)
+        self.state = np.array([r, self.constant['phi0'],
+                               self.constant['u0'], v])  # [r phi u v]
         return self.state.copy()
 
     def step(self, action):
         # 传入五个协态变量
         # lambda1~4均是0-1的变量
 
-        states_profile = np.empty((0, 4))   # 状态存储
-        alpha_profile = np.empty((0, 1))    # 存储动作
-        reward_profile = np.empty((0, 1))   # 存储奖励
+        states_profile = np.empty((0, 4))  # 状态存储
+        alpha_profile = np.empty((0, 1))  # 存储动作
+        reward_profile = np.empty((0, 1))  # 存储奖励
 
         observation = self.reset()
         lambda_s = action[0:4] * 10 - 5  # 正负5之间
@@ -56,7 +63,7 @@ class SolarSail_Max:
                 else:
                     alpha = np.pi / 2
             else:
-                alpha = np.arctan((-3 * lambda3 - np.sqrt(9*lambda3**2+8*lambda4**2))/4/lambda4)
+                alpha = np.arctan((-3 * lambda3 - np.sqrt(9 * lambda3 ** 2 + 8 * lambda4 ** 2)) / 4 / lambda4)
             # 进行积分求下一个状态
             r_dot = u
             phi_dot = v / r
@@ -79,18 +86,17 @@ class SolarSail_Max:
             self.td += self.delta_d
             self.t += self.delta_t
             # reward calculation
-            c1 = -100
-            c2 = -100
-            c3 = -100
-            reward = 30-self.t + c1 * np.abs(self.constant['r_f'] - self.state[0]) + \
-                      c2 * np.abs(self.constant['u_f'] - self.state[2]) + \
-                      c3 * np.abs(self.constant['v_f'] - self.state[3])
+            c1 = -200
+            c2 = -200
+            c3 = -200
+            reward = 30 - self.t + c1 * np.abs(self.constant['r_f'] - self.state[0]) + \
+                     c2 * np.abs(self.constant['u_f'] - self.state[2]) + \
+                     c3 * np.abs(self.constant['v_f'] - self.state[3])
 
             # memory
             states_profile = np.vstack((states_profile, self.state))
             alpha_profile = np.vstack((alpha_profile, alpha))
             reward_profile = np.vstack((reward_profile, reward))
-
 
             # terminate
             # if self.state[3] >= self.constant['v_f']:
@@ -128,7 +134,7 @@ if __name__ == '__main__':
 
     plt.figure(2)
     plt.plot(states_profile[:, 0], 'm')
-    plt.plot(env.constant['r_f']*np.ones(len(states_profile[:, 0])))
+    plt.plot(env.constant['r_f'] * np.ones(len(states_profile[:, 0])))
     plt.title('r')
 
     plt.figure(3)
@@ -143,7 +149,7 @@ if __name__ == '__main__':
     plt.title('v')
 
     plt.figure(5)
-    plt.plot(alpha_profile*57.3, 'm')
+    plt.plot(alpha_profile * 57.3, 'm')
     plt.title('alpha')
 
     plt.figure(6)
@@ -151,4 +157,3 @@ if __name__ == '__main__':
     plt.title('reward')
 
     plt.show()
-
