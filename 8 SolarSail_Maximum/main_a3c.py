@@ -11,28 +11,27 @@ import pickle
 
 if __name__ == '__main__':
     random = True
-    env = Env()
+    env = Env(random)
     para = A3C.Para(env,
                     a_constant=True,
                     units_a=128,
                     units_c=256,
-                    MAX_GLOBAL_EP=40000,
+                    MAX_GLOBAL_EP=100000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
-                    ENTROPY_BETA_init=0.1,
+                    ENTROPY_BETA_init=1,
                     ENTROPY_BETA_end=0.01,
                     ENTROPY_BETA_times=20000,
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train=True)
-    number = 1  # 调试参数编号
+    number = 2  # 调试参数编号
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据
     env = Env(random)
     s = env.reset()
     # action = np.array([(-1.609601 + 5) / 10, (0.042179 + 5) / 10, \
     #                    (-0.160488 + 5) / 10, (-1.597537 + 5) / 10, (568 - 100) / 500])
-    RL.choose_action(s)
     observation, reward, done, info = env.step(RL.choose_action(s))
     print(reward)
 
@@ -41,7 +40,7 @@ if __name__ == '__main__':
 
     plt.subplot(111, polar=True)
     theta = np.arange(0, 2 * np.pi, 0.02)
-    plt.plot(theta, states_profile[0, 0] * np.ones_like(theta), 'm')
+    plt.plot(theta, 1 * np.ones_like(theta), 'm')
     plt.plot(theta, 1.524 * np.ones_like(theta), 'b')
     plt.plot(states_profile[:, 1], states_profile[:, 0], 'r')
 
