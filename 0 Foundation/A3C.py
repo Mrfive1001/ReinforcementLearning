@@ -29,7 +29,9 @@ class Para:
                  MAX_GLOBAL_EP=2000,  # 全局需要跑多少轮数
                  UPDATE_GLOBAL_ITER=30,  # 多少代进行一次学习，调小一些学的比较快
                  gamma=0.9,  # 奖励衰减率
-                 ENTROPY_BETA=0.01,  # 表征探索大小的量，越大结果越不确定
+                 ENTROPY_BETA_init=1,  # 表征探索大小的量，越大结果越不确定
+                 ENTROPY_BETA_end=0.01,  # 表征探索大小的量，越大结果越不确定
+                 ENTROPY_BETA_times=1000,  # 表示多少次到达终点
                  LR_A=0.0001,  # Actor的学习率
                  LR_C=0.001,  # Crtic的学习率
                  MAX_EP_STEP=510,  # 控制一个回合的最长长度
@@ -44,7 +46,10 @@ class Para:
         self.units_a = units_a
         self.units_c = units_c
         self.a_constant = a_constant
-        self.ENTROPY_BETA = ENTROPY_BETA
+        self.ENTROPY_BETA_init = ENTROPY_BETA_init
+        self.ENTROPY_BETA_times = ENTROPY_BETA_times
+        self.ENTROPY_BETA_end = ENTROPY_BETA_end
+        self.ENTROPY_BETA = ENTROPY_BETA_init
         self.LR_A = LR_A
         self.LR_C = LR_C
 
@@ -223,13 +228,14 @@ class ACNet(object):
             else:
                 return np.argmax(prob_weights)
 
-    def choose_best(self, s): # 函数：选择最好的动作action
+    def choose_best(self, s):  # 函数：选择最好的动作action
         s = s[np.newaxis, :]
         if self.para.a_constant:
             return self.para.SESS.run(self.A, {self.s: s})[0]
         else:
             prob_weights = self.para.SESS.run(self.a_prob, feed_dict={self.s: s}).reshape(self.para.N_S)
             return np.argmax(prob_weights)
+
 
 class Worker(object):
     # 并行处理核的数量为实例数量
@@ -246,6 +252,10 @@ class Worker(object):
         total_step = 1
         buffer_s, buffer_a, buffer_r = [], [], []  # 类似于memory，存储运行轨迹
         while self.para.GLOBAL_EP < self.para.MAX_GLOBAL_EP:
+            self.para.ENTROPY_BETA = max(self.para.ENTROPY_BETA_end, self.para.ENTROPY_BETA_init - \
+                                         (self.para.GLOBAL_EP / self.para.ENTROPY_BETA_times) * (
+                                                 self.para.ENTROPY_BETA_init - self.para.ENTROPY_BETA_end))
+            actions = []
             s = self.env_l.reset()
             ep_r = 0
             for ep_t in range(self.para.MAX_EP_STEP):  # MAX_EP_STEP每个片段的最大个数
@@ -295,16 +305,18 @@ class Worker(object):
 if __name__ == '__main__':
     env = ENV()
     para = A3C.Para(env,
-                    a_constant = False,
+                    a_constant=False,
                     units_a=10,
                     units_c=20,
                     MAX_GLOBAL_EP=40000,
                     UPDATE_GLOBAL_ITER=2,
                     gamma=0.9,
-                    ENTROPY_BETA=0.1,
+                    ENTROPY_BETA_init=1,
+                    ENTROPY_BETA_times=1000,
+                    ENTROPY_BETA_end=0.01,
                     LR_A=0.0007,
                     LR_C=0.001)
     RL = A3C.A3C(para)
     RL.run()
-    #可以使用
+    # 可以使用
     RL.choose_action()
