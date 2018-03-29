@@ -29,7 +29,9 @@ class Para:
                  MAX_GLOBAL_EP=2000,  # 全局需要跑多少轮数
                  UPDATE_GLOBAL_ITER=30,  # 多少代进行一次学习，调小一些学的比较快
                  gamma=0.9,  # 奖励衰减率
-                 ENTROPY_BETA=0.01,  # 表征探索大小的量，越大结果越不确定
+                 ENTROPY_BETA_init=1,  # 表征探索大小的量，越大结果越不确定
+                 ENTROPY_BETA_end=0.01,  # 表征探索大小的量，越大结果越不确定
+                 ENTROPY_BETA_times=1000,  # 表示多少次到达终点
                  LR_A=0.0001,  # Actor的学习率
                  LR_C=0.001,  # Crtic的学习率
                  MAX_EP_STEP=510,  # 控制一个回合的最长长度
@@ -44,7 +46,10 @@ class Para:
         self.units_a = units_a
         self.units_c = units_c
         self.a_constant = a_constant
-        self.ENTROPY_BETA = ENTROPY_BETA
+        self.ENTROPY_BETA_init = ENTROPY_BETA_init
+        self.ENTROPY_BETA_times = ENTROPY_BETA_times
+        self.ENTROPY_BETA_end = ENTROPY_BETA_end
+        self.ENTROPY_BETA = ENTROPY_BETA_init
         self.LR_A = LR_A
         self.LR_C = LR_C
         self.train = train
@@ -125,7 +130,7 @@ class ACNet(object):
                         mu, sigma = mu * abs(A_BOUND[1] - A_BOUND[0]) / 2 + \
                                     np.mean(A_BOUND), sigma + 1e-4  # 归一化反映射，防止方差为零
                 with tf.name_scope('choose_a'):  # use local params to choose action
-                    self.A = tf.clip_by_value(mu, self.para.A_BOUND[0], self.para.A_BOUND[1]) # 根据actor给出的分布，选取动作
+                    self.A = tf.clip_by_value(mu, self.para.A_BOUND[0], self.para.A_BOUND[1])  # 根据actor给出的分布，选取动作
             else:
                 with tf.variable_scope(scope):
                     self.s = tf.placeholder(tf.float32, [None, self.para.N_S], 'S')
@@ -135,6 +140,7 @@ class ACNet(object):
                 # 网络引入
                 self.s = tf.placeholder(tf.float32, [None, self.para.N_S], 'S')  # 状态
                 self.a_his = tf.placeholder(tf.float32, [None, self.para.N_A], 'A')  # 动作
+                self.entropy_var = tf.placeholder(tf.float32, shape=None, name='entropy_var')  # 可变的探索量
                 self.v_target = tf.placeholder(tf.float32, [None, 1], 'Vtarget')  # 目标价值
                 # 网络构建
                 if self.para.a_constant:
@@ -161,7 +167,7 @@ class ACNet(object):
                         exp_v = log_prob * tf.stop_gradient(td)  # stop_gradient停止梯度传递的意思
                         entropy = normal_dist.entropy()
                         # encourage exploration，香农熵，评价分布的不确定性，鼓励探索，防止提早进入次优
-                        self.exp_v = self.para.ENTROPY_BETA * entropy + exp_v
+                        self.exp_v = self.entropy_var * entropy + exp_v
                         self.a_loss = tf.reduce_mean(-self.exp_v)  # actor的优化目标是价值函数最大
                     else:
                         log_prob = tf.reduce_sum(tf.one_hot(self.a_his, self.para.N_A, dtype=tf.float32)
@@ -169,7 +175,7 @@ class ACNet(object):
                         exp_v = log_prob * tf.stop_gradient(td)
                         entropy = -tf.reduce_sum(self.a_prob * tf.log(self.a_prob + 1e-5),
                                                  axis=1, keepdims=True)  # encourage exploration
-                        self.exp_v = self.para.ENTROPY_BETA * entropy + exp_v
+                        self.exp_v = self.entropy_var * entropy + exp_v
                         self.a_loss = tf.reduce_mean(-self.exp_v)
 
                 with tf.name_scope('local_grad'):
@@ -223,13 +229,14 @@ class ACNet(object):
             else:
                 return np.argmax(prob_weights)
 
-    def choose_best(self, s): # 函数：选择最好的动作action
+    def choose_best(self, s):  # 函数：选择最好的动作action
         s = s[np.newaxis, :]
         if self.para.a_constant:
             return self.para.SESS.run(self.A, {self.s: s})[0]
         else:
             prob_weights = self.para.SESS.run(self.a_prob, feed_dict={self.s: s}).reshape(self.para.N_S)
             return np.argmax(prob_weights)
+
 
 class Worker(object):
     # 并行处理核的数量为实例数量
@@ -246,6 +253,10 @@ class Worker(object):
         total_step = 1
         buffer_s, buffer_a, buffer_r = [], [], []  # 类似于memory，存储运行轨迹
         while self.para.GLOBAL_EP < self.para.MAX_GLOBAL_EP:
+            self.para.ENTROPY_BETA = max(self.para.ENTROPY_BETA_end, self.para.ENTROPY_BETA_init - \
+                                         (self.para.GLOBAL_EP / self.para.ENTROPY_BETA_times) * (
+                                                 self.para.ENTROPY_BETA_init - self.para.ENTROPY_BETA_end))
+            actions = []
             s = self.env_l.reset()
             ep_r = 0
             for ep_t in range(self.para.MAX_EP_STEP):  # MAX_EP_STEP每个片段的最大个数
@@ -267,13 +278,13 @@ class Worker(object):
                         v_s_ = r + self.para.gamma * v_s_
                         buffer_v_target.append(v_s_)
                     buffer_v_target.reverse()
-
-                    buffer_s, buffer_a, buffer_v_target = np.vstack(buffer_s), np.vstack(buffer_a), np.vstack(
-                        buffer_v_target)
+                    buffer_s, buffer_a, buffer_v_target = np.vstack(buffer_s), np.vstack(buffer_a), \
+                                                          np.vstack(buffer_v_target)
                     feed_dict = {
                         self.AC.s: buffer_s,
                         self.AC.a_his: buffer_a,
                         self.AC.v_target: buffer_v_target,
+                        self.AC.entropy_var: self.para.ENTROPY_BETA
                     }
                     self.AC.update_global(feed_dict)
                     buffer_s, buffer_a, buffer_r = [], [], []
@@ -295,16 +306,18 @@ class Worker(object):
 if __name__ == '__main__':
     env = ENV()
     para = A3C.Para(env,
-                    a_constant = False,
+                    a_constant=False,
                     units_a=10,
                     units_c=20,
                     MAX_GLOBAL_EP=40000,
                     UPDATE_GLOBAL_ITER=2,
                     gamma=0.9,
-                    ENTROPY_BETA=0.1,
+                    ENTROPY_BETA_init=1,
+                    ENTROPY_BETA_times=1000,
+                    ENTROPY_BETA_end=0.01,
                     LR_A=0.0007,
                     LR_C=0.001)
     RL = A3C.A3C(para)
     RL.run()
-    #可以使用
+    # 可以使用
     RL.choose_action()
