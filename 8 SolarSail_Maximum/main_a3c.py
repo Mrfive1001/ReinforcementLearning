@@ -30,7 +30,7 @@ if __name__ == '__main__':
                     name=name)
     number = 2  # 调试参数编号
     RL = A3C.A3C(para)
-    RL.run()  # 训练或者载入数据
+    RL.run_continue()
     env = Env(random)
     s = env.reset()
     # action = np.array([(-1.609601 + 5) / 10, (0.042179 + 5) / 10, \

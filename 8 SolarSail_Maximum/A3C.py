@@ -104,6 +104,18 @@ class A3C:
             COORD.join(worker_threads)
             self.actor_saver.save(self.para.SESS, self.para.model_path)
 
+    def run_continue(self):
+        self.actor_saver.restore(self.para.SESS, self.para.model_path)
+        COORD = tf.train.Coordinator()
+        worker_threads = []
+        for worker in self.workers:
+            job = lambda: worker.work()
+            t = threading.Thread(target=job)
+            t.start()
+            worker_threads.append(t)
+        COORD.join(worker_threads)
+        self.actor_saver.save(self.para.SESS, self.para.model_path)
+
     def choose_best(self, state):
         return self.GLOBAL_AC.choose_best(state)
 

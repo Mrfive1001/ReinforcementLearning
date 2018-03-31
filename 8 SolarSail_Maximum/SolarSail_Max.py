@@ -89,7 +89,7 @@ class SolarSail_Max:
             c1 = -200
             c2 = -200
             c3 = -200
-            reward = 30 - self.t + c1 * np.abs(self.constant['r_f'] - self.state[0]) + \
+            reward = 40 - self.t + c1 * np.abs(self.constant['r_f'] - self.state[0]) + \
                      c2 * np.abs(self.constant['u_f'] - self.state[2]) + \
                      c3 * np.abs(self.constant['v_f'] - self.state[3])
 
