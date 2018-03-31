@@ -32,10 +32,20 @@ class SolarSail_Max:
     def reset(self):
         self.t = 0
         self.td = 0
-        if self.random:  # 随机初始化
-            r = np.random.rand() / 5.0 + 1
+        if self.random == True:
+            rand_r0 = np.random.rand(1)
+            self.constant['r0'] = (0.1 * rand_r0 + 1.0)[0]
+            self.constant['v0'] = 1.0 / np.sqrt(self.constant['r0'])
         else:
-            r = self.constant['r0']
+            rand_r0 = 0.
+            self.constant['r0'] = (0.2 * rand_r0 + 1.0)
+            self.constant['v0'] = 1.0 / np.sqrt(self.constant['r0'])
+        # if self.random:  # 随机初始化
+        #     r = np.random.rand() / 10.0 + 1
+        # else:
+        #     r = self.constant['r0']
+        # v = 1 / np.sqrt(r)
+        r = self.constant['r0']
         v = 1 / np.sqrt(r)
         self.state = np.array([r, self.constant['phi0'],
                                self.constant['u0'], v])  # [r phi u v]
@@ -89,7 +99,7 @@ class SolarSail_Max:
             c1 = -200
             c2 = -200
             c3 = -200
-            reward = 40 - self.t + c1 * np.abs(self.constant['r_f'] - self.state[0]) + \
+            reward = 30 - self.t + c1 * np.abs(self.constant['r_f'] - self.state[0]) + \
                      c2 * np.abs(self.constant['u_f'] - self.state[2]) + \
                      c3 * np.abs(self.constant['v_f'] - self.state[3])
 
