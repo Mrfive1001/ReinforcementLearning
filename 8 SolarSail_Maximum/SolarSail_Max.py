@@ -21,10 +21,10 @@ class SolarSail_Max:
                          'r_f': 1.524, 'u_f': 0, 'phi_f': 0}
         self.constant['v0'] = 1 / np.sqrt(self.constant['r0'])
         self.constant['v_f'] = 1 / np.sqrt(self.constant['r_f'])
-        self.reset()
+        self.reset()  # 初始化
         self.state_dim = len(self.state)
-        self.action_dim = 5
-        self.abound = np.array([[0] * self.action_dim, [1] * self.action_dim])
+        self.action_dim = 5  # 五个初始变量需要猜测
+        self.abound = np.array([[0] * self.action_dim, [1] * self.action_dim])  # 动作空间的上下界
 
     def render(self):
         pass
@@ -32,7 +32,7 @@ class SolarSail_Max:
     def reset(self):
         self.t = 0
         self.td = 0
-        if self.random:
+        if self.random:  # 随机初始化
             r = np.random.rand() / 5.0 + 1
         else:
             r = self.constant['r0']
@@ -106,8 +106,12 @@ class SolarSail_Max:
                 info['states_profile'] = states_profile
                 info['alpha_profile'] = alpha_profile
                 info['reward_profile'] = reward_profile
+                info['total_day'] = self.td
+                info['rf_error'] = self.state[0] - self.constant['r_f']
+                info['uf_error'] = self.state[2] - self.constant['u_f']
+                info['vf_error'] = self.state[3] - self.constant['v_f']
                 break
-
+            observation = self.state
         # display
         # print(self.state)
         # print('error', self.state[2], self.state[3]- self.constant['v_f'])

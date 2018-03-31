@@ -10,16 +10,16 @@ import sys
 import pickle
 
 if __name__ == '__main__':
-    random = True
+    random = False
     env = Env(random)
     para = A3C.Para(env,
                     a_constant=True,
                     units_a=128,
                     units_c=256,
-                    MAX_GLOBAL_EP=100000,
+                    MAX_GLOBAL_EP=100,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
-                    ENTROPY_BETA_init=1,
+                    ENTROPY_BETA_init=0.001,
                     ENTROPY_BETA_end=0.01,
                     ENTROPY_BETA_times=20000,
                     LR_A=0.00002,
@@ -33,7 +33,11 @@ if __name__ == '__main__':
     # action = np.array([(-1.609601 + 5) / 10, (0.042179 + 5) / 10, \
     #                    (-0.160488 + 5) / 10, (-1.597537 + 5) / 10, (568 - 100) / 500])
     observation, reward, done, info = env.step(RL.choose_action(s))
-    print(reward)
+    print('total reward:', reward)
+    print('total day:', info['total_day'])
+    print('rf_error:', info['rf_error'])
+    print('uf_error:', info['uf_error'])
+    print('vf_error:', info['vf_error'])
 
     states_profile = info['states_profile']
     alpha_profile = info['alpha_profile']
@@ -63,10 +67,9 @@ if __name__ == '__main__':
     plt.figure(5)
     plt.plot(alpha_profile * 57.3, 'm')
     plt.title('alpha')
-
-    plt.figure(6)
-    plt.plot(info['reward_profile'], 'm')
-    plt.title('reward')
+    # plt.figure(6)
+    # plt.plot(info['reward_profile'], 'm')
+    # plt.title('reward')
 
     plt.show()
 
