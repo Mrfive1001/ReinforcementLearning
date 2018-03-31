@@ -11,21 +11,23 @@ import pickle
 
 if __name__ == '__main__':
     random = False
+    train = True
+    name = 'random' if random else 'static'
     env = Env(random)
     para = A3C.Para(env,
                     a_constant=True,
-                    units_a=128,
-                    units_c=256,
-                    MAX_GLOBAL_EP=20000,
+                    units_a=512,
+                    units_c=512,
+                    MAX_GLOBAL_EP=50000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
-                    ENTROPY_BETA_init=0.001,
+                    ENTROPY_BETA_init=0.1,
                     ENTROPY_BETA_end=0.01,
                     ENTROPY_BETA_times=20000,
-                    LR_A=0.00002,
+                    LR_A=0.000002,
                     LR_C=0.0001,
-                    train=True,
-                    name = 'static')
+                    train=train,
+                    name=name)
     number = 2  # 调试参数编号
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据

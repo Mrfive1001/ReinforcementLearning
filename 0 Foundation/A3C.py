@@ -36,7 +36,7 @@ class Para:
                  LR_C=0.001,  # Crtic的学习率
                  MAX_EP_STEP=510,  # 控制一个回合的最长长度
                  train=True,  # 表示训练
-                 name = ''
+                 name=''
                  ):
         self.N_WORKERS = multiprocessing.cpu_count()
         self.MAX_EP_STEP = MAX_EP_STEP
