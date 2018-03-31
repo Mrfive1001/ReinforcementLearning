@@ -35,7 +35,8 @@ class Para:
                  LR_A=0.0001,  # Actor的学习率
                  LR_C=0.001,  # Crtic的学习率
                  MAX_EP_STEP=510,  # 控制一个回合的最长长度
-                 train=True  # 表示训练
+                 train=True,  # 表示训练
+                 name = ''
                  ):
         self.N_WORKERS = multiprocessing.cpu_count()
         self.MAX_EP_STEP = MAX_EP_STEP
@@ -52,9 +53,9 @@ class Para:
         self.ENTROPY_BETA = ENTROPY_BETA_init
         self.LR_A = LR_A
         self.LR_C = LR_C
-
+        self.train = train
         # 保存网络位置
-        self.model_path0 = os.path.join(sys.path[0], 'A3C_Net')
+        self.model_path0 = os.path.join(sys.path[0], name + 'A3C_Net')
         if not os.path.exists(self.model_path0):
             os.mkdir(self.model_path0)
         self.model_path = os.path.join(self.model_path0, 'data.chkp')

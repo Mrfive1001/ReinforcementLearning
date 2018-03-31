@@ -7,9 +7,8 @@
     <list id="d89413eb-f083-4ebd-be5e-5bbdaac04a98" name="略微修改了模型，更加的符合逻辑，由于在选择动作的时候会排除掉走过的点，所以不需要惩罚" comment="" />
     <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/A3C_Net/data.chkp.data-00000-of-00001" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/A3C_Net/data.chkp.data-00000-of-00001" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/A3C_Net/data.chkp.index" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/A3C_Net/data.chkp.index" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/SolarSail_Max.py" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/SolarSail_Max.py" />
+      <change beforePath="$PROJECT_DIR$/0 Foundation/A3C.py" afterPath="$PROJECT_DIR$/0 Foundation/A3C.py" />
+      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py" />
       <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,7 +23,7 @@
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_random.coverage" NAME="main_random Coverage Results" MODIFIED="1520148150352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/6 TSP" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_display__1_.coverage" NAME="main_DQN_display (1) Coverage Results" MODIFIED="1517642761936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_hands.coverage" NAME="main_DQN_hands Coverage Results" MODIFIED="1517660314968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
-    <SUITE FILE_PATH="coverage/ReinforcementLearning$main_a3c.coverage" NAME="main_a3c Coverage Results" MODIFIED="1522461107091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/8 SolarSail_Maximum" />
+    <SUITE FILE_PATH="coverage/ReinforcementLearning$main_a3c.coverage" NAME="main_a3c Coverage Results" MODIFIED="1522461399394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/8 SolarSail_Maximum" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$gym_learn.coverage" NAME="gym_learn Coverage Results" MODIFIED="1517882589148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$Missile.coverage" NAME="Missile Coverage Results" MODIFIED="1518075386543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$asteroids.coverage" NAME="asteroids Coverage Results" MODIFIED="1517903885856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN/Asteroids_pyglet" />
@@ -64,11 +63,21 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="main_a3c.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="main_a3c.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="270">
-                    <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+                  <state relative-caret-position="540">
+                    <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="A3C.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/0 Foundation/A3C.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="802">
+                    <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
                     <folding />
                   </state>
                 </provider>
@@ -82,10 +91,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="A3C.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/0 Foundation/A3C.py">
+        <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="28" />
+            <state relative-caret-position="6840">
+              <caret line="260" column="32" lean-forward="false" selection-start-line="260" selection-start-column="27" selection-end-line="260" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -212,13 +221,13 @@
         <option value="$PROJECT_DIR$/5 SolarSail/main_a3c.py" />
         <option value="$PROJECT_DIR$/7 SolarSail2/main_try.py" />
         <option value="$PROJECT_DIR$/7 SolarSail2/SolarSail.py" />
-        <option value="$PROJECT_DIR$/0 Foundation/A3C.py" />
         <option value="$PROJECT_DIR$/7 SolarSail2/main_a3c.py" />
         <option value="$PROJECT_DIR$/7 SolarSail2/A3C.py" />
-        <option value="$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/8 SolarSail_Maximum/SolarSail_Max.py" />
+        <option value="$PROJECT_DIR$/0 Foundation/A3C.py" />
         <option value="$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py" />
+        <option value="$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py" />
       </list>
     </option>
   </component>
@@ -393,13 +402,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
-    </task>
-    <task id="LOCAL-00105" summary="修正A3C网络中的一些小bug">
-      <created>1521017106925</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1521017106925</updated>
     </task>
     <task id="LOCAL-00106" summary="修复A3C中模型保存位置的错误">
       <created>1521018391491</created>
@@ -737,7 +739,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522459822612</updated>
     </task>
-    <option name="localTasksCounter" value="154" />
+    <task id="LOCAL-00154" summary="增加静态输出，总天数，误差等信息">
+      <created>1522461206300</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1522461206300</updated>
+    </task>
+    <option name="localTasksCounter" value="155" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -757,9 +766,9 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27953216" sideWeight="0.45761803" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3017544" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27953216" sideWeight="0.542382" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5520468" sideWeight="0.58208156" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5520468" sideWeight="0.58208156" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7369589" sideWeight="0.70439917" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24302575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24302575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297325" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="false" weight="0.58422744" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="415" y="277" width="1089" height="488" />
@@ -850,7 +859,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="学到5个结果" />
     <MESSAGE value="修改了一下reward，效果很好" />
     <MESSAGE value="增加A3C画图测试中使用随剂量" />
     <MESSAGE value="Merge branch 'reward_test'&#10;使用服务器，修改reward函数" />
@@ -875,7 +883,8 @@
     <MESSAGE value="增加环境可以初始化" />
     <MESSAGE value="随机初始化，效果不够理想" />
     <MESSAGE value="随机初始化" />
-    <option name="LAST_COMMIT_MESSAGE" value="随机初始化" />
+    <MESSAGE value="增加静态输出，总天数，误差等信息" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加静态输出，总天数，误差等信息" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1064,13 +1073,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7200">
-          <caret line="259" column="32" lean-forward="false" selection-start-line="259" selection-start-column="27" selection-end-line="259" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/5 SolarSail/A3C.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="943">
@@ -1099,14 +1101,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/0 Foundation/A3C.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/SolarSail_Max.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1117,8 +1111,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+        <state relative-caret-position="540">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6840">
+          <caret line="260" column="32" lean-forward="false" selection-start-line="260" selection-start-column="27" selection-end-line="260" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/0 Foundation/A3C.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="802">
+          <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding />
         </state>
       </provider>
