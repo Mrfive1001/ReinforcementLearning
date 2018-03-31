@@ -11,14 +11,14 @@ import pickle
 
 if __name__ == '__main__':
     random = False
-    train = True
+    train = 0
     name = 'random' if random else 'static'
     env = Env(random)
     para = A3C.Para(env,
                     a_constant=True,
                     units_a=512,
                     units_c=512,
-                    MAX_GLOBAL_EP=50000,
+                    MAX_GLOBAL_EP=10000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
                     ENTROPY_BETA_init=0.1,
@@ -26,16 +26,16 @@ if __name__ == '__main__':
                     ENTROPY_BETA_times=20000,
                     LR_A=0.000002,
                     LR_C=0.0001,
-                    train=train,
+                    train_mode=train,
                     name=name)
     number = 2  # 调试参数编号
     RL = A3C.A3C(para)
-    RL.run_continue()
+    RL.run()
     env = Env(random)
     s = env.reset()
     # action = np.array([(-1.609601 + 5) / 10, (0.042179 + 5) / 10, \
     #                    (-0.160488 + 5) / 10, (-1.597537 + 5) / 10, (568 - 100) / 500])
-    observation, reward, done, info = env.step(RL.choose_action(s))
+    observation, reward, done, info = env.step(RL.choose_best(s))
     print('total reward:', reward)
     print('total day:', info['total_day'])
     print('rf_error:', info['rf_error'])
