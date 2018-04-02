@@ -8,7 +8,8 @@ class SolarSail_Max:
     def __init__(self, random=False):
         self.t = None  # 真实的时间
         self.td = None  # 按照天结算的时间
-        self.state = None
+        self._state = None  # 内部运动学参数迭代过程
+        self.state = None   # 观察变量
         self.random = random
         # 归一化参数长度除以AU,时间除以TU
         self.AU = 1.4959787 * (10 ** 11)
@@ -17,9 +18,8 @@ class SolarSail_Max:
         # 特征加速度ac和光压因子beta或者说k的转换关系ac = 5.93beta
         self.delta_d = 1  # 仿真步长，未归一化，单位天
         self.delta_t = self.delta_d * (24 * 60 * 60) / self.TU  # 无单位
-        self.constant = {'beta': 0.5 / 5.93, 'r0': 1, 'u0': 0, 'phi0': 0,
+        self.constant = {'beta': 0.5 / 5.93, 'u0': 0, 'phi0': 0,
                          'r_f': 1.524, 'u_f': 0, 'phi_f': 0}
-        self.constant['v0'] = 1 / np.sqrt(self.constant['r0'])
         self.constant['v_f'] = 1 / np.sqrt(self.constant['r_f'])
         self.reset()  # 初始化
         self.state_dim = len(self.state)
@@ -34,21 +34,15 @@ class SolarSail_Max:
         self.td = 0
         if self.random == True:
             rand_r0 = np.random.rand(1)
-            self.constant['r0'] = (0.1 * rand_r0 + 1.0)[0]
+            self.constant['r0'] = (0.2 * rand_r0 + 1.0)[0]
             self.constant['v0'] = 1.0 / np.sqrt(self.constant['r0'])
         else:
             rand_r0 = 0.
             self.constant['r0'] = (0.2 * rand_r0 + 1.0)
             self.constant['v0'] = 1.0 / np.sqrt(self.constant['r0'])
-        # if self.random:  # 随机初始化
-        #     r = np.random.rand() / 10.0 + 1
-        # else:
-        #     r = self.constant['r0']
-        # v = 1 / np.sqrt(r)
-        r = self.constant['r0']
-        v = 1 / np.sqrt(r)
-        self.state = np.array([r, self.constant['phi0'],
-                               self.constant['u0'], v])  # [r phi u v]
+        self._state = np.array([self.constant['r0'], self.constant['phi0'],
+                                self.constant['u0'], self.constant['v0']])  # [r phi u v]
+        self.state = np.array([self.constant['r0'], rand_r0])
         return self.state.copy()
 
     def step(self, action):
@@ -59,14 +53,14 @@ class SolarSail_Max:
         alpha_profile = np.empty((0, 1))  # 存储动作
         reward_profile = np.empty((0, 1))  # 存储奖励
 
-        observation = self.reset()
+        state = self.reset()
         lambda_s = action[0:4] * 10 - 5  # 正负5之间
         td_f = action[4] * 500 + 100  # 100-600
 
         while True:
             # 根据协态变量初值求出最优控制量
             lambda1, lambda2, lambda3, lambda4 = lambda_s
-            r, phi, u, v = self.state  # 当前状态的参数值
+            r, phi, u, v = self._state  # 当前状态的参数值
             if lambda4 == 0:
                 if lambda3 <= 0:
                     alpha = 0
@@ -91,7 +85,7 @@ class SolarSail_Max:
             lambda4_dot = - lambda2 / r - 2 * lambda3 * v / r + lambda4 * u / r
 
             # 下一个状态
-            self.state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
+            self._state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
             lambda_s += self.delta_t * np.array([lambda1_dot, lambda2_dot, lamnad3_dot, lambda4_dot])
             self.td += self.delta_d
             self.t += self.delta_t
@@ -99,17 +93,17 @@ class SolarSail_Max:
             c1 = -200
             c2 = -200
             c3 = -200
-            reward = 30 - self.t + c1 * np.abs(self.constant['r_f'] - self.state[0]) + \
-                     c2 * np.abs(self.constant['u_f'] - self.state[2]) + \
-                     c3 * np.abs(self.constant['v_f'] - self.state[3])
+            reward = 30 - self.t + c1 * np.abs(self.constant['r_f'] - self._state[0]) + \
+                     c2 * np.abs(self.constant['u_f'] - self._state[2]) + \
+                     c3 * np.abs(self.constant['v_f'] - self._state[3])
 
             # memory
-            states_profile = np.vstack((states_profile, self.state))
+            states_profile = np.vstack((states_profile, self._state))
             alpha_profile = np.vstack((alpha_profile, alpha))
             reward_profile = np.vstack((reward_profile, reward))
 
             # terminate
-            # if self.state[3] >= self.constant['v_f']:
+            # if self._state[3] >= self.constant['v_f']:
             if self.td >= td_f:
                 done = True
                 info = {}
@@ -117,17 +111,16 @@ class SolarSail_Max:
                 info['alpha_profile'] = alpha_profile
                 info['reward_profile'] = reward_profile
                 info['total_day'] = self.td
-                info['rf_error'] = self.state[0] - self.constant['r_f']
-                info['uf_error'] = self.state[2] - self.constant['u_f']
-                info['vf_error'] = self.state[3] - self.constant['v_f']
+                info['rf_error'] = self._state[0] - self.constant['r_f']
+                info['uf_error'] = self._state[2] - self.constant['u_f']
+                info['vf_error'] = self._state[3] - self.constant['v_f']
                 break
-            observation = self.state
         # display
-        # print(self.state)
-        # print('error', self.state[2], self.state[3]- self.constant['v_f'])
+        # print(self._state)
+        # print('error', self._state[2], self._state[3]- self.constant['v_f'])
         # # print('转移轨道时间%d天' % self.t)
 
-        return observation.copy(), reward, done, info
+        return self.state.copy(), reward, done, info
 
 
 if __name__ == '__main__':
