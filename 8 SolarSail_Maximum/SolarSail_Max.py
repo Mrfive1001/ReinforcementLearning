@@ -61,7 +61,8 @@ class SolarSail_Max:
             # 根据协态变量初值求出最优控制量
             lambda1, lambda2, lambda3, lambda4 = lambda_s
             r, phi, u, v = self._state  # 当前状态的参数值
-            if lambda4 == 0:
+            if np.abs(lambda4) <= 0.0001:
+                print('lambad4=', lambda4)
                 if lambda3 <= 0:
                     alpha = 0
                 else:
