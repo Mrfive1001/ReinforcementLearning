@@ -70,56 +70,56 @@ class SolarSail_Max:
             else:
                 alpha = np.arctan((-3 * lambda3 - np.sqrt(9 * lambda3 ** 2 + 8 * lambda4 ** 2)) / 4 / lambda4)
             # 进行积分求下一个状态
-            r_dot = u
-            phi_dot = v / r
-            u_dot = self.constant['beta'] * ((np.cos(alpha)) ** 3) / (r ** 2) + \
-                    (v ** 2) / r - 1 / (r ** 2)
-            v_dot = self.constant['beta'] * np.sin(alpha) * (np.cos(alpha) ** 2) / (r ** 2) - u * v / r
+            if r > 0.001:
+                r_dot = u
+                phi_dot = v / r
+                u_dot = self.constant['beta'] * ((np.cos(alpha)) ** 3) / (r ** 2) + \
+                        (v ** 2) / r - 1 / (r ** 2)
+                v_dot = self.constant['beta'] * np.sin(alpha) * (np.cos(alpha) ** 2) / (r ** 2) - u * v / r
 
-            lambda1_dot = lambda2 * v / (r ** 2) + \
-                          lambda3 * (2 * self.constant['beta'] * np.cos(alpha) ** 3 / (r ** 3) + \
-                                     v ** 2 / (r ** 2) - 2 / (r ** 3)) + \
-                          lambda4 * (2 * self.constant['beta'] * np.sin(alpha) * np.cos(alpha) ** 2 / (r ** 3) - \
-                                     u * v ** 2 / r)
-            lambda2_dot = 0
-            lamnad3_dot = - lambda1 + lambda4 * v / r
-            lambda4_dot = - lambda2 / r - 2 * lambda3 * v / r + lambda4 * u / r
+                lambda1_dot = lambda2 * v / (r ** 2) + \
+                              lambda3 * (2 * self.constant['beta'] * np.cos(alpha) ** 3 / (r ** 3) + \
+                                         v ** 2 / (r ** 2) - 2 / (r ** 3)) + \
+                              lambda4 * (2 * self.constant['beta'] * np.sin(alpha) * np.cos(alpha) ** 2 / (r ** 3) - \
+                                         u * v ** 2 / r)
+                lambda2_dot = 0
+                lamnad3_dot = - lambda1 + lambda4 * v / r
+                lambda4_dot = - lambda2 / r - 2 * lambda3 * v / r + lambda4 * u / r
 
-            # 下一个状态
-            self._state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
-            lambda_s += self.delta_t * np.array([lambda1_dot, lambda2_dot, lamnad3_dot, lambda4_dot])
-            self.td += self.delta_d
-            self.t += self.delta_t
-            # reward calculation
-            c1 = -200
-            c2 = -200
-            c3 = -200
-            reward = 30 - self.t + c1 * np.abs(self.constant['r_f'] - self._state[0]) + \
-                     c2 * np.abs(self.constant['u_f'] - self._state[2]) + \
-                     c3 * np.abs(self.constant['v_f'] - self._state[3])
-
-            # memory
-            states_profile = np.vstack((states_profile, self._state))
-            alpha_profile = np.vstack((alpha_profile, alpha))
-            reward_profile = np.vstack((reward_profile, reward))
-
-            # terminate
-            # if self._state[3] >= self.constant['v_f']:
-            if self.td >= td_f:
+                # 下一个状态
+                self._state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
+                lambda_s += self.delta_t * np.array([lambda1_dot, lambda2_dot, lamnad3_dot, lambda4_dot])
+                self.td += self.delta_d
+                self.t += self.delta_t
+                states_profile = np.vstack((states_profile, self._state))
+                alpha_profile = np.vstack((alpha_profile, alpha))
+                if self.td >= td_f:
+                    done = True
+                    break
+            else:
+                print('trajectory r ===============================0')
                 done = True
-                info = {}
-                info['states_profile'] = states_profile
-                info['alpha_profile'] = alpha_profile
-                info['reward_profile'] = reward_profile
-                info['total_day'] = self.td
-                info['rf_error'] = self._state[0] - self.constant['r_f']
-                info['uf_error'] = self._state[2] - self.constant['u_f']
-                info['vf_error'] = self._state[3] - self.constant['v_f']
                 break
-        # display
-        # print(self._state)
-        # print('error', self._state[2], self._state[3]- self.constant['v_f'])
-        # # print('转移轨道时间%d天' % self.t)
+        # reward calculation
+        c1 = -200
+        c2 = -200
+        c3 = -200
+        reward = 30 - self.t + c1 * np.abs(self.constant['r_f'] - self._state[0]) + \
+                 c2 * np.abs(self.constant['u_f'] - self._state[2]) + \
+                 c3 * np.abs(self.constant['v_f'] - self._state[3])
+        if reward > 10000:
+            reward = 10000
+            print('too big')
+        elif reward < -10000:
+            reward = -10000
+            print('too small')
+        info = {}
+        info['states_profile'] = states_profile
+        info['alpha_profile'] = alpha_profile
+        info['total_day'] = self.td
+        info['rf_error'] = self._state[0] - self.constant['r_f']
+        info['uf_error'] = self._state[2] - self.constant['u_f']
+        info['vf_error'] = self._state[3] - self.constant['v_f']
 
         return self.state.copy(), reward, done, info
 
