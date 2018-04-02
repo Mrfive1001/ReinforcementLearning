@@ -9,22 +9,21 @@ class SolarSail_Max:
         self.t = None  # 真实的时间
         self.td = None  # 按照天结算的时间
         self._state = None  # 内部运动学参数迭代过程
-        self.state = None   # 观察变量
+        self.state = None  # 观察变量
         self.random = random
         # 归一化参数长度除以AU,时间除以TU
         self.AU = 1.4959787 * (10 ** 11)
         self.mu = 1.32712348 * (10 ** 20)
         self.TU = np.sqrt(self.AU ** 3 / self.mu)
+        self.constant = {'beta': 0.5 / 5.93, 'u0': 0, 'phi0': 0, 'r_f': 1.524, 'u_f': 0, 'phi_f': 0}
+        self.constant['v_f'] = 1.0 / np.sqrt(self.constant['r_f'])
         # 特征加速度ac和光压因子beta或者说k的转换关系ac = 5.93beta
         self.delta_d = 1  # 仿真步长，未归一化，单位天
         self.delta_t = self.delta_d * (24 * 60 * 60) / self.TU  # 无单位
-        self.constant = {'beta': 0.5 / 5.93, 'u0': 0, 'phi0': 0,
-                         'r_f': 1.524, 'u_f': 0, 'phi_f': 0}
-        self.constant['v_f'] = 1 / np.sqrt(self.constant['r_f'])
         self.reset()  # 初始化
         self.state_dim = len(self.state)
         self.action_dim = 5  # 五个初始变量需要猜测
-        self.abound = np.array([[0] * self.action_dim, [1] * self.action_dim])  # 动作空间的上下界
+        self.abound = np.array([-1*np.ones(self.action_dim), 1*np.ones(self.action_dim)]) # 动作空间的上下界
 
     def render(self):
         pass
@@ -53,9 +52,8 @@ class SolarSail_Max:
         alpha_profile = np.empty((0, 1))  # 存储动作
         reward_profile = np.empty((0, 1))  # 存储奖励
 
-        state = self.reset()
-        lambda_s = action[0:4] * 10 - 5  # 正负5之间
-        td_f = action[4] * 500 + 100  # 100-600
+        lambda_s = action[0:4] * 10  # 正负5之间
+        td_f = action[4] * 250 + 350  # 100-600
 
         while True:
             # 根据协态变量初值求出最优控制量
@@ -95,24 +93,18 @@ class SolarSail_Max:
                 alpha_profile = np.vstack((alpha_profile, alpha))
                 if self.td >= td_f:
                     done = True
+                    c1 = -200
+                    c2 = -200
+                    c3 = -200
+                    reward = 30 - self.t + c1 * np.abs(self.constant['r_f'] - self._state[0]) + \
+                             c2 * np.abs(self.constant['u_f'] - self._state[2]) + \
+                             c3 * np.abs(self.constant['v_f'] - self._state[3])
                     break
+
             else:
-                print('trajectory r ===============================0')
                 done = True
+                reward = -10000
                 break
-        # reward calculation
-        c1 = -200
-        c2 = -200
-        c3 = -200
-        reward = 30 - self.t + c1 * np.abs(self.constant['r_f'] - self._state[0]) + \
-                 c2 * np.abs(self.constant['u_f'] - self._state[2]) + \
-                 c3 * np.abs(self.constant['v_f'] - self._state[3])
-        if reward > 10000:
-            reward = 10000
-            print('too big')
-        elif reward < -10000:
-            reward = -10000
-            print('too small')
         info = {}
         info['states_profile'] = states_profile
         info['alpha_profile'] = alpha_profile
