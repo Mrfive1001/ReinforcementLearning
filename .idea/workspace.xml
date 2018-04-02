@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list id="d89413eb-f083-4ebd-be5e-5bbdaac04a98" name="略微修改了模型，更加的符合逻辑，由于在选择动作的时候会排除掉走过的点，所以不需要惩罚" comment="" />
-    <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="对r小到一定程度就不积分">
-      <change beforePath="$PROJECT_DIR$/.idea/ReinforcementLearning.iml" afterPath="$PROJECT_DIR$/.idea/ReinforcementLearning.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py" />
       <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/randomA3C_Net/checkpoint" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/randomA3C_Net/checkpoint" />
       <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/randomA3C_Net/data.chkp.data-00000-of-00001" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/randomA3C_Net/data.chkp.data-00000-of-00001" />
       <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/randomA3C_Net/data.chkp.index" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/randomA3C_Net/data.chkp.index" />
       <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/randomA3C_Net/data.chkp.meta" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/randomA3C_Net/data.chkp.meta" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/staticA3C_Net/checkpoint" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/staticA3C_Net/checkpoint" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/staticA3C_Net/data.chkp.data-00000-of-00001" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/staticA3C_Net/data.chkp.data-00000-of-00001" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/staticA3C_Net/data.chkp.index" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/staticA3C_Net/data.chkp.index" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/staticA3C_Net/data.chkp.meta" afterPath="$PROJECT_DIR$/8 SolarSail_Maximum/staticA3C_Net/data.chkp.meta" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,7 +26,7 @@
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_display__1_.coverage" NAME="main_DQN_display (1) Coverage Results" MODIFIED="1517642761936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_hands.coverage" NAME="main_DQN_hands Coverage Results" MODIFIED="1517660314968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main.coverage" NAME="main Coverage Results" MODIFIED="1522500388097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Application_SolarSail_AI-master/2 DL/3 A3C_extend" />
-    <SUITE FILE_PATH="coverage/ReinforcementLearning$main_a3c.coverage" NAME="main_a3c Coverage Results" MODIFIED="1522642676232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/8 SolarSail_Maximum" />
+    <SUITE FILE_PATH="coverage/ReinforcementLearning$main_a3c.coverage" NAME="main_a3c Coverage Results" MODIFIED="1522644123405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/8 SolarSail_Maximum" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$gym_learn.coverage" NAME="gym_learn Coverage Results" MODIFIED="1517882589148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$Missile.coverage" NAME="Missile Coverage Results" MODIFIED="1518075386543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$asteroids.coverage" NAME="asteroids Coverage Results" MODIFIED="1517903885856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN/Asteroids_pyglet" />
@@ -72,8 +66,8 @@
       <file leaf-file-name="main_a3c.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="33" column="12" lean-forward="true" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+            <state relative-caret-position="296">
+              <caret line="63" column="18" lean-forward="true" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -422,13 +416,6 @@
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
     </task>
-    <task id="LOCAL-00116" summary="增加最好的最后状态保存">
-      <created>1521263051178</created>
-      <option name="number" value="00116" />
-      <option name="presentableId" value="LOCAL-00116" />
-      <option name="project" value="LOCAL" />
-      <updated>1521263051178</updated>
-    </task>
     <task id="LOCAL-00117" summary="修改了总体轮数和reward定义，运行得到最好的图保存下来">
       <created>1521263224543</created>
       <option name="number" value="00117" />
@@ -765,7 +752,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522638811268</updated>
     </task>
-    <option name="localTasksCounter" value="165" />
+    <task id="LOCAL-00165" summary="效果不错进行保存，接下来再稍微修改一下随机初始状态">
+      <created>1522642731164</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
+      <option name="project" value="LOCAL" />
+      <updated>1522642731164</updated>
+    </task>
+    <option name="localTasksCounter" value="166" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -779,6 +773,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="2391" y="-190" width="2018" height="1106" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32865497" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -786,7 +781,7 @@
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34517202" sideWeight="0.49785408" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40510544" sideWeight="0.58208156" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4350877" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2308546" sideWeight="0.542382" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23307437" sideWeight="0.542382" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7369589" sideWeight="0.70439917" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2350823" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23919754" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -877,7 +872,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="增加一些结果，测试25步效果" />
     <MESSAGE value="增加金星数据" />
     <MESSAGE value="效果很好，可以直接使用" />
     <MESSAGE value="增加第八个项目" />
@@ -902,7 +896,8 @@
     <MESSAGE value="对r小到一定程度就不积分" />
     <MESSAGE value="增加调参经验" />
     <MESSAGE value="很神奇的能用了，不太知道为啥" />
-    <option name="LAST_COMMIT_MESSAGE" value="很神奇的能用了，不太知道为啥" />
+    <MESSAGE value="效果不错进行保存，接下来再稍微修改一下随机初始状态" />
+    <option name="LAST_COMMIT_MESSAGE" value="效果不错进行保存，接下来再稍微修改一下随机初始状态" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1125,18 +1120,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/SolarSail_Max.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2310">
+        <state relative-caret-position="-240">
           <caret line="110" column="35" lean-forward="true" selection-start-line="110" selection-start-column="35" selection-end-line="110" selection-end-column="35" />
-          <folding>
-            <element signature="e#12#30#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="33" column="12" lean-forward="true" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+        <state relative-caret-position="296">
+          <caret line="63" column="18" lean-forward="true" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

@@ -11,7 +11,7 @@ import pickle
 
 if __name__ == '__main__':
     random = True
-    train = 2
+    train = 0
     name = 'random' if random else 'static'
     env = Env(random)
     para = A3C.Para(env,
@@ -54,17 +54,19 @@ if __name__ == '__main__':
     plt.figure(2)
     plt.plot(states_profile[:, 0], 'm')
     plt.plot(env.constant['r_f'] * np.ones(len(states_profile[:, 0])))
+    plt.ylim(0.5, 2)
     plt.title('r')
 
     plt.figure(3)
     plt.plot(states_profile[:, 2], 'm')
     plt.plot(env.constant['u_f'] * np.ones(len(states_profile[:, 0])))
-    plt.title('v')
+    plt.ylim(-0.1, 0.2)
     plt.title('u')
 
     plt.figure(4)
     plt.plot(states_profile[:, 3], 'm')
     plt.plot(env.constant['v_f'] * np.ones(len(states_profile[:, 0])))
+    plt.ylim(0.5, 1.5)
     plt.title('v')
 
     plt.figure(5)
@@ -72,4 +74,3 @@ if __name__ == '__main__':
     plt.title('alpha')
 
     plt.show()
-
