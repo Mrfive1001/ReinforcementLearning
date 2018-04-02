@@ -11,7 +11,7 @@ import pickle
 
 if __name__ == '__main__':
     random = True
-    train = 1
+    train = 2
     name = 'random' if random else 'static'
     env = Env(random)
     para = A3C.Para(env,
@@ -34,8 +34,6 @@ if __name__ == '__main__':
     RL.run()
     env = Env(random)
     s = env.reset()
-    # action = np.array([(-1.609601 + 5) / 10, (0.042179 + 5) / 10, \
-    #                    (-0.160488 + 5) / 10, (-1.597537 + 5) / 10, (568 - 100) / 500])
     observation, reward, done, info = env.step(RL.choose_best(s))
     print(number)
     print('total reward:', reward)
