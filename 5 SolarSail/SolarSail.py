@@ -7,6 +7,7 @@ class Env:
     def __init__(self):
         self.t = None
         self.state = None
+        self._state = None
         # 归一化参数长度除以AU,时间除以TU
         self.AU = 1.4959787 * (10 ** 11)
         self.mu = 1.32712348 * (10 ** 20)
@@ -21,7 +22,7 @@ class Env:
         self.reset()
         self.state_dim = len(self.state)
         self.action_dim = 1
-        self.abound = np.array([-0.3, 1])
+        self.abound = np.array([0, 1])
         self.times = 50
 
     def render(self):
@@ -29,8 +30,10 @@ class Env:
 
     def reset(self):
         self.t = 0
-        self.state = np.array([self.constant['r0'], self.constant['phi0'],
+        self._state = np.array([self.constant['r0'], self.constant['phi0'],
                                self.constant['u0'], self.constant['v0']])  # [r phi u v]
+        self.state = np.array([self.constant['r0'],
+                               self.constant['u0'], self.constant['v0']])  # [r u v]
         return self.state.copy()
 
     def step(self, action):
@@ -38,7 +41,7 @@ class Env:
         theta = (action / 2) * np.pi
         reward = 0
         for i in range(self.times):
-            _r, _phi, _u, _v = self.state  # 当前状态的参数值
+            _r, _phi, _u, _v = self._state  # 当前状态的参数值
             # 求微分
             r_dot = _u
             phi_dot = _v / _r
@@ -46,13 +49,14 @@ class Env:
                     (_v ** 2) / _r - 1 / (_r ** 2)
             v_dot = self.constant['k'] * np.sin(theta) * (np.cos(theta) ** 2) / (_r ** 2) - _u * _v / _r
             # 下一个状态
-            self.state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
+            self._state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
+            self.state += self.delta_t * np.array([r_dot, u_dot, v_dot])  # [r,u,v]
             # 判断是否结束
             self.t += self.delta_d  # 单位是天
-            reward -= (np.abs(self.state[0] - self.constant['r_f'])) / 5  # 考虑时间和距离
-            dif = np.abs(self.state[0] - self.constant['r_f']) + \
-                  np.abs(self.state[2] - self.constant['u_f']) + \
-                  np.abs(self.state[3] - self.constant['v_f'])
+            reward -= (np.abs(self._state[0] - self.constant['r_f'])) / 5  # 考虑时间和距离
+            dif = np.abs(self._state[0] - self.constant['r_f']) + \
+                  np.abs(self._state[2] - self.constant['u_f']) + \
+                  np.abs(self._state[3] - self.constant['v_f'])
             if self.t >= 400 or dif <= 0.01:  # 超过一定距离和一定天数就结束
                 done = True
                 reward += 30
