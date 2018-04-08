@@ -1,2 +1,2 @@
-model_checkpoint_path: "/home/chengyangzhou/PyProject/ReinforcementLearning/5 SolarSail/A3C_Net/data.chkp"
-all_model_checkpoint_paths: "/home/chengyangzhou/PyProject/ReinforcementLearning/5 SolarSail/A3C_Net/data.chkp"
+model_checkpoint_path: "D:\\MrFive\\Documents\\Code\\ReinforcementLearning\\5 SolarSail\\A3C_Net\\data.chkp"
+all_model_checkpoint_paths: "D:\\MrFive\\Documents\\Code\\ReinforcementLearning\\5 SolarSail\\A3C_Net\\data.chkp"

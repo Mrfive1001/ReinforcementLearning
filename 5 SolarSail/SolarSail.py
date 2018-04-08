@@ -8,6 +8,7 @@ class Env:
         self.t = None
         self.state = None
         self._state = None
+        self.info = None
         # 归一化参数长度除以AU,时间除以TU
         self.AU = 1.4959787 * (10 ** 11)
         self.mu = 1.32712348 * (10 ** 20)
@@ -31,9 +32,11 @@ class Env:
     def reset(self):
         self.t = 0
         self._state = np.array([self.constant['r0'], self.constant['phi0'],
-                               self.constant['u0'], self.constant['v0']])  # [r phi u v]
+                                self.constant['u0'], self.constant['v0']])  # [r phi u v]
         self.state = np.array([self.constant['r0'],
                                self.constant['u0'], self.constant['v0']])  # [r u v]
+        self.info = {'states': np.array(self.state.copy()), 'target': [self.constant['r_f'], self.constant['phi_f'],
+                                                        self.constant['u_f'], self.constant['v_f']]}
         return self.state.copy()
 
     def step(self, action):
@@ -51,6 +54,7 @@ class Env:
             # 下一个状态
             self._state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
             self.state += self.delta_t * np.array([r_dot, u_dot, v_dot])  # [r,u,v]
+            self.info['states'] = np.vstack((self.info['states'], self.state))
             # 判断是否结束
             self.t += self.delta_d  # 单位是天
             reward -= (np.abs(self._state[0] - self.constant['r_f'])) / 5  # 考虑时间和距离
@@ -63,15 +67,7 @@ class Env:
                 break
             else:
                 done = False
-        info = {'t': self.t}
-        info['target'] = [self.constant['r_f'], self.constant['phi_f'], self.constant['u_f'], self.constant['v_f']]
-        # c1, c2, c3 = 100, 0, 0
-        # if done:
-        #     reward += 0-c1 * np.abs(self.state[0] - self.constant['r_f']) - \
-        #                   c2 * np.abs(self.state[2] - self.constant['u_f']) - \
-        #                   c3 * np.abs(self.state[3] - self.constant['v_f'])
-
-        return self.state.copy(), reward, done, info
+        return self.state.copy(), reward, done, self.info.copy()
 
 
 if __name__ == '__main__':
