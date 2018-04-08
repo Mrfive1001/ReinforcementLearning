@@ -35,7 +35,7 @@ class Env:
                                 self.constant['u0'], self.constant['v0']])  # [r phi u v]
         self.state = np.array([self.constant['r0'],
                                self.constant['u0'], self.constant['v0']])  # [r u v]
-        self.info = {'states': np.array(self.state.copy()), 'target': [self.constant['r_f'], self.constant['phi_f'],
+        self.info = {'states': np.array(self._state.copy()), 'target': [self.constant['r_f'], self.constant['phi_f'],
                                                         self.constant['u_f'], self.constant['v_f']]}
         return self.state.copy()
 
@@ -54,7 +54,7 @@ class Env:
             # 下一个状态
             self._state += self.delta_t * np.array([r_dot, phi_dot, u_dot, v_dot])  # [r,phi,u,v]
             self.state += self.delta_t * np.array([r_dot, u_dot, v_dot])  # [r,u,v]
-            self.info['states'] = np.vstack((self.info['states'], self.state))
+            self.info['states'] = np.vstack((self.info['states'], self._state))
             # 判断是否结束
             self.t += self.delta_d  # 单位是天
             reward -= (np.abs(self._state[0] - self.constant['r_f'])) / 5  # 考虑时间和距离
