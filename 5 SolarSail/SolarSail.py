@@ -35,8 +35,8 @@ class Env:
                                 self.constant['u0'], self.constant['v0']])  # [r phi u v]
         self.state = np.array([self.constant['r0'],
                                self.constant['u0'], self.constant['v0']])  # [r u v]
-        self.info = {'states': np.array(self._state.copy()), 'target': [self.constant['r_f'], self.constant['phi_f'],
-                                                        self.constant['u_f'], self.constant['v_f']]}
+        self.info = self.constant.copy()
+        self.info['states'] = np.array(self._state.copy())
         return self.state.copy()
 
     def step(self, action):
