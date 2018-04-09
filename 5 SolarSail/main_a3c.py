@@ -10,12 +10,14 @@ import sys
 import pickle
 
 if __name__ == '__main__':
+    train_mode = 1   # 0 测试 1 从头开始训练 2 从已有阶段开始训练
+    choose_mode = 0  # 0 最好结果 2 测试选择随机动作 3 测试选择最好动作
     env = Env()
     para = A3C.Para(env,
                     a_constant=True,
                     units_a=256,
                     units_c=512,
-                    MAX_GLOBAL_EP=30000,
+                    MAX_GLOBAL_EP=40000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
                     ENTROPY_BETA_init=0.1,  # 太大最后测试效果很差
@@ -24,7 +26,7 @@ if __name__ == '__main__':
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train_mode=1)
-    number = 2  # 调试参数编号
+    number = 1  # 调试参数编号
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据
     actions_best = []
@@ -41,10 +43,16 @@ if __name__ == '__main__':
             actions_best = pickle.load(file)
     # 画出最好的动作
     env = Env()
+    state_now = env.reset()
     epr_best = 0
     t_best = 0
     while True:
-        action = actions_best[int(t_best)]
+        if choose_mode == 0:
+            action = actions_best[int(t_best)]
+        elif choose_mode == 1:
+            action = RL.choose_action(state_now)
+        elif choose_mode == 2:
+            action = RL.choose_best(state_now)
         state_next, reward, done, info = env.step(action)
         t_best += 1
         state_now = state_next

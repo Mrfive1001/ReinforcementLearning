@@ -6,46 +6,23 @@
   <component name="ChangeListManager">
     <list id="d89413eb-f083-4ebd-be5e-5bbdaac04a98" name="略微修改了模型，更加的符合逻辑，由于在选择动作的时候会排除掉走过的点，所以不需要惩罚" comment="" />
     <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ReinforcementLearning.iml" afterPath="$PROJECT_DIR$/.idea/ReinforcementLearning.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/5 SolarSail/SolarSail.py" afterPath="$PROJECT_DIR$/5 SolarSail/SolarSail.py" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/A3C_action1.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/A3C_action2.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/A3C_action3.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/A3C_action4.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/A3C_effect1.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/A3C_effect2.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/A3C_effect3.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/A3C_effect4.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/action1_data.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/action2_data.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/action3_data.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/action4_data.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/action5_data.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/action6_data.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/5 SolarSail/A3C_result/action7_data.txt" afterPath="" />
       <change beforePath="$PROJECT_DIR$/5 SolarSail/main_a3c.py" afterPath="$PROJECT_DIR$/5 SolarSail/main_a3c.py" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_Net/checkpoint" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_Net/data.chkp.data-00000-of-00001" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_Net/data.chkp.index" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_Net/data.chkp.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_action1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_action2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_action3.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_action4.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_effect1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_effect2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_effect3.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_effect4.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/action1_data.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/action2_data.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/action3_data.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/action4_data.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/action5_data.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/action6_data.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/A3C_result/action7_data.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/SolarSail.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/main_a3c.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/7 SolarSail2/main_try.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/A3C.py" afterPath="$PROJECT_DIR$/7 SolarSail_Maximum/A3C.py" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/SolarSail_Max.py" afterPath="$PROJECT_DIR$/7 SolarSail_Maximum/SolarSail_Max.py" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py" afterPath="$PROJECT_DIR$/7 SolarSail_Maximum/main_a3c.py" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/randomA3C_Net/checkpoint" afterPath="$PROJECT_DIR$/7 SolarSail_Maximum/randomA3C_Net/checkpoint" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/randomA3C_Net/data.chkp.data-00000-of-00001" afterPath="$PROJECT_DIR$/7 SolarSail_Maximum/randomA3C_Net/data.chkp.data-00000-of-00001" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/randomA3C_Net/data.chkp.index" afterPath="$PROJECT_DIR$/7 SolarSail_Maximum/randomA3C_Net/data.chkp.index" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/randomA3C_Net/data.chkp.meta" afterPath="$PROJECT_DIR$/7 SolarSail_Maximum/randomA3C_Net/data.chkp.meta" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/staticA3C_Net/checkpoint" afterPath="$PROJECT_DIR$/7 SolarSail_Maximum/staticA3C_Net/checkpoint" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/staticA3C_Net/data.chkp.data-00000-of-00001" afterPath="$PROJECT_DIR$/7 SolarSail_Maximum/staticA3C_Net/data.chkp.data-00000-of-00001" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/staticA3C_Net/data.chkp.index" afterPath="$PROJECT_DIR$/7 SolarSail_Maximum/staticA3C_Net/data.chkp.index" />
-      <change beforePath="$PROJECT_DIR$/8 SolarSail_Maximum/staticA3C_Net/data.chkp.meta" afterPath="$PROJECT_DIR$/7 SolarSail_Maximum/staticA3C_Net/data.chkp.meta" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,7 +37,7 @@
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_display__1_.coverage" NAME="main_DQN_display (1) Coverage Results" MODIFIED="1517642761936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_hands.coverage" NAME="main_DQN_hands Coverage Results" MODIFIED="1517660314968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main.coverage" NAME="main Coverage Results" MODIFIED="1522500388097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Application_SolarSail_AI-master/2 DL/3 A3C_extend" />
-    <SUITE FILE_PATH="coverage/ReinforcementLearning$main_a3c.coverage" NAME="main_a3c Coverage Results" MODIFIED="1523237963452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/5 SolarSail" />
+    <SUITE FILE_PATH="coverage/ReinforcementLearning$main_a3c.coverage" NAME="main_a3c Coverage Results" MODIFIED="1523239423138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/5 SolarSail" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$gym_learn.coverage" NAME="gym_learn Coverage Results" MODIFIED="1517882589148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$Missile.coverage" NAME="Missile Coverage Results" MODIFIED="1518075386543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$asteroids.coverage" NAME="asteroids Coverage Results" MODIFIED="1517903885856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN/Asteroids_pyglet" />
@@ -103,8 +80,8 @@
             <file leaf-file-name="SolarSail.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/5 SolarSail/SolarSail.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="660">
-                    <caret line="25" column="34" lean-forward="false" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+                  <state relative-caret-position="654">
+                    <caret line="68" column="79" lean-forward="false" selection-start-line="68" selection-start-column="79" selection-end-line="68" selection-end-column="79" />
                     <folding />
                   </state>
                 </provider>
@@ -120,11 +97,21 @@
       <file leaf-file-name="main_a3c.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/5 SolarSail/main_a3c.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-240">
-              <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+            <state relative-caret-position="298">
+              <caret line="20" column="38" lean-forward="true" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="A3C.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/5 SolarSail/A3C.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2130">
+              <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -141,7 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mu</find>
       <find>v_r0</find>
       <find>theta0</find>
       <find>v_r</find>
@@ -171,6 +157,7 @@
       <find>trajectory</find>
       <find>phi</find>
       <find>states_profile</find>
+      <find>+ str(number)</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -252,10 +239,10 @@
         <option value="$PROJECT_DIR$/8 SolarSail_Maximum/SolarSail.py" />
         <option value="$PROJECT_DIR$/8 SolarSail_Maximum/SolarSail_Max.py" />
         <option value="$PROJECT_DIR$/8 SolarSail_Maximum/main_a3c.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/5 SolarSail/SolarSail.py" />
         <option value="$PROJECT_DIR$/5 SolarSail/A3C.py" />
         <option value="$PROJECT_DIR$/5 SolarSail/main_a3c.py" />
-        <option value="$PROJECT_DIR$/5 SolarSail/SolarSail.py" />
-        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -300,17 +287,6 @@
               <item name="ReinforcementLearning" type="b2602c69:ProjectViewProjectNode" />
               <item name="ReinforcementLearning" type="462c0819:PsiDirectoryNode" />
               <item name="5 SolarSail" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReinforcementLearning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReinforcementLearning" type="462c0819:PsiDirectoryNode" />
-              <item name="5 SolarSail" type="462c0819:PsiDirectoryNode" />
-              <item name="A3C_result" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReinforcementLearning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReinforcementLearning" type="462c0819:PsiDirectoryNode" />
-              <item name="7 SolarSail_Maximum" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -434,20 +410,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
-    </task>
-    <task id="LOCAL-00119" summary="修改了一些学习参数，但是效果不太好">
-      <created>1521269443491</created>
-      <option name="number" value="00119" />
-      <option name="presentableId" value="LOCAL-00119" />
-      <option name="project" value="LOCAL" />
-      <updated>1521269443491</updated>
-    </task>
-    <task id="LOCAL-00120" summary="每隔某些代进行一次学习，学习比较多的话效果还不错">
-      <created>1521273619636</created>
-      <option name="number" value="00120" />
-      <option name="presentableId" value="LOCAL-00120" />
-      <option name="project" value="LOCAL" />
-      <updated>1521273619636</updated>
     </task>
     <task id="LOCAL-00121" summary="修改一些reward和调试参数">
       <created>1521595929307</created>
@@ -778,7 +740,21 @@
       <option name="project" value="LOCAL" />
       <updated>1523200888825</updated>
     </task>
-    <option name="localTasksCounter" value="168" />
+    <task id="LOCAL-00168" summary="修改在服务器上运行">
+      <created>1523238096749</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
+      <option name="project" value="LOCAL" />
+      <updated>1523238096749</updated>
+    </task>
+    <task id="LOCAL-00169" summary="增加一种从中途开始训练的模式，整理输出结果更有体系">
+      <created>1523239124911</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
+      <option name="project" value="LOCAL" />
+      <updated>1523239124911</updated>
+    </task>
+    <option name="localTasksCounter" value="170" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -797,7 +773,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32865497" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27953216" sideWeight="0.45761803" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34517202" sideWeight="0.49785408" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20310766" sideWeight="0.58208156" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34850165" sideWeight="0.58208156" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.118756935" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31298557" sideWeight="0.542382" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7369589" sideWeight="0.70439917" order="11" side_tool="false" content_ui="tabs" />
@@ -891,8 +867,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="增加第八个项目" />
-    <MESSAGE value="修改环境，使得环境输入为一步强化学习" />
     <MESSAGE value="修改A3C，增加存储功能" />
     <MESSAGE value="修改完毕，接下来进行调试参数和增加画图功能" />
     <MESSAGE value="使用本地编译器，" />
@@ -916,7 +890,9 @@
     <MESSAGE value="效果不错进行保存，接下来再稍微修改一下随机初始状态" />
     <MESSAGE value="状态由四维变成三维" />
     <MESSAGE value="增加输出显示，在环境内部保存变量" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加输出显示，在环境内部保存变量" />
+    <MESSAGE value="修改在服务器上运行" />
+    <MESSAGE value="增加一种从中途开始训练的模式，整理输出结果更有体系" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加一种从中途开始训练的模式，整理输出结果更有体系" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1058,14 +1034,6 @@
     <entry file="file://$PROJECT_DIR$/Application_SolarSail_AI-master/2 DL/2 AC_extend/3 SL_MultiScene/main.py" />
     <entry file="file://$PROJECT_DIR$/Application_SolarSail_AI-master/2 DL/3 A3C_extend/main.py" />
     <entry file="file://$PROJECT_DIR$/8 SolarSail_Maximum/SolarSail.py" />
-    <entry file="file://$PROJECT_DIR$/5 SolarSail/A3C.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-520">
-          <caret line="53" column="31" lean-forward="false" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/7 SolarSail2/SolarSail.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -1114,22 +1082,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/7 SolarSail_Maximum/SolarSail_Max.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="93" column="18" lean-forward="true" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/5 SolarSail/SolarSail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="25" column="34" lean-forward="false" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_action4.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1153,10 +1105,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/7 SolarSail_Maximum/SolarSail_Max.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="70" column="12" lean-forward="true" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/5 SolarSail/SolarSail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="654">
+          <caret line="68" column="79" lean-forward="false" selection-start-line="68" selection-start-column="79" selection-end-line="68" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/5 SolarSail/A3C.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2130">
+          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/5 SolarSail/main_a3c.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
-          <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        <state relative-caret-position="298">
+          <caret line="20" column="38" lean-forward="true" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
