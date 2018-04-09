@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib
 
-# matplotlib.use('Agg')
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from SolarSail import Env
 import A3C
@@ -13,8 +13,8 @@ if __name__ == '__main__':
     env = Env()
     para = A3C.Para(env,
                     a_constant=True,
-                    units_a=128,
-                    units_c=256,
+                    units_a=256,
+                    units_c=512,
                     MAX_GLOBAL_EP=30000,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
@@ -23,7 +23,7 @@ if __name__ == '__main__':
                     ENTROPY_BETA_end=0.05,
                     LR_A=0.00002,
                     LR_C=0.0001,
-                    train=False)
+                    train=True)
     number = 2  # 调试参数编号
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据
@@ -63,23 +63,23 @@ if __name__ == '__main__':
     plt.ylabel('y/(AU)')
     plt.ylim((0, 2))
     plt.yticks(np.arange(2))
-    # plt.savefig(os.path.join(path0, 'A3C_effect' + str(number) + '.png'))
+    plt.savefig(os.path.join(path0, 'A3C_effect' + str(number) + '.png'))
 
     plt.figure(2)
     plt.plot(info['states'][:, 0], 'm')
     plt.plot(info['r_f'] * np.ones(len(info['states'][:, 0])))
     plt.ylim(0.5, 2)
     plt.title('r')
+    plt.savefig(os.path.join(path0, 'r' + str(number) + '.png'))
 
     plt.figure(3)
     plt.plot(info['states'][:, 2], 'm')
     plt.plot(info['u_f'] * np.ones(len(info['states'][:, 0])))
-    # plt.ylim(-0.1, 0.2)
     plt.title('u')
+    plt.savefig(os.path.join(path0, 'u' + str(number) + '.png'))
 
     plt.figure(4)
     plt.plot(info['states'][:, 3], 'm')
     plt.plot(info['v_f'] * np.ones(len(info['states'][:, 0])))
-    # plt.ylim(0.5, 1.5)
     plt.title('v')
-    plt.show()
+    plt.savefig(os.path.join(path0, 'v' + str(number) + '.png'))
