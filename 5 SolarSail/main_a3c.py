@@ -17,12 +17,12 @@ if __name__ == '__main__':
                     a_constant=True,
                     units_a=256,
                     units_c=512,
-                    MAX_GLOBAL_EP=40000,
+                    MAX_GLOBAL_EP=40,
                     UPDATE_GLOBAL_ITER=4,
                     gamma=0.95,
                     ENTROPY_BETA_init=0.1,  # 太大最后测试效果很差
                     ENTROPY_BETA_times=10000,
-                    ENTROPY_BETA_end=0.05,
+                    ENTROPY_BETA_end=0.01,
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train_mode=1)
@@ -30,10 +30,13 @@ if __name__ == '__main__':
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据
     actions_best = []
-    path0 = os.path.join(sys.path[0], 'A3C_result')
-    path0 = os.path.join(path0, str(number) + '_result')
+    path00 = os.path.join(sys.path[0], 'A3C_result')
+    path0 = os.path.join(path00, str(number) + '_result')
+    if not os.path.exists(path00):
+        os.mkdir(path00)
     if not os.path.exists(path0):
         os.mkdir(path0)
+
     if para.train_mode:
         with open(os.path.join(path0, 'action' + '.txt'), 'wb') as file:
             pickle.dump(para.best_action, file)

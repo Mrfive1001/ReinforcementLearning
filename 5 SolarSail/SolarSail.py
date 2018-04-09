@@ -64,7 +64,7 @@ class Env:
                     c1 = -100
                     c2 = -100
                     c3 = -100
-                    reward = 60 + c1 * np.abs(self.constant['r_f'] - self._state[0]) + \
+                    reward = 40 + c1 * np.abs(self.constant['r_f'] - self._state[0]) + \
                              c2 * np.abs(self.constant['u_f'] - self._state[2]) + \
                              c3 * np.abs(self.constant['v_f'] - self._state[3])
                     break
