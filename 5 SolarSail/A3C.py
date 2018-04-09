@@ -32,8 +32,8 @@ class Para:
                  LR_A=0.0001,  # Actor的学习率
                  LR_C=0.001,  # Crtic的学习率
                  MAX_EP_STEP=510,  # 控制一个回合的最长长度
-                 train=True,  # 表示训练
-                 name = ''
+                 train_mode=0,  # 表示训练模式，0：不训练直接测试，1：从零开始训练  2：从之前模式开始训练
+                 name=''
                  ):
         self.N_WORKERS = multiprocessing.cpu_count()
         self.MAX_EP_STEP = MAX_EP_STEP
@@ -52,8 +52,7 @@ class Para:
         self.LR_C = LR_C
         self.best_epr = None
         self.best_action = None
-        self.train = train
-
+        self.train_mode = train_mode
         # 保存网络位置
         self.model_path0 = os.path.join(sys.path[0], name + 'A3C_Net')
         if not os.path.exists(self.model_path0):
@@ -90,10 +89,13 @@ class A3C:
         self.actor_saver = tf.train.Saver()
 
     def run(self):
-        if not self.para.train:
+        if self.para.train_mode == 0:
             self.actor_saver.restore(self.para.SESS, self.para.model_path)
         else:
-            self.para.SESS.run(tf.global_variables_initializer())
+            if self.para.train_mode == 1:
+                self.para.SESS.run(tf.global_variables_initializer())
+            elif self.para.train_mode == 2:
+                self.actor_saver.restore(self.para.SESS, self.para.model_path)
             COORD = tf.train.Coordinator()
             worker_threads = []
             for worker in self.workers:
@@ -109,11 +111,6 @@ class A3C:
 
     def choose_action(self, state):
         return self.workers[0].AC.choose_action(state)
-
-    def display(self):
-        if not self.para.train:
-            self.actor_saver.restore(self.para.SESS, self.para.model_path)
-        # display
 
 
 class ACNet(object):
@@ -225,7 +222,7 @@ class ACNet(object):
         else:
             prob_weights = self.para.SESS.run(self.a_prob, feed_dict={self.s: s}).reshape(self.para.N_S)
             # 可以加入一些排除因素来选择
-            if self.para.train:
+            if self.para.train_mode != 0:
                 return np.random.choice(range(self.para.N_A), p=prob_weights)
             else:
                 return np.argmax(prob_weights)
@@ -262,7 +259,7 @@ class Worker(object):
             ep_r = 0
             for ep_t in range(self.para.MAX_EP_STEP):  # MAX_EP_STEP每个片段的最大个数
                 a = self.AC.choose_action(s)  # 选取动作
-                actions.append(a[0])
+                actions.append(a)
                 s_, r, done, info = self.env_l.step(a)
                 ep_r += r
                 buffer_s.append(s)

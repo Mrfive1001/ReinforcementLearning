@@ -23,20 +23,21 @@ if __name__ == '__main__':
                     ENTROPY_BETA_end=0.05,
                     LR_A=0.00002,
                     LR_C=0.0001,
-                    train=True)
+                    train_mode=1)
     number = 2  # 调试参数编号
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据
     actions_best = []
     path0 = os.path.join(sys.path[0], 'A3C_result')
+    path0 = os.path.join(path0, str(number) + '_result')
     if not os.path.exists(path0):
         os.mkdir(path0)
-    if para.train:
-        with open(os.path.join(path0, 'action' + str(number) + '_data.txt'), 'wb') as file:
+    if para.train_mode:
+        with open(os.path.join(path0, 'action' + '.txt'), 'wb') as file:
             pickle.dump(para.best_action, file)
             actions_best = para.best_action.copy()
     else:
-        with open(os.path.join(path0, 'action' + str(number) + '_data.txt'), 'rb') as file:
+        with open(os.path.join(path0, 'action' + '.txt'), 'rb') as file:
             actions_best = pickle.load(file)
     # 画出最好的动作
     env = Env()
@@ -63,23 +64,23 @@ if __name__ == '__main__':
     plt.ylabel('y/(AU)')
     plt.ylim((0, 2))
     plt.yticks(np.arange(2))
-    plt.savefig(os.path.join(path0, 'A3C_effect' + str(number) + '.png'))
+    plt.savefig(os.path.join(path0, 'r-phi' + '.png'))
 
     plt.figure(2)
     plt.plot(info['states'][:, 0], 'm')
     plt.plot(info['r_f'] * np.ones(len(info['states'][:, 0])))
     plt.ylim(0.5, 2)
     plt.title('r')
-    plt.savefig(os.path.join(path0, 'r' + str(number) + '.png'))
+    plt.savefig(os.path.join(path0, 'r' + '.png'))
 
     plt.figure(3)
     plt.plot(info['states'][:, 2], 'm')
     plt.plot(info['u_f'] * np.ones(len(info['states'][:, 0])))
     plt.title('u')
-    plt.savefig(os.path.join(path0, 'u' + str(number) + '.png'))
+    plt.savefig(os.path.join(path0, 'u' + '.png'))
 
     plt.figure(4)
     plt.plot(info['states'][:, 3], 'm')
     plt.plot(info['v_f'] * np.ones(len(info['states'][:, 0])))
     plt.title('v')
-    plt.savefig(os.path.join(path0, 'v' + str(number) + '.png'))
+    plt.savefig(os.path.join(path0, 'v' + '.png'))
