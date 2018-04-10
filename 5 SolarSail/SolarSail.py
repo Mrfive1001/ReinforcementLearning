@@ -37,16 +37,20 @@ class Env:
                                self.constant['u0'], self.constant['v0']])  # [r u v]
         self.info = self.constant.copy()
         self.info['states'] = np.array(self._state.copy())
+        self.info['target'] = np.array([self.constant['r_f'], self.constant['phi_f'],
+                                        self.constant['u_f'], self.constant['v_f']])
+        self.info['angle'] = None
         return self.state.copy()
 
     def step(self, action):
-        # 传入单位是度
         theta = (action / 2) * np.pi
         reward = 0
         for i in range(self.times):
+            self.info['angle'] = np.vstack((self.info['angle'], (theta) * 180 / np.pi)) \
+                if self.info['angle'] is not None else np.array([(theta) * 180 / np.pi])
             _r, _phi, _u, _v = self._state  # 当前状态的参数值
             if _r > 0.001:
-            # 求微分
+                # 求微分
                 r_dot = _u
                 phi_dot = _v / _r
                 u_dot = self.constant['k'] * ((np.cos(theta)) ** 3) / (_r ** 2) + \
