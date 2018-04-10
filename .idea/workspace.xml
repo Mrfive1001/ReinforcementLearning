@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list id="d89413eb-f083-4ebd-be5e-5bbdaac04a98" name="略微修改了模型，更加的符合逻辑，由于在选择动作的时候会排除掉走过的点，所以不需要惩罚" comment="" />
     <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/5 SolarSail/A3C_result/火星较好的结果/action.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/5 SolarSail/A3C_result/火星较好的结果/angle.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/5 SolarSail/A3C_result/火星较好的结果/r-phi.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/5 SolarSail/A3C_result/火星较好的结果/r.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/5 SolarSail/A3C_result/火星较好的结果/u.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/5 SolarSail/A3C_result/火星较好的结果/v.png" />
-      <change beforePath="$PROJECT_DIR$/.idea/ReinforcementLearning.iml" afterPath="$PROJECT_DIR$/.idea/ReinforcementLearning.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/5 SolarSail/SolarSail.py" afterPath="$PROJECT_DIR$/5 SolarSail/SolarSail.py" />
-      <change beforePath="$PROJECT_DIR$/5 SolarSail/main_a3c.py" afterPath="$PROJECT_DIR$/5 SolarSail/main_a3c.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -75,8 +65,8 @@
             <file leaf-file-name="SolarSail.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/5 SolarSail/SolarSail.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="810">
-                    <caret line="47" column="35" lean-forward="true" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
+                  <state relative-caret-position="445">
+                    <caret line="67" column="28" lean-forward="true" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
                     <folding />
                   </state>
                 </provider>
@@ -92,7 +82,7 @@
       <file leaf-file-name="main_a3c.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/5 SolarSail/main_a3c.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1076">
+            <state relative-caret-position="716">
               <caret line="78" column="23" lean-forward="true" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -405,13 +395,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
-    </task>
-    <task id="LOCAL-00123" summary="增加三个测试结果，使用前面机器进行调试">
-      <created>1521709858162</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1521709858162</updated>
     </task>
     <task id="LOCAL-00124" summary="增加几个效果">
       <created>1521714822140</created>
@@ -749,7 +732,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523268430731</updated>
     </task>
-    <option name="localTasksCounter" value="172" />
+    <task id="LOCAL-00172" summary="得到火星较好的结果">
+      <created>1523346643561</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1523346643562</updated>
+    </task>
+    <option name="localTasksCounter" value="173" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -862,7 +852,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="使用本地编译器，" />
     <MESSAGE value="学习了30000代，效果还不错" />
     <MESSAGE value="增加探索率可以变化的格式，但是实际效果还没加上" />
     <MESSAGE value="增加效果" />
@@ -887,7 +876,8 @@
     <MESSAGE value="增加一种从中途开始训练的模式，整理输出结果更有体系" />
     <MESSAGE value="增加模式，开始训练" />
     <MESSAGE value="修改简单参数，看一下效果" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改简单参数，看一下效果" />
+    <MESSAGE value="得到火星较好的结果" />
+    <option name="LAST_COMMIT_MESSAGE" value="得到火星较好的结果" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1064,21 +1054,21 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/5 SolarSail/SolarSail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="47" column="35" lean-forward="true" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/5 SolarSail/main_a3c.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1076">
+        <state relative-caret-position="716">
           <caret line="78" column="23" lean-forward="true" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/5 SolarSail/SolarSail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="67" column="28" lean-forward="true" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>

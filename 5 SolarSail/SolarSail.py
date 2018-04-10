@@ -17,14 +17,14 @@ class Env:
         self.delta_d = 1  # 仿真步长，未归一化，单位天
         self.delta_t = self.delta_d * (24 * 60 * 60) / self.TU  # 无单位
         self.constant = {'k': 2 / 5.93, 'r0': 1, 'u0': 0, 'phi0': 0,
-                         'r_f': 1.524, 'u_f': 0, 'phi_f': 0}
+                         'r_f': 0.7233, 'u_f': 0, 'phi_f': 0}
         self.constant['v0'] = 1 / np.sqrt(self.constant['r0'])
         self.constant['v_f'] = 1 / np.sqrt(self.constant['r_f'])
         self.reset()
         self.state_dim = len(self.state)
         self.action_dim = 1
-        self.abound = np.array([-0.2, 1])
-        self.times = 50
+        self.abound = np.array([-1, 0.2])
+        self.times = 25
 
     def render(self):
         pass
@@ -63,12 +63,12 @@ class Env:
                 # 判断是否结束
                 self.t += self.delta_d  # 单位是天
                 reward -= (np.abs(self._state[0] - self.constant['r_f'])) / 5  # 考虑时间和距离
-                if self.t >= 323:  # 超过一定距离和一定天数就结束
+                if self.t >= 163:  # 超过一定距离和一定天数就结束
                     done = True
                     c1 = -50
                     c2 = -100
                     c3 = -100
-                    reward = 40 + c1 * np.abs(self.constant['r_f'] - self._state[0]) + \
+                    reward = 30 + c1 * np.abs(self.constant['r_f'] - self._state[0]) + \
                              c2 * np.abs(self.constant['u_f'] - self._state[2]) + \
                              c3 * np.abs(self.constant['v_f'] - self._state[3])
                     break
