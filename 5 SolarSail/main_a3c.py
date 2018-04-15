@@ -10,25 +10,25 @@ import sys
 import pickle
 
 if __name__ == '__main__':
-    train_mode = 0  # 0 测试 1 从头开始训练 2 从已有阶段开始训练
+    train_mode = 1  # 0 测试 1 从头开始训练 2 从已有阶段开始训练
     choose_mode = 0  # 0 最好结果 1 测试选择随机动作 2 测试选择最好动作
     env = Env()
     para = A3C.Para(env,
                     a_constant=True,
                     units_a=256,
                     units_c=256,
-                    MAX_GLOBAL_EP=20000,
-                    UPDATE_GLOBAL_ITER=4,
+                    MAX_GLOBAL_EP=30000,
+                    UPDATE_GLOBAL_ITER=5,
                     gamma=0.95,
                     ENTROPY_BETA_init=0.2,  # 太大最后测试效果很差
                     ENTROPY_BETA_times=10000,
-                    ENTROPY_BETA_end=0.01,
+                    ENTROPY_BETA_end=0.02,
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train_mode=train_mode)
-    number = 3  # 调试参数编号
+    number = 1  # 调试参数编号
     RL = A3C.A3C(para)
-    # RL.run()  # 训练或者载入数据
+    RL.run()  # 训练或者载入数据
     actions_best = []
     path00 = os.path.join(sys.path[0], 'A3C_result')
     path0 = os.path.join(path00, str(number) + '_result')
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     print('最好轨道参数是：', list(info['states'][-1]))
     print('最好轨道奖励是：', epr_best)
     print('本次测试序号是：', number)
-    print('本次测试误差是：', list(info['states'][-1] - info['target']))
+    print('本次最小误差是：', list(info['states'][-1] - info['target']))
     plt.figure(1)
     ax1 = plt.subplot(111, polar=True)
     plt.thetagrids(range(45, 360, 90))
