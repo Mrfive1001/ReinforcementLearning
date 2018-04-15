@@ -72,7 +72,7 @@ if __name__ == '__main__':
     plt.plot(info['states'][:, 1], info['states'][:, 0], 'k')
     theta = np.arange(0, 2 * np.pi, 0.02)
     plt.plot(theta, 1 * np.ones_like(theta), '--')
-    plt.plot(theta, 1.547 * np.ones_like(theta), '--')
+    plt.plot(theta, info['r_f'] * np.ones_like(theta), '--')
     plt.xlabel('x/(AU)')
     plt.ylabel('y/(AU)')
     plt.ylim((0, 2))
