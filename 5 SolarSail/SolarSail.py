@@ -24,7 +24,7 @@ class Env:
         self.state_dim = len(self.state)
         self.action_dim = 1
         self.abound = np.array([-1, 1])
-        self.times = 50
+        self.times = 40
 
     def render(self):
         pass
@@ -63,12 +63,15 @@ class Env:
                 # 判断是否结束
                 self.t += self.delta_d  # 单位是天
                 reward -= (np.abs(self._state[0] - self.constant['r_f'])) / 5  # 考虑时间和距离
-                if self.t >= 550:  # 超过一定距离和一定天数就结束
+                dif = np.abs(self.constant['r_f'] - self._state[0]) + \
+                      np.abs(self.constant['u_f'] - self._state[2]) + \
+                      np.abs(self.constant['v_f'] - self._state[3])
+                if self.t >= 555 or dif < 1e-4:  # 超过一定距离和一定天数就结束
                     done = True
                     c1 = -100
-                    c2 = -100
-                    c3 = -100
-                    reward = 50 + c1 * np.abs(self.constant['r_f'] - self._state[0]) + \
+                    c2 = -50
+                    c3 = -50
+                    reward = 70 + c1 * np.abs(self.constant['r_f'] - self._state[0]) + \
                              c2 * np.abs(self.constant['u_f'] - self._state[2]) + \
                              c3 * np.abs(self.constant['v_f'] - self._state[3])
                     break

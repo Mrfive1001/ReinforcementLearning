@@ -17,16 +17,16 @@ if __name__ == '__main__':
                     a_constant=True,
                     units_a=256,
                     units_c=256,
-                    MAX_GLOBAL_EP=30000,
-                    UPDATE_GLOBAL_ITER=5,
+                    MAX_GLOBAL_EP=50000,
+                    UPDATE_GLOBAL_ITER=10,
                     gamma=0.95,
                     ENTROPY_BETA_init=0.2,  # 太大最后测试效果很差
-                    ENTROPY_BETA_times=10000,
-                    ENTROPY_BETA_end=0.02,
+                    ENTROPY_BETA_times=30000,
+                    ENTROPY_BETA_end=0.1,
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train_mode=train_mode)
-    number = 1  # 调试参数编号
+    number = 3  # 调试参数编号
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据
     actions_best = []
