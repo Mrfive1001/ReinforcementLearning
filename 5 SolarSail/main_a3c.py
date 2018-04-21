@@ -10,7 +10,7 @@ import sys
 import pickle
 
 if __name__ == '__main__':
-    train_mode = 1  # 0 测试 1 从头开始训练 2 从已有阶段开始训练
+    train_mode = 0  # 0 测试 1 从头开始训练 2 从已有阶段开始训练
     choose_mode = 0  # 0 最好结果 1 测试选择随机动作 2 测试选择最好动作
     env = Env()
     para = A3C.Para(env,
@@ -26,7 +26,7 @@ if __name__ == '__main__':
                     LR_A=0.00002,
                     LR_C=0.0001,
                     train_mode=train_mode)
-    number = 3  # 调试参数编号
+    number = 4  # 调试参数编号
     RL = A3C.A3C(para)
     RL.run()  # 训练或者载入数据
     actions_best = []
