@@ -26,8 +26,23 @@ def get_memory(groups_num):
     np.save('memory.npy', memory)
 
 
-    def test_memmory():
-        memory = np.load('memory.npy')
+def test_memory():
+    memory = np.load('memory.npy')
+    env = QUAD(True)
+    for i in range(100):
+        X0 = memory[np.random.choice(len(memory))]
+        env.state = X0[:5].copy()
+        if np.linalg.norm(env.state) < 1e-6:
+            continue
+        state, ceq, done, info = env.step(X0[5:], False)
+        print('steps', i + 1, 'terminal', ceq[:-1], 'action', X0[5:])
+    plt.figure(1)
+    plt.plot(info['X'][:, 0], info['X'][:, 1])
+    plt.figure(2)
+    plt.plot(info['t'], info['X'][:, 1])
+    plt.show()
+
 
 if __name__ == '__main__':
-    get_memory(50)
+    # get_memory(100)
+    test_memory()

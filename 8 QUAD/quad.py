@@ -42,12 +42,17 @@ class QUAD:
         res = root(self._get_reward, action_ini)
         return res
 
-    def step(self, action):
+    def step(self, action,store = True):
         # 输入选择动作lambda_0(控制缩放的),lambda_n(需要积分变量),t_f(时间)
         # 输出是否平衡，附加信息
-        lambda_0 = (action[0] + 1) / 2
-        lambda_n = action[1:-1]
-        t_f = (action[-1] + 1) * 5
+        if store:
+            lambda_0 = (action[0] + 1) / 2
+            lambda_n = action[1:-1]
+            t_f = (action[-1] + 1) * 5
+        else:
+            lambda_0 = 1
+            lambda_n = action[:-1]
+            t_f = action[-1]
         if t_f < 0 or lambda_0 < 0:
             lambda_0 = 10
         lambda_all = np.hstack((lambda_0, lambda_n))
