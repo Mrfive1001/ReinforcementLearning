@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list id="d89413eb-f083-4ebd-be5e-5bbdaac04a98" name="略微修改了模型，更加的符合逻辑，由于在选择动作的时候会排除掉走过的点，所以不需要惩罚" comment="" />
     <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/8 QUAD/QUAD.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/ReinforcementLearning.iml" afterPath="$PROJECT_DIR$/.idea/ReinforcementLearning.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/8 QUAD/dnn.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/8 QUAD/memory.npy" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/8 QUAD/memory.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change beforePath="$PROJECT_DIR$/8 QUAD/QUAD.py" afterPath="$PROJECT_DIR$/8 QUAD/quad.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +24,7 @@
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_random.coverage" NAME="main_random Coverage Results" MODIFIED="1520148150352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/6 TSP" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_display__1_.coverage" NAME="main_DQN_display (1) Coverage Results" MODIFIED="1517642761936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_hands.coverage" NAME="main_DQN_hands Coverage Results" MODIFIED="1517660314968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
-    <SUITE FILE_PATH="coverage/ReinforcementLearning$QUAD.coverage" NAME="QUAD Coverage Results" MODIFIED="1525833773263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/8 QUAD" />
+    <SUITE FILE_PATH="coverage/ReinforcementLearning$QUAD.coverage" NAME="QUAD Coverage Results" MODIFIED="1525834396861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/8 QUAD" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_a3c.coverage" NAME="main_a3c Coverage Results" MODIFIED="1524276824774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/5 SolarSail" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main.coverage" NAME="main Coverage Results" MODIFIED="1525833463689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/8 QUAD" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$gym_learn.coverage" NAME="gym_learn Coverage Results" MODIFIED="1517882589148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
@@ -33,6 +32,7 @@
     <SUITE FILE_PATH="coverage/ReinforcementLearning$asteroids.coverage" NAME="asteroids Coverage Results" MODIFIED="1517903885856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN/Asteroids_pyglet" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$SolarSail_Max.coverage" NAME="SolarSail_Max Coverage Results" MODIFIED="1522583368638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/8 SolarSail_Maximum" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$Missile_gymtest.coverage" NAME="Missile_gymtest Coverage Results" MODIFIED="1517883657730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
+    <SUITE FILE_PATH="coverage/ReinforcementLearning$memory.coverage" NAME="memory Coverage Results" MODIFIED="1525842827831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/8 QUAD" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_a3c__1_.coverage" NAME="main_a3c (1) Coverage Results" MODIFIED="1523797615424" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/7 SolarSail_Maximum" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$D3QN.coverage" NAME="D3QN Coverage Results" MODIFIED="1517992162140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/2_DQN" />
     <SUITE FILE_PATH="coverage/ReinforcementLearning$main_DQN_hands_display.coverage" NAME="main_DQN_hands_display Coverage Results" MODIFIED="1517662580610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands" />
@@ -67,20 +67,14 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="QUAD.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/8 QUAD/QUAD.py">
+            <file leaf-file-name="quad.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/8 QUAD/quad.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="301">
-                    <caret line="115" column="16" lean-forward="true" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
+                  <state relative-caret-position="312">
+                    <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
                     <folding>
                       <element signature="e#8#26#0" expanded="true" />
-                      <element signature="e#212#644#0" expanded="false" />
-                      <element signature="e#676#680#0" expanded="false" />
-                      <element signature="e#711#873#0" expanded="false" />
-                      <element signature="e#918#985#0" expanded="false" />
-                      <element signature="e#1033#1116#0" expanded="false" />
-                      <element signature="e#1154#2078#0" expanded="false" />
-                      <element signature="e#2138#3329#0" expanded="false" />
+                      <element signature="e#2387#3578#0" expanded="false" />
                     </folding>
                   </state>
                 </provider>
@@ -93,17 +87,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="267">
+              <first_editor relative-caret-position="173">
                 <caret line="22" column="12" lean-forward="false" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
                 <folding />
               </first_editor>
               <second_editor>
                 <js_state />
               </second_editor>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dnn.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/8 QUAD/dnn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="memory.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/8 QUAD/memory.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -163,10 +179,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/5 SolarSail/main_try.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/8 QUAD/memory.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/2 Missile_fight/2_DQN/main_interact.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/6 TSP/A3C_Dis.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/7 SolarSail_Maximum/A3C.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/8 QUAD/QUAD.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/8 QUAD/quad.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/6 TSP/main_DQN.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/6 TSP/main_a3c.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/0 Foundation/A3C.py" root0="SKIP_INSPECTION" />
@@ -186,9 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2 Missile_fight/main_DQN.py" />
-        <option value="$PROJECT_DIR$/2 Missile_fight/2_DQN/main_DQN_hands.py" />
-        <option value="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/D3QN.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/main_DQN_display.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/main_DQN_hands.py" />
         <option value="$PROJECT_DIR$/2 Missile_fight/4_DQN_hands/main_DQN_hands_display.py" />
@@ -237,6 +251,9 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/8 QUAD/main.py" />
         <option value="$PROJECT_DIR$/8 QUAD/QUAD.py" />
+        <option value="$PROJECT_DIR$/8 QUAD/dnn.py" />
+        <option value="$PROJECT_DIR$/8 QUAD/quad.py" />
+        <option value="$PROJECT_DIR$/8 QUAD/memory.py" />
       </list>
     </option>
   </component>
@@ -339,7 +356,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.QUAD">
+  <component name="RunManager" selected="Python.memory">
     <configuration name="QUAD" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -353,26 +370,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="ReinforcementLearning" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/8 QUAD/QUAD.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="SolarSail" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/5 SolarSail" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ReinforcementLearning" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/5 SolarSail/SolarSail.py" />
+      <option name="SCRIPT_NAME" value="D:\MrFive\Documents\Code\ReinforcementLearning\8 QUAD\quad.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -435,20 +433,39 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="memory" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/8 QUAD" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ReinforcementLearning" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/8 QUAD/memory.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.main_a3c" />
-      <item index="1" class="java.lang.String" itemvalue="Python.SolarSail" />
-      <item index="2" class="java.lang.String" itemvalue="Python.main_a3c (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Python.QUAD" />
-      <item index="4" class="java.lang.String" itemvalue="Python.main" />
+      <item index="1" class="java.lang.String" itemvalue="Python.main_a3c (1)" />
+      <item index="2" class="java.lang.String" itemvalue="Python.QUAD" />
+      <item index="3" class="java.lang.String" itemvalue="Python.main" />
+      <item index="4" class="java.lang.String" itemvalue="Python.memory" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.QUAD" />
-        <item index="1" class="java.lang.String" itemvalue="Python.main" />
-        <item index="2" class="java.lang.String" itemvalue="Python.main_a3c" />
-        <item index="3" class="java.lang.String" itemvalue="Python.main_a3c (1)" />
-        <item index="4" class="java.lang.String" itemvalue="Python.SolarSail" />
+        <item index="0" class="java.lang.String" itemvalue="Python.memory" />
+        <item index="1" class="java.lang.String" itemvalue="Python.QUAD" />
+        <item index="2" class="java.lang.String" itemvalue="Python.main" />
+        <item index="3" class="java.lang.String" itemvalue="Python.main_a3c" />
+        <item index="4" class="java.lang.String" itemvalue="Python.main_a3c (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -466,20 +483,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
-    </task>
-    <task id="LOCAL-00125" summary="增加几个效果">
-      <created>1521714840111</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1521714840111</updated>
-    </task>
-    <task id="LOCAL-00126" summary="增加每个图的图号">
-      <created>1521730905082</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1521730905083</updated>
     </task>
     <task id="LOCAL-00127" summary="学到5个结果">
       <created>1521732558967</created>
@@ -810,7 +813,21 @@
       <option name="project" value="LOCAL" />
       <updated>1524280031926</updated>
     </task>
-    <option name="localTasksCounter" value="174" />
+    <task id="LOCAL-00174" summary="增加四旋翼间接法模型">
+      <created>1525833793192</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1525833793192</updated>
+    </task>
+    <task id="LOCAL-00175" summary="将action范围归到-1~1">
+      <created>1525834756476</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1525834756476</updated>
+    </task>
+    <option name="localTasksCounter" value="176" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -829,8 +846,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32865497" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27953216" sideWeight="0.45761803" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1251462" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.75438595" sideWeight="0.542382" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4128655" sideWeight="0.58208156" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4350877" sideWeight="0.542382" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51929826" sideWeight="0.58208156" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3988304" sideWeight="0.70439917" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2247854" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27896994" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -839,7 +856,7 @@
       <window_info id="SciView" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="false" weight="0.58422744" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="415" y="277" width="1089" height="488" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23274854" sideWeight="0.49785408" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.49785408" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -923,8 +940,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="增加效果" />
-    <MESSAGE value="增加探索率可以变化" />
     <MESSAGE value="增加环境可以初始化" />
     <MESSAGE value="随机初始化，效果不够理想" />
     <MESSAGE value="随机初始化" />
@@ -948,7 +963,9 @@
     <MESSAGE value="将特征加速度改为0.5，与论文进行对比" />
     <MESSAGE value="得到几个不错的结果，先保存一下" />
     <MESSAGE value="论文基本初稿完成，测试结果进行保存" />
-    <option name="LAST_COMMIT_MESSAGE" value="论文基本初稿完成，测试结果进行保存" />
+    <MESSAGE value="增加四旋翼间接法模型" />
+    <MESSAGE value="将action范围归到-1~1" />
+    <option name="LAST_COMMIT_MESSAGE" value="将action范围归到-1~1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -959,19 +976,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="193" />
+      <option name="time" value="203" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/7 SolarSail2/A3C_result/A3C_effect2.png" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/tensorflow/python/client/session.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="1112" column="0" lean-forward="false" selection-start-line="1112" selection-start-column="0" selection-end-line="1112" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/threading.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -1169,19 +1178,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="267">
-            <caret line="22" column="12" lean-forward="false" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
-            <folding />
-          </first_editor>
-          <second_editor>
-            <js_state />
-          </second_editor>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/8 QUAD/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -1198,19 +1194,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/8 QUAD/QUAD.py">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="173">
+            <caret line="22" column="12" lean-forward="false" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <js_state />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/8 QUAD/dnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="115" column="16" lean-forward="true" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
+        <state relative-caret-position="30">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/8 QUAD/quad.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding>
             <element signature="e#8#26#0" expanded="true" />
-            <element signature="e#212#644#0" expanded="false" />
-            <element signature="e#676#680#0" expanded="false" />
-            <element signature="e#711#873#0" expanded="false" />
-            <element signature="e#918#985#0" expanded="false" />
-            <element signature="e#1033#1116#0" expanded="false" />
-            <element signature="e#1154#2078#0" expanded="false" />
-            <element signature="e#2138#3329#0" expanded="false" />
+            <element signature="e#2387#3578#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/8 QUAD/memory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

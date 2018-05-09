@@ -25,10 +25,12 @@ class QUAD:
     def reset(self):
         self.t = 0
         if self.random:
-            pass
+            xz = np.random.rand(2) * 10 - 5  # xz初始位置-5~5
+            v_xz = np.random.rand(2) * 2 - 1  # 速度初始-1~1
+            theta = np.random.rand(1) * np.pi / 5 - np.pi / 10  # 初始角度
+            self.state = np.hstack((xz, v_xz, theta))
         else:
-            pass
-        self.state = np.array([-5., -5., 0., 0., 0.])
+            self.state = np.array([-5., -5., 0., 0., 0.])
         return self.state
 
     def _get_reward(self, action):
