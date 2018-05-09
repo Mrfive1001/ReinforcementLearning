@@ -53,7 +53,7 @@ class QUAD:
         lambda_all = np.hstack((lambda_0, lambda_n))
 
         # 微分方程
-        X0 = np.hstack([self.state, lambda_n])
+        X0 = np.hstack([self.state, lambda_n / lambda_0])
         t = np.linspace(0, t_f, 101)
         X = odeint(self.motionequation, X0, t, args=(lambda_0,), rtol=1e-12, atol=1e-12)
 
@@ -62,7 +62,7 @@ class QUAD:
 
         X_dot = self.motionequation(X_end, 0, lambda_0)
 
-        H_end = lambda_0 + np.sum(np.array(X_end[5:]) * np.array(X_dot[:5]))
+        H_end = lambda_0 + np.sum(np.array(X_end[5:]) * lambda_0 * np.array(X_dot[:5]))
 
         lamnda_normal = np.linalg.norm(lambda_all) - 1
         ceq = X_end[:5].copy()
@@ -71,9 +71,9 @@ class QUAD:
 
         done = True
         info = {}
-        info['X'] = X
-        info['t'] = t
-
+        info['X'] = X.copy()
+        info['t'] = t.copy()
+        info['store'] = np.hstack([X, t[::-1].reshape((101, 1))])
         return self.state.copy(), ceq, done, info
 
     def motionequation(self, input, t, lambda_0):
