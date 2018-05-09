@@ -43,12 +43,12 @@ class QUAD:
     def step(self, action):
         # 输入选择动作lambda_0(控制缩放的),lambda_n(需要积分变量),t_f(时间)
         # 输出是否平衡，附加信息
-        lambda_0 = action[0]
+        lambda_0 = (action[0] + 1) / 2
         lambda_n = action[1:-1]
-        t_f = action[-1]
+        t_f = (action[-1] + 1) * 5
         if t_f < 0 or lambda_0 < 0:
             lambda_0 = 10
-        lambda_all = action[0:-1]
+        lambda_all = np.hstack((lambda_0, lambda_n))
 
         # 微分方程
         X0 = np.hstack([self.state, lambda_n])
@@ -115,15 +115,18 @@ class QUAD:
 if __name__ == '__main__':
     env = QUAD()
     for i in range(100):
-        lambda0 = np.random.rand(1)
-        lambda_n = np.random.randn(5)
-        t_f = np.random.rand(1) * 10
-        action = np.hstack([lambda0, lambda_n, t_f])
+        # lambda0 = np.random.rand(1)
+        # lambda_n = np.random.randn(5)
+        # t_f = np.random.rand(1) * 10
+        # action = np.hstack([lambda0, lambda_n, t_f])
+        action = np.random.rand(7) * 2 - 1
         res = env.get_result(action)
         print('step', i, 'fun', res.fun, '\n', 'action', res.x)
         if res.success:
             break
             print('sucess')
+
+    # action = [ 0.88974051 ,-0.07939553 ,-0.04843978 ,-0.06693855 ,-0.03286776, -0.3049739 ,-0.63933857]
     action = res.x
     observation, ceq, done, info = env.step(action)
     plt.figure(1)
