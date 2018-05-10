@@ -46,5 +46,5 @@ def test_memory():
 
 
 if __name__ == '__main__':
-    get_memory(100, load=True)
+    # get_memory(100, load=True)
     test_memory()
