@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list id="d89413eb-f083-4ebd-be5e-5bbdaac04a98" name="略微修改了模型，更加的符合逻辑，由于在选择动作的时候会排除掉走过的点，所以不需要惩罚" comment="" />
-    <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="保存新的数据">
+    <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/8 QUAD/dnn.py" afterPath="$PROJECT_DIR$/8 QUAD/dnn.py" />
+      <change beforePath="$PROJECT_DIR$/8 QUAD/memory.py" afterPath="$PROJECT_DIR$/8 QUAD/memory.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -85,7 +85,18 @@
     </window>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="memory.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/8 QUAD/memory.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -214,8 +225,8 @@
         <option value="$PROJECT_DIR$/8 QUAD/13.py" />
         <option value="$PROJECT_DIR$/8 QUAD/quad.py" />
         <option value="$PROJECT_DIR$/8 QUAD/main.py" />
-        <option value="$PROJECT_DIR$/8 QUAD/memory.py" />
         <option value="$PROJECT_DIR$/8 QUAD/dnn.py" />
+        <option value="$PROJECT_DIR$/8 QUAD/memory.py" />
       </list>
     </option>
   </component>
@@ -450,13 +461,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
-    </task>
-    <task id="LOCAL-00135" summary="规范化输出结果">
-      <created>1521977414005</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
-      <option name="project" value="LOCAL" />
-      <updated>1521977414005</updated>
     </task>
     <task id="LOCAL-00136" summary="修正一些错误">
       <created>1521978764919</created>
@@ -794,7 +798,14 @@
       <option name="project" value="LOCAL" />
       <updated>1525934075935</updated>
     </task>
-    <option name="localTasksCounter" value="184" />
+    <task id="LOCAL-00184" summary="增加数据归一化处理，修改判断成功判据，增加验证集测试">
+      <created>1525942961104</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1525942961104</updated>
+    </task>
+    <option name="localTasksCounter" value="185" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -815,7 +826,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27953216" sideWeight="0.45761803" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11653718" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.65482795" sideWeight="0.542382" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4372919" sideWeight="0.58208156" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23862375" sideWeight="0.58208156" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39844617" sideWeight="0.70439917" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2247854" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21965021" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -907,7 +918,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="修改环境，观测状态为2维，去掉一些无用量" />
     <MESSAGE value="对判断lambda条件进行一些放松，尽量不使用==0" />
     <MESSAGE value="对r小到一定程度就不积分" />
     <MESSAGE value="增加调参经验" />
@@ -932,7 +942,8 @@
     <MESSAGE value="增加神经网络预测训练和存储的功能" />
     <MESSAGE value="修改保存数据的错误" />
     <MESSAGE value="保存15958条数据" />
-    <option name="LAST_COMMIT_MESSAGE" value="保存15958条数据" />
+    <MESSAGE value="增加数据归一化处理，修改判断成功判据，增加验证集测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加数据归一化处理，修改判断成功判据，增加验证集测试" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1194,14 +1205,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/8 QUAD/memory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="38" column="48" lean-forward="true" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/8 QUAD/QUA.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3">
@@ -1225,6 +1228,14 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/8 QUAD/memory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
