@@ -33,18 +33,19 @@ class QUAD:
             self.state = np.array([-5., -5., 0., 0., 0.])
         return self.state
 
-    def _get_reward(self, action):
-        observation, ceq, done, info = self.step(action)
+    def get_reward(self, action, store=True):
+        # 看结果的满足程度
+        observation, ceq, done, info = self.step(action, store)
         return ceq
 
-    def get_result(self, action_ini):
-        # 得到某个初始动作优化的结果
-        res = root(self._get_reward, action_ini)
+    def get_result(self, action_ini, store=True):
+        # 得到某个初始动作优化的结果,存储的时候需要用到lambda0
+        res = root(self.get_reward, action_ini, store)
         return res
 
-    def step(self, action,store = True):
+    def step(self, action, store=True):
         # 输入选择动作lambda_0(控制缩放的),lambda_n(需要积分变量),t_f(时间)
-        # 输出是否平衡，附加信息
+        # 输出是否平衡，附加信息，存储的时候需要用到lambda0
         if store:
             lambda_0 = (action[0] + 1) / 2
             lambda_n = action[1:-1]
@@ -64,21 +65,21 @@ class QUAD:
 
         # 末端Hamilton函数值
         X_end = X[-1, :]
-
         X_dot = self.motionequation(X_end, 0, lambda_0)
-
         H_end = lambda_0 + np.sum(np.array(X_end[5:]) * lambda_0 * np.array(X_dot[:5]))
-
         lamnda_normal = np.linalg.norm(lambda_all) - 1
         ceq = X_end[:5].copy()
-        ceq = np.hstack([ceq, H_end, lamnda_normal])
+        if store:
+            ceq = np.hstack([ceq, H_end, lamnda_normal])
+        else:
+            ceq = np.hstack([ceq, H_end])
         # 判断是否平衡，满足终端条件
-
         done = True
         info = {}
         info['X'] = X.copy()
         info['t'] = t.copy()
-        info['store'] = np.hstack([X, t[::-1].reshape((101, 1))])
+        if store:
+            info['store'] = np.hstack([X, t[::-1].reshape((101, 1))])
         return self.state.copy(), ceq, done, info
 
     def motionequation(self, input, t, lambda_0):
