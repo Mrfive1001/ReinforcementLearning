@@ -16,9 +16,9 @@ def get_memory(groups_num, load=True):
             res = env.get_result(action)  # 打一次靶
             if np.linalg.norm(res.fun) < 1e-5:
                 # 打中了
-                action = res.x
+                action = res.x  # 对动作的效果进行复现
                 observation, ceq, done, info = env.step(action)
-                if memory is not None:
+                if memory is not None:  # 保存数据
                     memory = np.vstack([memory, info['store'].copy()])
                 else:
                     memory = info['store'].copy()
@@ -28,10 +28,11 @@ def get_memory(groups_num, load=True):
 
 
 def test_memory():
+    # 测试数据的效果
     memory = np.load('memory.npy')
     env = QUAD(True)
     for i in range(100):
-        X0 = memory[np.random.choice(len(memory))]
+        X0 = memory[np.random.choice(len(memory))]  # 选择初始状态
         env.state = X0[:5].copy()
         if np.linalg.norm(env.state) < 1e-6:
             continue
@@ -45,5 +46,5 @@ def test_memory():
 
 
 if __name__ == '__main__':
-    get_memory(100, load=True)
+    # get_memory(300, load=True)
     test_memory()
