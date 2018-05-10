@@ -3,8 +3,11 @@ from quad import QUAD
 import matplotlib.pyplot as plt
 
 
-def get_memory(groups_num):
-    memory = None  # 存储的记忆数据
+def get_memory(groups_num, load=True):
+    if load:
+        memory = np.load('memory.npy')  # 读取
+    else:
+        memory = None  # 存储的记忆数据
     env = QUAD(True)
     for i in range(groups_num):
         env.reset()  # 随机位置
@@ -14,14 +17,12 @@ def get_memory(groups_num):
             if res.success:
                 if np.linalg.norm(res.fun) < 1e-5:
                     # 打中了
-                    print('epside', i, 'step', j, 'action', res.x)
-                    action = res.x
                     observation, ceq, done, info = env.step(action)
-                    info['t']
                     if memory is not None:
                         memory = np.vstack([memory, info['store'].copy()])
                     else:
                         memory = info['store'].copy()
+                    print('You\'ve stored %d pieces of data.' % (len(memory)))
                     break
     np.save('memory.npy', memory)
 
@@ -35,7 +36,7 @@ def test_memory():
         if np.linalg.norm(env.state) < 1e-6:
             continue
         state, ceq, done, info = env.step(X0[5:], False)
-        print('steps', i + 1, 'terminal', ceq[:-1], 'action', X0[5:])
+        print('steps', i + 1, 'terminal', ceq, 'action', X0[5:])
     plt.figure(1)
     plt.plot(info['X'][:, 0], info['X'][:, 1])
     plt.figure(2)
@@ -44,5 +45,5 @@ def test_memory():
 
 
 if __name__ == '__main__':
-    # get_memory(100)
+    # get_memory(100, load=True)
     test_memory()
