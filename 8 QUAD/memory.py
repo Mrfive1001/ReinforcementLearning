@@ -17,6 +17,7 @@ def get_memory(groups_num, load=True):
             if res.success:
                 if np.linalg.norm(res.fun) < 1e-5:
                     # 打中了
+                    action = res.x
                     observation, ceq, done, info = env.step(action)
                     if memory is not None:
                         memory = np.vstack([memory, info['store'].copy()])
@@ -45,5 +46,5 @@ def test_memory():
 
 
 if __name__ == '__main__':
-    # get_memory(100, load=True)
+    get_memory(100, load=True)
     test_memory()
