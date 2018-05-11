@@ -83,7 +83,7 @@ class DNN:
 if __name__ == '__main__':
     train = False  # 是否进行网络训练
     # train = True  # 是否进行网络训练
-    net = DNN(5, 6, 100, train=train, isnorm=False)  # 定义网络
+    net = DNN(5, 6, 256, train=train, isnorm=True)  # 定义网络
     memory = np.load('memory.npy')  # 读取数据
     memory_norm = net.norm(memory)
     if train:
@@ -93,7 +93,7 @@ if __name__ == '__main__':
         # 读取数据
         losses = []
         for i in range(20000):
-            sample_index = np.random.choice(len(X), size=3000)
+            sample_index = np.random.choice(len(X), size=6000)
             batch_x = X[sample_index, :]
             batch_y = Y[sample_index, :]
             loss = net.learn(batch_x, batch_y)
@@ -116,7 +116,7 @@ if __name__ == '__main__':
 
         X = memory[:, :5].copy()
         Y = memory[:, 5:].copy()
-        episodes = 300
+        episodes = 200
         sample_index = np.random.choice(len(X), size=episodes)
         batch_x = X[sample_index, :]
         batch_y = Y[sample_index, :]
