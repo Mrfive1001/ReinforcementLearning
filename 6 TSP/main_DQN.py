@@ -17,7 +17,7 @@ if __name__ == "__main__":
              batch_size=64,
              double=True,
              dueling=True,
-             train=True if 0 == 1 else False
+             train=True if 1 == 1 else False
              )
     step = 0
     ep_reward = 0
