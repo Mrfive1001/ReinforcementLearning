@@ -16,7 +16,7 @@ if __name__ == '__main__':
     para = A3C.Para(env,
                     a_constant=True,
                     units_a=256,
-                    units_c=256,
+                    units_c=512,
                     MAX_GLOBAL_EP=50000,
                     UPDATE_GLOBAL_ITER=10,
                     gamma=0.95,
