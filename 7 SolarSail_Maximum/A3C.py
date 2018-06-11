@@ -111,7 +111,6 @@ class A3C:
         return self.workers[0].AC.choose_action(state)
 
 
-
 class ACNet(object):
     # AC框架网络，包含全局网络和每个分网络
     def __init__(self, scope, para, globalAC=None):
@@ -127,7 +126,9 @@ class ACNet(object):
                         mu, sigma = mu * abs(A_BOUND[1] - A_BOUND[0]) / 2 + \
                                     np.mean(A_BOUND), sigma + 1e-4  # 归一化反映射，防止方差为零
                 with tf.name_scope('choose_a'):  # use local params to choose action
-                    self.A = tf.clip_by_value(mu, self.para.A_BOUND[0], self.para.A_BOUND[1])  # 根据actor给出的分布，选取动作
+                    self.A = tf.clip_by_value(mu, self.para.A_BOUND[0][np.newaxis,:],
+                                                  self.para.A_BOUND[1][np.newaxis,:])
+                    # 根据actor给出的分布，选取动作
             else:
                 with tf.variable_scope(scope):
                     self.s = tf.placeholder(tf.float32, [None, self.para.N_S], 'S')
@@ -148,8 +149,9 @@ class ACNet(object):
                                     np.mean(A_BOUND), sigma + 1e-4  # 归一化反映射，防止方差为零
                     normal_dist = tf.contrib.distributions.Normal(mu, sigma)  # tf自带的正态分布函数
                     with tf.name_scope('choose_a'):  # use local params to choose action
-                        self.A = tf.clip_by_value(tf.squeeze(normal_dist.sample(1), axis=0), self.para.A_BOUND[0],
-                                                  self.para.A_BOUND[1])  # 根据actor给出的分布，选取动作
+                        self.A = tf.clip_by_value(tf.squeeze(normal_dist.sample(1), axis=0),
+                                                  self.para.A_BOUND[0][np.newaxis,:],
+                                                  self.para.A_BOUND[1][np.newaxis,:])  # 根据actor给出的分布，选取动作
                 else:
                     self.a_prob, self.v, self.a_params, self.c_params = self._build_net(scope)
                 # 价值网络优化
@@ -252,7 +254,7 @@ class Worker(object):
         while self.para.GLOBAL_EP < self.para.MAX_GLOBAL_EP:
             self.para.ENTROPY_BETA = max(self.para.ENTROPY_BETA_end, self.para.ENTROPY_BETA_init - \
                                          (self.para.GLOBAL_EP / self.para.ENTROPY_BETA_times) * (
-                                                 self.para.ENTROPY_BETA_init - self.para.ENTROPY_BETA_end))
+                                             self.para.ENTROPY_BETA_init - self.para.ENTROPY_BETA_end))
             actions = []
             s = self.env_l.reset()
             ep_r = 0
