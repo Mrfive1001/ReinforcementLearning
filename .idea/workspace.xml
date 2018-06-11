@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list id="d89413eb-f083-4ebd-be5e-5bbdaac04a98" name="略微修改了模型，更加的符合逻辑，由于在选择动作的时候会排除掉走过的点，所以不需要惩罚" comment="" />
-    <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="修改维度的问题，解决">
+    <list default="true" id="60d665b1-03ae-48c4-9b47-cc27cd0065b2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ReinforcementLearning.iml" afterPath="$PROJECT_DIR$/.idea/ReinforcementLearning.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -63,28 +63,6 @@
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
     <expand />
     <select />
-  </component>
-  <component name="DockManager">
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-            <file leaf-file-name="SolarSail_Max.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/7 SolarSail_Maximum/SolarSail_Max.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="570">
-                    <caret line="25" column="100" lean-forward="false" selection-start-line="25" selection-start-column="100" selection-end-line="25" selection-end-column="100" />
-                    <folding>
-                      <element signature="e#12#30#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
@@ -574,13 +552,6 @@
       <option name="presentableId" value="Default" />
       <updated>1516496448982</updated>
     </task>
-    <task id="LOCAL-00145" summary="学习了30000代，效果还不错">
-      <created>1522244339313</created>
-      <option name="number" value="00145" />
-      <option name="presentableId" value="LOCAL-00145" />
-      <option name="project" value="LOCAL" />
-      <updated>1522244339313</updated>
-    </task>
     <task id="LOCAL-00146" summary="学习了30000代，效果还不错">
       <created>1522290279599</created>
       <option name="number" value="00146" />
@@ -917,7 +888,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528731149340</updated>
     </task>
-    <option name="localTasksCounter" value="194" />
+    <task id="LOCAL-00194" summary="解决简单问题">
+      <created>1528731262512</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
+      <option name="project" value="LOCAL" />
+      <updated>1528731262512</updated>
+    </task>
+    <option name="localTasksCounter" value="195" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1030,7 +1008,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="增加一种从中途开始训练的模式，整理输出结果更有体系" />
     <MESSAGE value="增加模式，开始训练" />
     <MESSAGE value="修改简单参数，看一下效果" />
     <MESSAGE value="将特征加速度改为0.5，与论文进行对比" />
@@ -1055,7 +1032,8 @@
     <MESSAGE value="修改Missile的request库依赖，并且运行需要设置根目录" />
     <MESSAGE value="修改默认设置，不然无法运行" />
     <MESSAGE value="修改维度的问题，解决" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改维度的问题，解决" />
+    <MESSAGE value="解决简单问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="解决简单问题" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1348,22 +1326,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/7 SolarSail_Maximum/SolarSail_Max.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="25" column="100" lean-forward="false" selection-start-line="25" selection-start-column="100" selection-end-line="25" selection-end-column="100" />
-          <folding>
-            <element signature="e#12#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/7 SolarSail_Maximum/A3C.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="129" column="84" lean-forward="false" selection-start-line="129" selection-start-column="84" selection-end-line="129" selection-end-column="84" />
           <folding>
             <element signature="e#132#154#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7 SolarSail_Maximum/SolarSail_Max.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="25" column="100" lean-forward="false" selection-start-line="25" selection-start-column="100" selection-end-line="25" selection-end-column="100" />
+          <folding>
+            <element signature="e#12#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
